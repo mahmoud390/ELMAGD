@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F97C269D-ED0A-412B-81BD-12ED78437BAE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elmagd</RootNamespace>
+    <AssemblyName>Elmagd</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.UI, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category.Designer.cs">
+      <DependentUpon>Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientInvoice.Designer.cs">
+      <DependentUpon>ClientInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients.Designer.cs">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General_payments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_payments.Designer.cs">
+      <DependentUpon>General_payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General_Receipts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Receipts.Designer.cs">
+      <DependentUpon>General_Receipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Homeform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Homeform.Designer.cs">
+      <DependentUpon>Homeform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incomes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incomes.Designer.cs">
+      <DependentUpon>Incomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal_Exchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Internal_Exchange.Designer.cs">
+      <DependentUpon>Internal_Exchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Investors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Investors.Designer.cs">
+      <DependentUpon>Investors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payments_Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payments_Client.Designer.cs">
+      <DependentUpon>Payments_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payments_Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payments_Suppliers.Designer.cs">
+      <DependentUpon>Payments_Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipts_Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Receipts_Client.Designer.cs">
+      <DependentUpon>Receipts_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt_Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Receipt_Suppliers.Designer.cs">
+      <DependentUpon>Receipt_Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales.Designer.cs">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Show_stores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show_stores.Designer.cs">
+      <DependentUpon>Show_stores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUP.Designer.cs">
+      <DependentUpon>SignUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store.Designer.cs">
+      <DependentUpon>Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers.Designer.cs">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuppliersInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuppliersInvoice.Designer.cs">
+      <DependentUpon>SuppliersInvoice.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category.resx">
+      <DependentUpon>Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientInvoice.resx">
+      <DependentUpon>ClientInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients.resx">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General_payments.resx">
+      <DependentUpon>General_payments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General_Receipts.resx">
+      <DependentUpon>General_Receipts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Homeform.resx">
+      <DependentUpon>Homeform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incomes.resx">
+      <DependentUpon>Incomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Internal_Exchange.resx">
+      <DependentUpon>Internal_Exchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Investors.resx">
+      <DependentUpon>Investors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payments_Client.resx">
+      <DependentUpon>Payments_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payments_Suppliers.resx">
+      <DependentUpon>Payments_Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Receipts_Client.resx">
+      <DependentUpon>Receipts_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receipt_Suppliers.resx">
+      <DependentUpon>Receipt_Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show_stores.resx">
+      <DependentUpon>Show_stores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUP.resx">
+      <DependentUpon>SignUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store.resx">
+      <DependentUpon>Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers.resx">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersInvoice.resx">
+      <DependentUpon>SuppliersInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blog-wp-login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\أفضل_نوع_أرز.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0000000011111111111111111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\رز.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\000000000000000002222222222222222.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
