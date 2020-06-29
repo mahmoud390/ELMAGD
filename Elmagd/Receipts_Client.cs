@@ -42,6 +42,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region LOAD_CLIENT
         private void Loadclient()
         {
             SqlDataAdapter da = new SqlDataAdapter("Select * From CLIENT", conn);
@@ -54,7 +55,10 @@ namespace Elmagd
             comboclient.DisplayMember = "name";
             comboclient.DataSource = dt;
         }
+        #endregion
 
+        #region ADD_RECEIPTS_CLIENT
+        //إضافةمقبوضات من عميل
         private void btnadd_Click(object sender, EventArgs e)
         {
             if ((int)comboclient.SelectedIndex == 0)
@@ -85,7 +89,9 @@ namespace Elmagd
                 MessageBox.Show("تمت عمليه الاضافه");
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void client_receiptsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (client_receiptsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -99,7 +105,9 @@ namespace Elmagd
                 btnadd.Enabled = false;
             }
         }
+        #endregion
 
+        #region EDITE_RECEIPTS_CLIENT
         private void btnedite_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -120,7 +128,9 @@ namespace Elmagd
                 btnadd.Enabled = true;
             }
         }
-
+        #endregion
+        
+        #region DELET_RECEIPTS_CLIENT
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -144,7 +154,9 @@ namespace Elmagd
                 }
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTVALUE
         private void txtvalue_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtvalue.Text, "[^0-9]"))
@@ -153,5 +165,18 @@ namespace Elmagd
                 txtvalue.Text = txtvalue.Text.Remove(txtvalue.Text.Length - 1);
             }
         }
+        #endregion
+
+        #region SEARCH
+        private void txtSarch_TextChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            SqlDataAdapter dataadapter = new SqlDataAdapter("select RESEIPTS_CLIENT.id, RESEIPTS_CLIENT.date as التاريخ,CLIENT.name as الإسم ,RESEIPTS_CLIENT.value as المبلغ,RESEIPTS_CLIENT.notes as الملاحظات from RESEIPTS_CLIENT inner join CLIENT on RESEIPTS_CLIENT.client_id =CLIENT.id where CLIENT.name LIKE N'%" + txtSarch.Text + "%'", conn);
+            DataTable dt = new DataTable();
+            dataadapter.Fill(dt);
+            client_receiptsgrid.DataSource = dt;
+            conn.Close();
+        }
+        #endregion
     }
 }

@@ -21,11 +21,13 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Store_Load(object sender, EventArgs e)
         {
             BindGrid();
            
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -41,8 +43,7 @@ namespace Elmagd
         }
         #endregion
 
-    
-
+        #region ADD_STORE__ADD_TOSTORE
         private void btnadd_Click(object sender, EventArgs e)
         {
 
@@ -54,6 +55,16 @@ namespace Elmagd
            
             else
             {
+                //-----------------------------
+                conn.Open();
+                cmd.CommandText = @"insert into TOSTORE (name,notes) values(@name,@notes)";
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@name", txtname.Text);
+                cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
+                //-----------------------------------------------------
                 conn.Open();
                 cmd.CommandText = @"insert into STORE (name,notes) values(@name,@notes)";
                 cmd.Connection = conn;
@@ -64,11 +75,16 @@ namespace Elmagd
                 conn.Close();
                 BindGrid();
                 txtname.Text = "";
-
                 MessageBox.Show("تمت عمليه الاضافه");
+               
+                //------------------------------------------------
+            
+                
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void storegrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (storegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -83,7 +99,9 @@ namespace Elmagd
 
             }
         }
+        #endregion
 
+        #region EDITE_STORE__TOSTORE
         private void btnedite_Click(object sender, EventArgs e)
         {
 
@@ -92,19 +110,29 @@ namespace Elmagd
             else
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("update STORE set name=@name,notes =@notes where id = '" + id + "'", conn);
+                SqlCommand cmd = new SqlCommand("update TOSTORE set name=@name,notes =@notes where id = '" + id + "'", conn);
+                cmd.Parameters.AddWithValue("@name", txtname.Text);
+                cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                //------------------------------------------------------------------------------------------
+                conn.Open();
+                cmd = new SqlCommand("update STORE set name=@name,notes =@notes where id = '" + id + "'", conn);
                 cmd.Parameters.AddWithValue("@name", txtname.Text);
                 cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 BindGrid();
                 txtname.Text = "";
+                txtnotes.Text = "";
                 MessageBox.Show("تم التعديل");
                 id = 0;
                 btnadd.Enabled = true;
             }
         }
+        #endregion
 
+        #region DELET_STORE__TOSTORE
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -120,15 +148,23 @@ namespace Elmagd
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     BindGrid();
+                    //---------------------------------------------
+                    conn.Open();
+                    cmd.CommandText = @"delete from TOSTORE where id = '" + id + "'";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                     txtname.Text = "";
+                    txtnotes.Text = "";
                     MessageBox.Show("تم الحذف");
                     id = 0;
                     btnadd.Enabled = true;
                 }
             }
         }
+        #endregion
 
-      
+        #region SEARCH
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
@@ -138,6 +174,7 @@ namespace Elmagd
             storegrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
 
         private void combocategory_SelectedIndexChanged(object sender, EventArgs e)
         {

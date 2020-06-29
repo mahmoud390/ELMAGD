@@ -22,11 +22,14 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Receipt_Suppliers_Load(object sender, EventArgs e)
         {
+            suppaymentdate.Value = DateTime.Now;
             BindGrid();
             Loadsuppliers();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -57,6 +60,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region ADD_RECEIPT_SUPPLIERS
         private void btnadd_Click(object sender, EventArgs e)
         {
             if ((int)combosuppliers.SelectedIndex == 0)
@@ -87,7 +91,9 @@ namespace Elmagd
                 MessageBox.Show("تمت عمليه الاضافه");
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void sup_receiptsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (sup_receiptsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -101,7 +107,9 @@ namespace Elmagd
                 btnadd.Enabled = false;
             }
         }
+        #endregion
 
+        #region EDITE_RECEIPT_SUPPLIERS
         private void btnedite_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -122,7 +130,9 @@ namespace Elmagd
                 btnadd.Enabled = true;
             }
         }
+        #endregion
 
+        #region DELET_RECEIPT_SUPPLIERS
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -146,7 +156,9 @@ namespace Elmagd
                 }
             }
         }
+        #endregion
 
+        #region SEARCH
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
@@ -156,7 +168,9 @@ namespace Elmagd
             sup_receiptsgrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
 
+        #region TEXTCHANGED_TXTVALUE
         private void txtvalue_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtvalue.Text, "[^0-9]"))
@@ -165,5 +179,6 @@ namespace Elmagd
                 txtvalue.Text = txtvalue.Text.Remove(txtvalue.Text.Length - 1);
             }
         }
+        #endregion
     }
 }

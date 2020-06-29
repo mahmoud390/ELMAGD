@@ -22,6 +22,7 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_page
         private void Show_stores_Load(object sender, EventArgs e)
         {
             Loadcategory();
@@ -29,6 +30,7 @@ namespace Elmagd
             Loadstore();
             BindGrid();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -89,6 +91,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region GARD_MAINSTORE
         private void btngard_Click(object sender, EventArgs e)
         {
             if ((int)combostore.SelectedIndex == 0)
@@ -122,5 +125,6 @@ namespace Elmagd
                     txtquantity.Text = quantity.ToString();
             }
         }
+        #endregion
     }
 }

@@ -20,10 +20,13 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Sales_Load(object sender, EventArgs e)
         {
             BindGrid();
         }
+        #endregion
+
         #region BINDGRID
         private void BindGrid()
         {
@@ -38,6 +41,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region SEARCH
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
@@ -47,6 +51,7 @@ namespace Elmagd
             salesgrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
 
         private void label9_Click(object sender, EventArgs e)
         {

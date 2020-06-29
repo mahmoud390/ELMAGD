@@ -28,6 +28,7 @@ namespace Elmagd
 
         }
 
+        #region LOADPAGE
         private void SuppliersInvoice_Load(object sender, EventArgs e)
         {
             suppliersinvoicedate.Value = DateTime.Now;
@@ -37,6 +38,7 @@ namespace Elmagd
             Loadstore();
             Loadcategory();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -112,6 +114,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region CALC_TOTAL
         // حساب الاجمالي قبل الخصم والاضافة
         private void btncalc_Click(object sender, EventArgs e)
         {
@@ -133,7 +136,9 @@ namespace Elmagd
             }
 
         }
+        #endregion
 
+        #region CALC_REST
         //حساب الباقي 
         private void btncalc2_Click(object sender, EventArgs e)
         {
@@ -163,8 +168,11 @@ namespace Elmagd
             }
             
         }
+        #endregion
 
+        #region ADD_TEMP_SUPPLIERSINVOICE
         // إضافة في temp_supplierinvoice والجرداية
+        //إضافة التوريدات في الجردايه
         private void radButton1_Click(object sender, EventArgs e)
         {
             if ((int)combosuppliers.SelectedIndex == 0)
@@ -223,7 +231,9 @@ namespace Elmagd
                 MessageBox.Show("تمت عمليه الاضافه");
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void tempsuppliergrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -234,7 +244,10 @@ namespace Elmagd
                 id = int.Parse(tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
             }
         }
+        #endregion
 
+
+        #region DELET_TEMP_SUPPLIERSINVOICE
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -256,7 +269,10 @@ namespace Elmagd
                 }
             }
         }
+        #endregion
 
+
+        #region PRINT_ADDSUPLLIERINVOICE_ADDMAINSTORE_updatemainstore_delettempsuppliersinvoice
         //إضافة في supplier invoice
         private void btnadd_Click(object sender, EventArgs e)
         {
@@ -287,6 +303,7 @@ namespace Elmagd
             }
             conn.Close();
             //----------------------------------------------
+            //إضافة مخزن ومنتج داخلmainstore في حالة عدم وجود هذا المخزن
             conn.Open();
             cmd.CommandText = @"select id  from MAIN_STORE where cat_id ='" + catid_DB + "'  ";
             SqlDataReader reader_id = cmd.ExecuteReader();
@@ -309,7 +326,7 @@ namespace Elmagd
             }
             else
             {
-                
+                // سليكت الكمية الموجودة داخل المخزن ونوع الكمية
                 conn.Open();
                 cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
                  reader = cmd.ExecuteReader();
@@ -323,6 +340,7 @@ namespace Elmagd
                 }
                 conn.Close();
                 //-------------------------------------
+                // ابديت الكمية في المين استور في حالة إضافة توريد جديد
                 conn.Open();
                 cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + enter_quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
                 cmd.Connection = conn;
@@ -343,12 +361,15 @@ namespace Elmagd
             }
 
         }
+        #endregion
 
         private void radGroupBox1_Click(object sender, EventArgs e)
         {
 
         }
 
+        #region CALC_BAKY
+        //حساب الباقي بعد المبلغ المدفوع من الإجمالي بعد الخصومات
         private void btnbaky_Click(object sender, EventArgs e)
         {
             double paid, baky;
@@ -364,7 +385,9 @@ namespace Elmagd
              baky = rest - paid;
             txtbaky.Text = baky.ToString();
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTCOMMESTION
         private void txtcommestion_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtcommestion.Text, "[^0-9]"))
@@ -373,7 +396,9 @@ namespace Elmagd
                 txtcommestion.Text = txtcommestion.Text.Remove(txtcommestion.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTQUANTITY
         private void txtquantity_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtquantity.Text, "[^0-9]"))
@@ -382,7 +407,9 @@ namespace Elmagd
                 txtquantity.Text = txtquantity.Text.Remove(txtquantity.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTPRICE
         private void txtprice_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtprice.Text, "[^0-9]"))
@@ -391,7 +418,9 @@ namespace Elmagd
                 txtprice.Text = txtprice.Text.Remove(txtprice.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTBAKY
         private void txtbskoul_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtbskoul.Text, "[^0-9]"))
@@ -400,7 +429,9 @@ namespace Elmagd
                 txtbskoul.Text = txtbskoul.Text.Remove(txtbskoul.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTMASHAL
         private void txtmashal_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtmashal.Text, "[^0-9]"))
@@ -409,7 +440,9 @@ namespace Elmagd
                 txtmashal.Text = txtmashal.Text.Remove(txtmashal.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region TEXTCHANGE_TXTPAID
         private void txtpaid_TextChanged(object sender, EventArgs e)
         {
             //if (System.Text.RegularExpressions.Regex.IsMatch(txtpaid.Text, "[^0-9]"))
@@ -418,6 +451,7 @@ namespace Elmagd
             //    txtpaid.Text = txtpaid.Text.Remove(txtpaid.Text.Length - 1);
             //}
         }
+        #endregion
 
 
     }

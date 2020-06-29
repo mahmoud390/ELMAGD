@@ -49,12 +49,12 @@
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup14 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup15 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.ribbonTab6 = new Telerik.WinControls.UI.RibbonTab();
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup12 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup13 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnexit = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ribbonTab6 = new Telerik.WinControls.UI.RibbonTab();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnexit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,19 +68,19 @@
             this.ribbonTab3,
             this.ribbonTab4,
             this.ribbonTab5,
-            this.ribbonTab6,
             this.ribbonTab7});
             // 
             // 
             // 
             this.radRibbonBar1.ExitButton.Text = "Exit";
+            this.radRibbonBar1.Font = new System.Drawing.Font("Segoe UI", 7.8F);
             this.radRibbonBar1.Location = new System.Drawing.Point(0, 0);
             this.radRibbonBar1.Name = "radRibbonBar1";
             // 
             // 
             // 
             this.radRibbonBar1.OptionsButton.Text = "Options";
-            this.radRibbonBar1.Size = new System.Drawing.Size(1781, 169);
+            this.radRibbonBar1.Size = new System.Drawing.Size(1702, 169);
             this.radRibbonBar1.TabIndex = 0;
             this.radRibbonBar1.Text = "الصفحة الرئيسية";
             // 
@@ -238,17 +238,9 @@
             this.radRibbonBarGroup15.Text = "الصرف الداخلي";
             this.radRibbonBarGroup15.Click += new System.EventHandler(this.radRibbonBarGroup15_Click);
             // 
-            // ribbonTab6
-            // 
-            this.ribbonTab6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ribbonTab6.IsSelected = false;
-            this.ribbonTab6.Name = "ribbonTab6";
-            this.ribbonTab6.Text = "تسجيل بيانات المدير";
-            this.ribbonTab6.UseMnemonic = false;
-            this.ribbonTab6.Click += new System.EventHandler(this.ribbonTab6_Click);
-            // 
             // ribbonTab7
             // 
+            this.ribbonTab7.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ribbonTab7.IsSelected = false;
             this.ribbonTab7.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup12,
@@ -273,7 +265,7 @@
             // btnexit
             // 
             this.btnexit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexit.Location = new System.Drawing.Point(1612, 720);
+            this.btnexit.Location = new System.Drawing.Point(2288, 893);
             this.btnexit.Name = "btnexit";
             this.btnexit.Size = new System.Drawing.Size(137, 43);
             this.btnexit.TabIndex = 1;
@@ -284,22 +276,35 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::Elmagd.Properties.Resources._000000000000000002222222222222222;
-            this.pictureBox1.Location = new System.Drawing.Point(463, 259);
+            this.pictureBox1.Location = new System.Drawing.Point(516, 256);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(777, 460);
+            this.pictureBox1.Size = new System.Drawing.Size(652, 405);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // ribbonTab6
+            // 
+            this.ribbonTab6.AutoEllipsis = false;
+            this.ribbonTab6.DisabledTextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.ribbonTab6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ribbonTab6.IsSelected = true;
+            this.ribbonTab6.Name = "ribbonTab6";
+            this.ribbonTab6.Text = "تسجيل بيانات المدير";
+            this.ribbonTab6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.ribbonTab6.UseCompatibleTextRendering = false;
+            this.ribbonTab6.UseMnemonic = false;
             // 
             // Homeform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1781, 775);
+            this.ClientSize = new System.Drawing.Size(1702, 755);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnexit);
             this.Controls.Add(this.radRibbonBar1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Homeform";
             this.Text = "الصفحة الرئيسية";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -325,7 +330,6 @@
         private Telerik.WinControls.UI.RibbonTab ribbonTab5;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup5;
         private Telerik.WinControls.UI.RadButton btnexit;
-        private Telerik.WinControls.UI.RibbonTab ribbonTab6;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup6;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup7;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup8;
@@ -340,6 +344,7 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup16;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup17;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab6;
 
     }
 }

@@ -49,9 +49,10 @@
             // 
             // txtname
             // 
+            this.txtname.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtname.Location = new System.Drawing.Point(1321, 41);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(303, 24);
+            this.txtname.Size = new System.Drawing.Size(303, 28);
             this.txtname.TabIndex = 17;
             this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
             // 
@@ -80,7 +81,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1406, 283);
+            this.label9.Location = new System.Drawing.Point(1243, 291);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 20);
             this.label9.TabIndex = 33;
@@ -89,35 +90,45 @@
             // 
             // txtSarch
             // 
-            this.txtSarch.Location = new System.Drawing.Point(909, 279);
+            this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSarch.Location = new System.Drawing.Point(714, 287);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(474, 24);
+            this.txtSarch.Size = new System.Drawing.Size(506, 32);
             this.txtSarch.TabIndex = 32;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 
             // btndelet
             // 
-            this.btndelet.Location = new System.Drawing.Point(1005, 188);
+            this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
+            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelet.ForeColor = System.Drawing.Color.Black;
+            this.btndelet.Location = new System.Drawing.Point(1005, 179);
             this.btndelet.Name = "btndelet";
-            this.btndelet.Size = new System.Drawing.Size(123, 30);
+            this.btndelet.Size = new System.Drawing.Size(145, 39);
             this.btndelet.TabIndex = 37;
             this.btndelet.Text = "حذف";
             this.btndelet.Click += new System.EventHandler(this.btndelet_Click);
             // 
             // btnedite
             // 
-            this.btnedite.Location = new System.Drawing.Point(1218, 188);
+            this.btnedite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(35)))));
+            this.btnedite.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnedite.ForeColor = System.Drawing.Color.Black;
+            this.btnedite.Location = new System.Drawing.Point(1218, 179);
             this.btnedite.Name = "btnedite";
-            this.btnedite.Size = new System.Drawing.Size(129, 30);
+            this.btnedite.Size = new System.Drawing.Size(139, 39);
             this.btnedite.TabIndex = 36;
             this.btnedite.Text = "تعديل";
             this.btnedite.Click += new System.EventHandler(this.btnedite_Click);
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(1430, 188);
+            this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.ForeColor = System.Drawing.Color.Black;
+            this.btnadd.Location = new System.Drawing.Point(1430, 179);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(126, 30);
+            this.btnadd.Size = new System.Drawing.Size(139, 39);
             this.btnadd.TabIndex = 35;
             this.btnadd.Text = "إضافة";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
@@ -145,6 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1807, 777);
             this.Controls.Add(this.txtnotes);
             this.Controls.Add(this.label4);

@@ -60,11 +60,7 @@ namespace Elmagd
             Application.Exit();
         }
 
-        private void ribbonTab6_Click(object sender, EventArgs e)
-        {
-            SignUP signup = new SignUP();
-            signup.Show();
-        }
+      
 
         private void radRibbonBarGroup6_Click(object sender, EventArgs e)
         {

@@ -22,11 +22,13 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Payments_Client_Load(object sender, EventArgs e)
         {
             BindGrid();
             Loadclient();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -42,6 +44,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region LOAD_CLIENT
         private void Loadclient()
         {
             SqlDataAdapter da = new SqlDataAdapter("Select * From CLIENT", conn);
@@ -54,7 +57,9 @@ namespace Elmagd
             comboclient.DisplayMember = "name";
             comboclient.DataSource = dt;
         }
+        #endregion
 
+        #region ADD_PAYMENTS_CLIENT
         private void btnadd_Click(object sender, EventArgs e)
         {
             if ((int)comboclient.SelectedIndex == 0)
@@ -85,7 +90,9 @@ namespace Elmagd
                 MessageBox.Show("تمت عمليه الاضافه");
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void client_paymentsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (client_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -99,7 +106,9 @@ namespace Elmagd
                 btnadd.Enabled = false;
             }
         }
+        #endregion
 
+        #region UPDATE_PAYMENTS_CLIENT
         private void btnedite_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -120,7 +129,9 @@ namespace Elmagd
                 btnadd.Enabled = true;
             }
         }
+        #endregion
 
+        #region DELET_PAYMENTS_CLIENT
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -144,7 +155,9 @@ namespace Elmagd
                 }
             }
         }
+        #endregion
 
+        #region SEARCH
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
@@ -154,7 +167,9 @@ namespace Elmagd
             client_paymentsgrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
 
+        #region TEXTCHANGED_TXTVALUE
         private void txtvalue_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtvalue.Text, "[^0-9]"))
@@ -163,5 +178,6 @@ namespace Elmagd
                 txtvalue.Text = txtvalue.Text.Remove(txtvalue.Text.Length - 1);
             }
         }
+        #endregion
     }
 }

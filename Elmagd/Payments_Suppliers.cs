@@ -21,11 +21,14 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Payments_Suppliers_Load(object sender, EventArgs e)
         {
+            suppaymentdate.Value = DateTime.Now;
             BindGrid();
             Loadsuppliers();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -56,6 +59,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region TEXTCHANGED_TXTVALUE
         private void txtvalue_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(txtvalue.Text, "[^0-9]"))
@@ -64,8 +68,10 @@ namespace Elmagd
                 txtvalue.Text = txtvalue.Text.Remove(txtvalue.Text.Length - 1);
             }
         }
+        #endregion
 
 
+        #region ADD_PAYMENTS_SUPPLIERS
         private void btnadd_Click(object sender, EventArgs e)
         {
             if ((int)combosuppliers.SelectedIndex == 0)
@@ -96,7 +102,9 @@ namespace Elmagd
                 MessageBox.Show("تمت عمليه الاضافه");
             }
         }
+        #endregion
 
+        #region GRID_CELLCLICK
         private void sup_paymentsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (sup_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
@@ -111,7 +119,9 @@ namespace Elmagd
             }
 
         }
+        #endregion
 
+        #region EDITE_PAYMENTS_SUPPLIERS
         private void btnedite_Click(object sender, EventArgs e)
         {
 
@@ -133,7 +143,9 @@ namespace Elmagd
                 btnadd.Enabled = true;
             }
         }
+        #endregion
 
+        #region DELET_PAYMENTS_SUPPLIERS
         private void btndelet_Click(object sender, EventArgs e)
         {
             if (id == 0)
@@ -156,12 +168,10 @@ namespace Elmagd
                     btnadd.Enabled = true;
                 }
             }
-
-
-
-
         }
+        #endregion
 
+        #region SEARCH
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
@@ -171,5 +181,6 @@ namespace Elmagd
             sup_paymentsgrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
     }
 }

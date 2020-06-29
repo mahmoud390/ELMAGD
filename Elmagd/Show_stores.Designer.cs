@@ -60,10 +60,11 @@
             this.comboquantitytype.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboquantitytype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboquantitytype.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboquantitytype.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboquantitytype.FormattingEnabled = true;
             this.comboquantitytype.Location = new System.Drawing.Point(544, 42);
             this.comboquantitytype.Name = "comboquantitytype";
-            this.comboquantitytype.Size = new System.Drawing.Size(241, 24);
+            this.comboquantitytype.Size = new System.Drawing.Size(241, 28);
             this.comboquantitytype.TabIndex = 71;
             // 
             // label4
@@ -81,10 +82,11 @@
             this.combostore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combostore.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combostore.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combostore.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combostore.FormattingEnabled = true;
             this.combostore.Location = new System.Drawing.Point(1410, 42);
             this.combostore.Name = "combostore";
-            this.combostore.Size = new System.Drawing.Size(241, 24);
+            this.combostore.Size = new System.Drawing.Size(241, 30);
             this.combostore.TabIndex = 69;
             // 
             // label3
@@ -102,18 +104,22 @@
             this.combocategory.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combocategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combocategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combocategory.FormattingEnabled = true;
             this.combocategory.Location = new System.Drawing.Point(932, 46);
             this.combocategory.Name = "combocategory";
-            this.combocategory.Size = new System.Drawing.Size(241, 24);
+            this.combocategory.Size = new System.Drawing.Size(241, 28);
             this.combocategory.TabIndex = 67;
             // 
             // btngard
             // 
             this.btngard.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btngard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(122)))), ((int)(((byte)(34)))));
+            this.btngard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btngard.ForeColor = System.Drawing.Color.Black;
             this.btngard.Location = new System.Drawing.Point(998, 140);
             this.btngard.Name = "btngard";
-            this.btngard.Size = new System.Drawing.Size(189, 44);
+            this.btngard.Size = new System.Drawing.Size(189, 51);
             this.btngard.TabIndex = 73;
             this.btngard.Text = "جرد";
             this.btngard.Click += new System.EventHandler(this.btngard_Click);
@@ -131,9 +137,11 @@
             // txtquantity
             // 
             this.txtquantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtquantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtquantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(122)))), ((int)(((byte)(34)))));
             this.txtquantity.Location = new System.Drawing.Point(979, 245);
             this.txtquantity.Name = "txtquantity";
-            this.txtquantity.Size = new System.Drawing.Size(239, 24);
+            this.txtquantity.Size = new System.Drawing.Size(239, 32);
             this.txtquantity.TabIndex = 74;
             // 
             // showstoregrid
@@ -160,6 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1807, 776);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.showstoregrid);

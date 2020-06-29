@@ -41,6 +41,7 @@
             this.incomesgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.incomesgrid.Location = new System.Drawing.Point(12, 58);
             this.incomesgrid.Name = "incomesgrid";
+            this.incomesgrid.ReadOnly = true;
             this.incomesgrid.RowTemplate.Height = 24;
             this.incomesgrid.Size = new System.Drawing.Size(2020, 920);
             this.incomesgrid.TabIndex = 0;
@@ -50,7 +51,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1125, 32);
+            this.label9.Location = new System.Drawing.Point(1125, 17);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 20);
             this.label9.TabIndex = 37;
@@ -59,9 +60,10 @@
             // txtSarch
             // 
             this.txtSarch.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtSarch.Location = new System.Drawing.Point(696, 28);
+            this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSarch.Location = new System.Drawing.Point(616, 13);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(406, 24);
+            this.txtSarch.Size = new System.Drawing.Size(486, 32);
             this.txtSarch.TabIndex = 36;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 
@@ -69,6 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1924, 853);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSarch);

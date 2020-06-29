@@ -136,5 +136,53 @@ namespace Elmagd
             }    
         }
 
+        private void btnadd_Click(object sender, EventArgs e)
+        {
+            if (txtname.Text.Equals(""))
+                MessageBox.Show("برجاء إدخال الاسم ");
+            else if (txtphone.Text.Equals(""))
+                MessageBox.Show("برجاء إدخال الهاتف");
+            else if (txtusername.Text.Equals(" "))
+                MessageBox.Show("برجاء إدخال اسم المستخدم");
+            else if (txtpassword.Text.Equals(""))
+                MessageBox.Show("برجاء إدخال الباسورد");
+            {
+
+                //التشيك علي اسم المستخدم اذا كان موجود\ بالفعل
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select username from ADMIN where username ='" + txtusername + "' ", conn);
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    MessageBox.Show("هذا البريد الالكتروني موجود بالفعل");
+                    txtusername.Text = "";
+                    txtusername.Focus();
+                    conn.Close();
+                }
+                else
+                {
+
+                    // إضافة بيانات الادمن
+                    conn.Close();
+                    conn.Open();
+                    cmd.CommandText = @"insert into ADMIN ( name,phone,username,Password) values (@name,@phone,@username,@Password)";
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("@name", txtname.Text);
+                    cmd.Parameters.AddWithValue("@phone", txtphone.Text);
+                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtpassword.Text);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                    BindGrid();
+                    txtname.Text = "";
+                    txtphone.Text = "";
+                    txtpassword.Text = "";
+                    txtusername.Text = "";
+                    MessageBox.Show("تمت عملية الاضافة بنجاح");
+                }
+            }
+        }
+
     }
 }

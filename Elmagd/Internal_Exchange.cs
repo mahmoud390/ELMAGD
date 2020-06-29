@@ -34,11 +34,13 @@ namespace Elmagd
             Loadquantity_type();
             BindGrid();
         }
+
         #region BINDGRID
         private void BindGrid()
         {
+            conn.Close();
             conn.Open();
-            cmd.CommandText = @"select INTERNAL_EXCHANGE.id,STORE.name,CATEGORY.name,INTERNAL_EXCHANGE.quantity,QUANTITY_TYPE.name,INTERNAL_EXCHANGE.date from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id or INTERNAL_EXCHANGE.tostore = STORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id  ";
+            cmd.CommandText = @"select INTERNAL_EXCHANGE.id,STORE.name as المخزن_المنقول_منه,TOSTORE.name as المخزن_المنقول_إليه,CATEGORY.name as الصنف,INTERNAL_EXCHANGE.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,INTERNAL_EXCHANGE.date as التاريخ from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id inner join TOSTORE on INTERNAL_EXCHANGE.tostore = TOSTORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id  ";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -47,6 +49,7 @@ namespace Elmagd
             conn.Close();
         }
         #endregion
+
         #region LOADCATRGORY
         private void Loadcategory()
         {
@@ -143,6 +146,7 @@ namespace Elmagd
                 if (enter_quantity > quantityfrom_DB)
                 {
                     MessageBox.Show("لايمكنك نقل هذه الكمية حيث ان المخزن لا يوجد به هذه الكمية");
+                   
                 }
                 else
                 {
@@ -158,8 +162,6 @@ namespace Elmagd
                     else
                         storeToID = int.Parse(reader[0].ToString());
                 }
-
-
                 conn.Close();
                 conn.Open();
                 cmd.CommandText = @"insert into INTERNAL_EXCHANGE (storeid,quantity,quantitytype_id,date,tostore,cat_id) values(@storeid,@quantity,@quantitytype_id,@date,@tostore,@cat_id)";
@@ -175,11 +177,6 @@ namespace Elmagd
                 BindGrid();
                 conn.Close();
                 txtquantity.Text = "";
-                combostore.SelectedIndex = 0;
-                combotostore.SelectedIndex = 0;
-                combocategory.SelectedIndex = 0;
-                comboquantitytype.SelectedIndex = 0;
-                    
                 MessageBox.Show("تمت عملية الصرف ");
                 //--------------------------------------
 
@@ -240,6 +237,10 @@ namespace Elmagd
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 conn.Close();
+                combostore.SelectedIndex = 0;
+                combotostore.SelectedIndex = 0;
+                combocategory.SelectedIndex = 0;
+                comboquantitytype.SelectedIndex = 0;
             }
                 }
 

@@ -21,10 +21,12 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOAD_PAGE
         private void Suppliers_Load(object sender, EventArgs e)
         {
             BindGrid();
         }
+        #endregion
 
         #region BINDGRID
         private void BindGrid()
@@ -80,6 +82,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region GRID_CELLCLICK
         // suplliers grid cell click
         private void suppliersgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -96,6 +99,7 @@ namespace Elmagd
                 btnadd.Enabled = false;
             }
         }
+        #endregion
 
         #region UPDATE_SUPPLIERS
         private void btnedite_Click(object sender, EventArgs e)
@@ -152,6 +156,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region TEXTCHANGED_TXTNAME
         //txtname_ changed
         private void txtname_TextChanged(object sender, EventArgs e)
         {
@@ -161,7 +166,9 @@ namespace Elmagd
                 txtname.Text = txtname.Text.Remove(txtname.Text.Length - 1);
             }     
         }
+        #endregion
 
+        #region TEXTCHANGRD_TXTPHONE
         // txtphone_changed
         private void txtphone_TextChanged(object sender, EventArgs e)
         {
@@ -171,7 +178,9 @@ namespace Elmagd
                 txtphone.Text = txtphone.Text.Remove(txtphone.Text.Length - 1);
             }
         }
+        #endregion
 
+        #region SEARCH
         // txtsarch_changed
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
@@ -182,5 +191,6 @@ namespace Elmagd
             suppliersgrid.DataSource = dt;
             conn.Close();
         }
+        #endregion
     }
 }

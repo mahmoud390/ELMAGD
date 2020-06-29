@@ -180,6 +180,7 @@ namespace Elmagd
                 if (!reader.HasRows)
                 {
                     MessageBox.Show("المخزن خالي");
+                    conn.Close();
                 }
                 else
                 {

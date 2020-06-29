@@ -21,6 +21,7 @@ namespace Elmagd
             InitializeComponent();
         }
 
+        #region LOGIN
         private void btnlogin_Click(object sender, EventArgs e)
         {
             if (txtusername.Text.Equals(""))
@@ -56,6 +57,7 @@ namespace Elmagd
             }
 
         }
+        #endregion
 
         private void Login_Load(object sender, EventArgs e)
         {
