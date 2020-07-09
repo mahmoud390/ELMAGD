@@ -141,6 +141,12 @@ namespace Elmagd
             incomes.Show();
         }
 
+        private void ribbonTab8_Click(object sender, EventArgs e)
+        {
+            Cachier Cachier = new Cachier();
+            Cachier.Show();
+        }
+
        
     }
 }

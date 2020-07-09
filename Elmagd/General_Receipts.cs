@@ -24,7 +24,8 @@ namespace Elmagd
 
         private void General_Receipts_Load(object sender, EventArgs e)
         {
-
+            generaldate.Value = DateTime.Now;
+            BindGrid();
         }
 
         #region BINDGRID
@@ -64,9 +65,28 @@ namespace Elmagd
                 cmd.Parameters.Clear();
                 conn.Close();
                 BindGrid();
+                txtname.Text = "";
                 txtvalue.Text = "";
                 txtnotes.Text = "";
                 MessageBox.Show("تمت عمليه الاضافه");
+                //-------------------------------------
+                conn.Open();
+                cmd.CommandText = @"select id from GENERAL_RECEIPTS where GENERAL_RECEIPTS.date = '" + generaldate.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                conn.Close();
+                conn.Open();
+                cmd.CommandText = @"insert into CASHIER (generalreseipts_id,date) values(@generalreseipts_id,@date)";
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@generalreseipts_id", id);
+                cmd.Parameters.AddWithValue("@date", generaldate.Value.Date.ToShortDateString());
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
             }
         }
 
@@ -124,6 +144,7 @@ namespace Elmagd
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     BindGrid();
+                    txtname.Text = "";
                     txtvalue.Text = "";
                     txtnotes.Text = "";
                     MessageBox.Show("تم الحذف");

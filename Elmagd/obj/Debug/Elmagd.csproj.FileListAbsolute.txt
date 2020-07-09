@@ -52,9 +52,9 @@ E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipts
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipt_Suppliers.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Sales.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Show_stores.resources
-E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.SignUP.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Store.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.SuppliersInvoice.resources
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.csproj.GenerateResource.Cache
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.exe.licenses
+E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Cachier.resources

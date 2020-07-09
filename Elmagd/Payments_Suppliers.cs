@@ -100,6 +100,24 @@ namespace Elmagd
                 txtnotes.Text = "";
                 combosuppliers.SelectedIndex = 0;
                 MessageBox.Show("تمت عمليه الاضافه");
+                //----------------------------------------------------
+                //conn.Open();
+                //cmd.CommandText = @"select id from PAYMENTS_SUPPLIERS where PAYMENTS_SUPPLIERS.date = '" + suppaymentdate.Value.Date.ToShortDateString() + "'";
+                //cmd.Connection = conn;
+                //SqlDataReader reader = cmd.ExecuteReader();
+                //while (reader.Read())
+                //{
+                //    id = int.Parse(reader[0].ToString());
+                //}
+                //conn.Close();
+                //conn.Open();
+                //cmd.CommandText = @"insert into CASHIER (paymentsuppliers_id,date) values(@paymentsuppliers_id,@date)";
+                //cmd.Connection = conn;
+                //cmd.Parameters.AddWithValue("@paymentsuppliers_id", id);
+                //cmd.Parameters.AddWithValue("@date", suppaymentdate.Value.Date.ToShortDateString());
+                //cmd.ExecuteNonQuery();
+                //cmd.Parameters.Clear();
+                //conn.Close();
             }
         }
         #endregion

@@ -49,9 +49,10 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(821, 49);
+            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(863, 49);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 17);
+            this.label12.Size = new System.Drawing.Size(78, 24);
             this.label12.TabIndex = 72;
             this.label12.Text = "نوع الكمية";
             // 
@@ -60,20 +61,21 @@
             this.comboquantitytype.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboquantitytype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboquantitytype.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboquantitytype.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboquantitytype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboquantitytype.FormattingEnabled = true;
-            this.comboquantitytype.Location = new System.Drawing.Point(544, 42);
+            this.comboquantitytype.Location = new System.Drawing.Point(586, 42);
             this.comboquantitytype.Name = "comboquantitytype";
-            this.comboquantitytype.Size = new System.Drawing.Size(241, 28);
+            this.comboquantitytype.Size = new System.Drawing.Size(241, 33);
             this.comboquantitytype.TabIndex = 71;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1698, 49);
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1740, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.Size = new System.Drawing.Size(57, 24);
             this.label4.TabIndex = 70;
             this.label4.Text = "المخزن";
             // 
@@ -82,20 +84,21 @@
             this.combostore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combostore.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combostore.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.combostore.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combostore.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combostore.FormattingEnabled = true;
-            this.combostore.Location = new System.Drawing.Point(1410, 42);
+            this.combostore.Location = new System.Drawing.Point(1452, 42);
             this.combostore.Name = "combostore";
-            this.combostore.Size = new System.Drawing.Size(241, 30);
+            this.combostore.Size = new System.Drawing.Size(241, 33);
             this.combostore.TabIndex = 69;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1209, 53);
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1306, 53);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 17);
+            this.label3.Size = new System.Drawing.Size(54, 24);
             this.label3.TabIndex = 68;
             this.label3.Text = "الصنف";
             // 
@@ -104,11 +107,11 @@
             this.combocategory.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combocategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combocategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combocategory.FormattingEnabled = true;
-            this.combocategory.Location = new System.Drawing.Point(932, 46);
+            this.combocategory.Location = new System.Drawing.Point(1029, 46);
             this.combocategory.Name = "combocategory";
-            this.combocategory.Size = new System.Drawing.Size(241, 28);
+            this.combocategory.Size = new System.Drawing.Size(241, 33);
             this.combocategory.TabIndex = 67;
             // 
             // btngard
@@ -117,9 +120,9 @@
             this.btngard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(122)))), ((int)(((byte)(34)))));
             this.btngard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngard.ForeColor = System.Drawing.Color.Black;
-            this.btngard.Location = new System.Drawing.Point(998, 140);
+            this.btngard.Location = new System.Drawing.Point(998, 128);
             this.btngard.Name = "btngard";
-            this.btngard.Size = new System.Drawing.Size(189, 51);
+            this.btngard.Size = new System.Drawing.Size(189, 63);
             this.btngard.TabIndex = 73;
             this.btngard.Text = "جرد";
             this.btngard.Click += new System.EventHandler(this.btngard_Click);
@@ -128,9 +131,10 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(1277, 249);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 17);
+            this.label5.Size = new System.Drawing.Size(47, 24);
             this.label5.TabIndex = 75;
             this.label5.Text = "الكميه";
             // 

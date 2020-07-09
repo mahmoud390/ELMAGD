@@ -52,6 +52,7 @@
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup12 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup13 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.ribbonTab8 = new Telerik.WinControls.UI.RibbonTab();
             this.btnexit = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ribbonTab6 = new Telerik.WinControls.UI.RibbonTab();
@@ -68,7 +69,8 @@
             this.ribbonTab3,
             this.ribbonTab4,
             this.ribbonTab5,
-            this.ribbonTab7});
+            this.ribbonTab7,
+            this.ribbonTab8});
             // 
             // 
             // 
@@ -87,7 +89,7 @@
             // ribbonTab1
             // 
             this.ribbonTab1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ribbonTab1.IsSelected = true;
+            this.ribbonTab1.IsSelected = false;
             this.ribbonTab1.Name = "ribbonTab1";
             this.ribbonTab1.Text = "بيانات المدير";
             this.ribbonTab1.UseMnemonic = false;
@@ -240,7 +242,7 @@
             // 
             // ribbonTab7
             // 
-            this.ribbonTab7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ribbonTab7.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ribbonTab7.IsSelected = false;
             this.ribbonTab7.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup12,
@@ -261,6 +263,15 @@
             this.radRibbonBarGroup13.Name = "radRibbonBarGroup13";
             this.radRibbonBarGroup13.Text = "المدفوعات العمة";
             this.radRibbonBarGroup13.Click += new System.EventHandler(this.radRibbonBarGroup13_Click);
+            // 
+            // ribbonTab8
+            // 
+            this.ribbonTab8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab8.IsSelected = true;
+            this.ribbonTab8.Name = "ribbonTab8";
+            this.ribbonTab8.Text = "الخزنة";
+            this.ribbonTab8.UseMnemonic = false;
+            this.ribbonTab8.Click += new System.EventHandler(this.ribbonTab8_Click);
             // 
             // btnexit
             // 
@@ -345,6 +356,7 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup17;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.UI.RibbonTab ribbonTab6;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab8;
 
     }
 }

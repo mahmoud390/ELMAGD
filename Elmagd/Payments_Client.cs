@@ -25,6 +25,7 @@ namespace Elmagd
         #region LOAD_PAGE
         private void Payments_Client_Load(object sender, EventArgs e)
         {
+            cllientpaymentdate.Value = DateTime.Now;
             BindGrid();
             Loadclient();
         }

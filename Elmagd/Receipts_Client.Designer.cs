@@ -76,10 +76,10 @@
             // btndelet
             // 
             this.btndelet.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
+            this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
             this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
-            this.btndelet.Location = new System.Drawing.Point(740, 134);
+            this.btndelet.Location = new System.Drawing.Point(186, 212);
             this.btndelet.Name = "btndelet";
             this.btndelet.Size = new System.Drawing.Size(154, 42);
             this.btndelet.TabIndex = 78;
@@ -92,7 +92,7 @@
             this.btnedite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(35)))));
             this.btnedite.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnedite.ForeColor = System.Drawing.Color.Black;
-            this.btnedite.Location = new System.Drawing.Point(966, 134);
+            this.btnedite.Location = new System.Drawing.Point(186, 116);
             this.btnedite.Name = "btnedite";
             this.btnedite.Size = new System.Drawing.Size(160, 42);
             this.btnedite.TabIndex = 77;
@@ -102,10 +102,10 @@
             // btnadd
             // 
             this.btnadd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
+            this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
             this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
-            this.btnadd.Location = new System.Drawing.Point(1178, 134);
+            this.btnadd.Location = new System.Drawing.Point(186, 27);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(157, 42);
             this.btnadd.TabIndex = 76;
@@ -116,10 +116,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1717, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.Size = new System.Drawing.Size(54, 24);
             this.label1.TabIndex = 75;
             this.label1.Text = "التاريخ";
             // 
@@ -151,10 +151,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(833, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 20);
+            this.label3.Size = new System.Drawing.Size(46, 24);
             this.label3.TabIndex = 70;
             this.label3.Text = "المبلغ";
             // 
@@ -162,10 +162,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1253, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(77, 24);
             this.label2.TabIndex = 73;
             this.label2.Text = "إسم العميل";
             // 
@@ -185,21 +185,21 @@
             // 
             this.txtnotes.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtnotes.AutoSize = false;
-            this.txtnotes.Location = new System.Drawing.Point(12, 37);
+            this.txtnotes.Location = new System.Drawing.Point(484, 96);
             this.txtnotes.Multiline = true;
             this.txtnotes.Name = "txtnotes";
             this.txtnotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtnotes.Size = new System.Drawing.Size(373, 117);
+            this.txtnotes.Size = new System.Drawing.Size(1194, 158);
             this.txtnotes.TabIndex = 69;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(407, 37);
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1700, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.Size = new System.Drawing.Size(72, 24);
             this.label4.TabIndex = 68;
             this.label4.Text = "ملاحضات";
             // 

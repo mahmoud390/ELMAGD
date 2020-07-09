@@ -291,6 +291,26 @@ namespace Elmagd
             cmd.Connection = conn;
             cmd.ExecuteNonQuery();
             conn.Close();
+             //---------------------------------------------
+                //حركات الخزنه
+            conn.Open();
+            cmd.CommandText = @"select id from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date = '" + suppliersinvoicedate.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+             reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                id = int.Parse(reader[0].ToString());
+            }
+            conn.Close();
+            conn.Open();
+            cmd.CommandText = @"insert into CASHIER (suplliersinvoice_id,date) values(@suplliersinvoice_id,@date)";
+            cmd.Connection = conn;
+            cmd.Parameters.AddWithValue("@suplliersinvoice_id", id);
+            cmd.Parameters.AddWithValue("@date", suppliersinvoicedate.Value.Date.ToShortDateString());
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            conn.Close();
+
             //-------------------------------------------------------------------
             // add to main store
             conn.Open();

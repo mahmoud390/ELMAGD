@@ -76,6 +76,7 @@ namespace Elmagd
             combostore.DataSource = dt;
         }
         #endregion
+
         #region LOADCATRGORY
         private void Loadcategory()
         {
@@ -91,6 +92,7 @@ namespace Elmagd
         }
         #endregion
 
+        #region LOAD_CLIENT
         private void Loadclient()
         {
             SqlDataAdapter da = new SqlDataAdapter("Select * From CLIENT", conn);
@@ -103,6 +105,7 @@ namespace Elmagd
             comboclient.DisplayMember = "name";
             comboclient.DataSource = dt;
         }
+        #endregion
 
         private void btncalc_Click(object sender, EventArgs e)
         {
@@ -122,7 +125,7 @@ namespace Elmagd
                 txttotal.Text = total.ToString();
             }
         }
-        //حساب الباقي
+        //حساب الإجمالي بعد الخصومات
         private void btncalc2_Click(object sender, EventArgs e)
         {
 
@@ -150,7 +153,7 @@ namespace Elmagd
                     bskoul = double.Parse(txtbskoul.Text);
                     mashal = double.Parse(txtmashal.Text);
                     commession = double.Parse(txtcommestion.Text);
-                    rest = total - (bskoul + mashal + commession);
+                    rest = total + (bskoul + mashal + commession);
                     txtrest.Text = rest.ToString();
                
             }
@@ -334,6 +337,25 @@ namespace Elmagd
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                //-------------------------------------------------------------------------------
+                conn.Open();
+                cmd.CommandText = @"select id from CLIENT_INVOICE where CLIENT_INVOICE.date = '" + clientinvoicedate.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                conn.Close();
+                conn.Open();
+                cmd.CommandText = @"insert into CASHIER (clientinvoice_id,date) values(@clientinvoice_id,@date)";
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@clientinvoice_id", id);
+                cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
+                //-------------------------------------------------------------------------------
                 ////addto sales
                 conn.Open();
                 cmd.CommandText = @"insert into SALES (client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date) select  client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date from TEMP_CLIENT ";

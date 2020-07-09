@@ -53,6 +53,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cachier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cachier.Designer.cs">
+      <DependentUpon>Cachier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,12 +157,6 @@
     <Compile Include="Show_stores.Designer.cs">
       <DependentUpon>Show_stores.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignUP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SignUP.Designer.cs">
-      <DependentUpon>SignUP.cs</DependentUpon>
-    </Compile>
     <Compile Include="Store.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +177,9 @@
     </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cachier.resx">
+      <DependentUpon>Cachier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
@@ -236,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Show_stores.resx">
       <DependentUpon>Show_stores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SignUP.resx">
-      <DependentUpon>SignUP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store.resx">
       <DependentUpon>Store.cs</DependentUpon>

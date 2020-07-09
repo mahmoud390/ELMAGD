@@ -50,18 +50,19 @@
             // txtname
             // 
             this.txtname.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtname.Location = new System.Drawing.Point(1321, 41);
+            this.txtname.Location = new System.Drawing.Point(1169, 28);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(303, 28);
+            this.txtname.Size = new System.Drawing.Size(476, 28);
             this.txtname.TabIndex = 17;
             this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1677, 41);
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1698, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.Size = new System.Drawing.Size(43, 24);
             this.label1.TabIndex = 16;
             this.label1.Text = "الإسم";
             // 
@@ -81,7 +82,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1243, 291);
+            this.label9.Location = new System.Drawing.Point(1243, 300);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 20);
             this.label9.TabIndex = 33;
@@ -91,7 +92,7 @@
             // txtSarch
             // 
             this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtSarch.Location = new System.Drawing.Point(714, 287);
+            this.txtSarch.Location = new System.Drawing.Point(714, 296);
             this.txtSarch.Name = "txtSarch";
             this.txtSarch.Size = new System.Drawing.Size(506, 32);
             this.txtSarch.TabIndex = 32;
@@ -99,10 +100,10 @@
             // 
             // btndelet
             // 
-            this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
+            this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
             this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
-            this.btndelet.Location = new System.Drawing.Point(1005, 179);
+            this.btndelet.Location = new System.Drawing.Point(99, 242);
             this.btndelet.Name = "btndelet";
             this.btndelet.Size = new System.Drawing.Size(145, 39);
             this.btndelet.TabIndex = 37;
@@ -114,7 +115,7 @@
             this.btnedite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(35)))));
             this.btnedite.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnedite.ForeColor = System.Drawing.Color.Black;
-            this.btnedite.Location = new System.Drawing.Point(1218, 179);
+            this.btnedite.Location = new System.Drawing.Point(105, 152);
             this.btnedite.Name = "btnedite";
             this.btnedite.Size = new System.Drawing.Size(139, 39);
             this.btnedite.TabIndex = 36;
@@ -123,10 +124,10 @@
             // 
             // btnadd
             // 
-            this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
+            this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
             this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
-            this.btnadd.Location = new System.Drawing.Point(1430, 179);
+            this.btnadd.Location = new System.Drawing.Point(105, 65);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(139, 39);
             this.btnadd.TabIndex = 35;
@@ -136,21 +137,22 @@
             // txtnotes
             // 
             this.txtnotes.AutoSize = false;
-            this.txtnotes.Location = new System.Drawing.Point(708, 37);
+            this.txtnotes.Location = new System.Drawing.Point(498, 93);
             this.txtnotes.Multiline = true;
             this.txtnotes.Name = "txtnotes";
             this.txtnotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtnotes.Size = new System.Drawing.Size(442, 94);
+            this.txtnotes.Size = new System.Drawing.Size(1152, 188);
             this.txtnotes.TabIndex = 39;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1181, 37);
+            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1681, 95);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 17);
+            this.label4.Size = new System.Drawing.Size(84, 29);
             this.label4.TabIndex = 38;
-            this.label4.Text = "ملاحضات";
+            this.label4.Text = "ملاحظات";
             // 
             // Store
             // 

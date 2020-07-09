@@ -50,10 +50,10 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(796, 37);
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1360, 39);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 20);
+            this.label9.Size = new System.Drawing.Size(38, 24);
             this.label9.TabIndex = 35;
             this.label9.Text = "بحث";
             this.label9.Click += new System.EventHandler(this.label9_Click);
@@ -62,9 +62,9 @@
             // 
             this.txtSarch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtSarch.Location = new System.Drawing.Point(352, 33);
+            this.txtSarch.Location = new System.Drawing.Point(545, 33);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(421, 32);
+            this.txtSarch.Size = new System.Drawing.Size(790, 32);
             this.txtSarch.TabIndex = 34;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 
@@ -73,7 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
-            this.ClientSize = new System.Drawing.Size(1436, 764);
+            this.ClientSize = new System.Drawing.Size(1822, 764);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSarch);
             this.Controls.Add(this.salesgrid);

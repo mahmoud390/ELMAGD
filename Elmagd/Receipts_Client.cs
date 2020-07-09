@@ -24,6 +24,7 @@ namespace Elmagd
 
         private void Receipts_Client_Load(object sender, EventArgs e)
         {
+            cllientreceiptdate.Value = DateTime.Now;
             BindGrid();
             Loadclient();
         }
@@ -87,6 +88,24 @@ namespace Elmagd
                 txtnotes.Text = "";
                 comboclient.SelectedIndex = 0;
                 MessageBox.Show("تمت عمليه الاضافه");
+                //---------------------------------------------------
+                conn.Open();
+                cmd.CommandText = @"select id from RESEIPTS_CLIENT where RESEIPTS_CLIENT.date = '" + cllientreceiptdate.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                conn.Close();
+                conn.Open();
+                cmd.CommandText = @"insert into CASHIER (receiptsclient_id,date) values(@receiptsclient_id,@date)";
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@receiptsclient_id", id);
+                cmd.Parameters.AddWithValue("@date", cllientreceiptdate.Value.Date.ToShortDateString());
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
             }
         }
         #endregion

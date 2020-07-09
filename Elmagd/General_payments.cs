@@ -24,6 +24,7 @@ namespace Elmagd
 
         private void General_payments_Load(object sender, EventArgs e)
         {
+            generaldate.Value = DateTime.Now;
             BindGrid();
         }
 
@@ -67,6 +68,25 @@ namespace Elmagd
                 txtvalue.Text = "";
                 txtnotes.Text = "";
                 MessageBox.Show("تمت عمليه الاضافه");
+                //----------------------------------------------------
+                //حركات الخزنة
+                conn.Open();
+                cmd.CommandText = @"select id from GENERAL_PAYMENTS where GENERAL_PAYMENTS.date = '" + generaldate.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                conn.Close();
+                conn.Open();
+                cmd.CommandText = @"insert into CASHIER (generalpayments_id,date) values(@generalpayments_id,@date)";
+                cmd.Connection = conn;
+                cmd.Parameters.AddWithValue("@generalpayments_id", id);
+                cmd.Parameters.AddWithValue("@date", generaldate.Value.Date.ToShortDateString());
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
             }
         }
 
