@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class General_Receipts : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
         SqlCommand cmd = new SqlCommand();
 
         public General_Receipts()

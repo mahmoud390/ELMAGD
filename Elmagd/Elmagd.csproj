@@ -43,6 +43,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="TelerikCommon, Version=2018.1.116.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
@@ -118,6 +119,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mashal_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mashal_Detail.Designer.cs">
+      <DependentUpon>Mashal_Detail.cs</DependentUpon>
     </Compile>
     <Compile Include="Payments_Client.cs">
       <SubType>Form</SubType>
@@ -210,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mashal_Detail.resx">
+      <DependentUpon>Mashal_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payments_Client.resx">
       <DependentUpon>Payments_Client.cs</DependentUpon>

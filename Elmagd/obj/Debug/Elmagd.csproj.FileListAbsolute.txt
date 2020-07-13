@@ -58,3 +58,37 @@ E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Supplier
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.csproj.GenerateResource.Cache
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.exe.licenses
 E:\my work\Private Program\githup-elmagd\ELMAGD\Elmagd\obj\Debug\Elmagd.Cachier.resources
+D:\Mine\Projects\ELMAGD_GITHUP\New folder\ELMAGD\Elmagd\bin\Debug\Elmagd.exe.config
+D:\Mine\Projects\ELMAGD_GITHUP\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.exe
+D:\Mine\Projects\ELMAGD_GITHUP\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.pdb
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\bin\Debug\Elmagd.exe.config
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.exe
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.pdb
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\bin\Debug\Elmagd.exe
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\bin\Debug\Elmagd.pdb
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.csprojResolveAssemblyReference.cache
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Admin.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Cachier.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Category.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.ClientInvoice.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Clients.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_payments.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Homeform.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Incomes.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Internal_Exchange.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Investors.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Login.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Payments_Client.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Payments_Suppliers.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Properties.Resources.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipts_Client.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipt_Suppliers.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Sales.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Show_stores.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Store.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.SuppliersInvoice.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.csproj.GenerateResource.Cache
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.exe.licenses
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Mashal_Detail.resources

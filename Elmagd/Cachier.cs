@@ -15,7 +15,7 @@ namespace Elmagd
     {
         double resipt_client, general_receipt, client_invoice, totalsales, netprofit, payment_supplier, general_payments, suppliers_invoice, totalpaid;
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
         SqlCommand cmd = new SqlCommand();
         public Cachier()
         {
@@ -228,8 +228,6 @@ namespace Elmagd
         #region  NETPROFIT
         private void btn_netprofit_Click(object sender, EventArgs e)
         {
-
-
             conn.Open();
             cmd.CommandText = @"select sum(value) from RESEIPTS_CLIENT where RESEIPTS_CLIENT.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
             cmd.Connection = conn;
@@ -349,7 +347,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select CASHIER.id,CASHIER.external_soures as المصدر_الخارجي,CASHIER.sahb as سحب_المالك,RESEIPTS_CLIENT.value as المقبوضات_من_عميل,PAYMENTS_SUPPLIERS.value as المدفوعات_لمورد,GENERAL_PAYMENTS.value as المدفوعات_العامة,GENERAL_RECEIPTS.value as المقبوضات_العامة,SUPPLIERS_INVOICE.paid as المدفوع_من_فواتير_المشتريات,CLIENT_INVOICE.paid as المقبوض_من_فواتير_المبيعات,CASHIER.date as التاريخ from CASHIER left join RESEIPTS_CLIENT on CASHIER.receiptsclient_id =RESEIPTS_CLIENT.id left join PAYMENTS_SUPPLIERS on CASHIER.paymentsuppliers_id =PAYMENTS_SUPPLIERS.id left join GENERAL_PAYMENTS on CASHIER.generalpayments_id =GENERAL_PAYMENTS.id left join GENERAL_RECEIPTS on CASHIER.generalreseipts_id =GENERAL_RECEIPTS.id left join SUPPLIERS_INVOICE on CASHIER.suplliersinvoice_id = SUPPLIERS_INVOICE.id left join CLIENT_INVOICE on CASHIER.clientinvoice_id =CLIENT_INVOICE.id  ";
+            cmd.CommandText = @"select CASHIER.id,CASHIER.external_soures as المصدر_الخارجي,CASHIER.sahb as سحب_المالك,RESEIPTS_CLIENT.value as المقبوضات_من_عميل,PAYMENTS_SUPPLIERS.value as المدفوعات_لمورد,GENERAL_PAYMENTS.value as المدفوعات_العامة,GENERAL_RECEIPTS.value as المقبوضات_العامة,SUPPLIERS_INVOICE.paid as المدفوع_من_فواتير_المشتريات,CLIENT_INVOICE.paid as المقبوض_من_فواتير_المبيعات,CASHIER.date as التاريخ from CASHIER left join RESEIPTS_CLIENT on CASHIER.receiptsclient_id =RESEIPTS_CLIENT.id left join PAYMENTS_SUPPLIERS on CASHIER.paymentsuppliers_id =PAYMENTS_SUPPLIERS.id left join GENERAL_PAYMENTS on CASHIER.generalpayments_id =GENERAL_PAYMENTS.id left join GENERAL_RECEIPTS on CASHIER.generalreseipts_id =GENERAL_RECEIPTS.id left join SUPPLIERS_INVOICE on CASHIER.suplliersinvoice_id = SUPPLIERS_INVOICE.id left join CLIENT_INVOICE on CASHIER.clientinvoice_id =CLIENT_INVOICE.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -433,5 +431,11 @@ namespace Elmagd
             }
         }
         #endregion
+
+        private void btnmashal_Click(object sender, EventArgs e)
+        {
+            Mashal_Detail mashal_Detail = new Mashal_Detail();
+            mashal_Detail.Show();
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Elmagd
     {
         int id, store, cat, quantitytype, catid_DB;
         double total, quantity, price, bskoul, mashal, commession, rest, enter_quantity;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
         SqlCommand cmd = new SqlCommand();
 
         public SuppliersInvoice()

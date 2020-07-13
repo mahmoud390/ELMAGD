@@ -17,7 +17,7 @@ namespace Elmagd
         double quantity;
         int fromstore, quantity_type, tostore, cat_id;
         double quantityfrom_DB;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
         SqlCommand cmd = new SqlCommand();
 
         public Internal_Exchange()
