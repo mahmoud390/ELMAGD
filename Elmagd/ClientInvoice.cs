@@ -125,7 +125,7 @@ namespace Elmagd
                 txttotal.Text = total.ToString();
             }
         }
-        //حساب الإجمالي بعد الخصومات
+        //حساب الإجمالي بعد الإضافات
         private void btncalc2_Click(object sender, EventArgs e)
         {
 

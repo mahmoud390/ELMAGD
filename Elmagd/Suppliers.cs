@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Suppliers : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-KFQ7M4O,1433;Initial Catalog=ELMAGD;User ID=test;Password=test;");
         SqlCommand cmd = new SqlCommand();
         public Suppliers()
         {
@@ -24,7 +24,7 @@ namespace Elmagd
         #region LOAD_PAGE
         private void Suppliers_Load(object sender, EventArgs e)
         {
-            BindGrid();
+           BindGrid();
         }
         #endregion
 
