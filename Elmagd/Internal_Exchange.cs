@@ -17,7 +17,7 @@ namespace Elmagd
         double quantity;
         int fromstore, quantity_type, tostore, cat_id;
         double quantityfrom_DB;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public Internal_Exchange()
@@ -303,15 +303,18 @@ namespace Elmagd
 
         private void exchangegrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (exchangegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                exchangegrid.CurrentRow.Selected = true;
-                id = int.Parse(exchangegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                btnadd1.Enabled = false;
+                if (exchangegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    exchangegrid.CurrentRow.Selected = true;
+                    id = int.Parse(exchangegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    btnadd1.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void txtSarch_TextChanged(object sender, EventArgs e)

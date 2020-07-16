@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Clients : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Clients()
         {
@@ -83,18 +83,22 @@ namespace Elmagd
         //cell click client gride
         private void clientgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                clientgrid.CurrentRow.Selected = true;
-                id = int.Parse(clientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = clientgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtphone.Text = clientgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtaddress.Text = clientgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                txtnotes.Text = clientgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (clientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    clientgrid.CurrentRow.Selected = true;
+                    id = int.Parse(clientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = clientgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtphone.Text = clientgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtaddress.Text = clientgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    txtnotes.Text = clientgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
 
        #region UPDATE_CLIENT

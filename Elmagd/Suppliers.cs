@@ -14,11 +14,9 @@ namespace Elmagd
     public partial class Suppliers : Form
     {
         int id;
-<<<<<<< HEAD
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
-=======
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-KFQ7M4O,1433;Initial Catalog=ELMAGD;User ID=test;Password=test;");
->>>>>>> dee0965cdb95e141f809623945c8d6c09c8fb8e7
+        //SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-KFQ7M4O,1433;Initial Catalog=ELMAGD;Integrated Security=true;");
+      //  SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Suppliers()
         {
@@ -90,18 +88,22 @@ namespace Elmagd
         // suplliers grid cell click
         private void suppliersgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (suppliersgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                suppliersgrid.CurrentRow.Selected = true;
-                id = int.Parse(suppliersgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = suppliersgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtphone.Text = suppliersgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtaddress.Text = suppliersgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                txtnotes.Text = suppliersgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (suppliersgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    suppliersgrid.CurrentRow.Selected = true;
+                    id = int.Parse(suppliersgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = suppliersgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtphone.Text = suppliersgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtaddress.Text = suppliersgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    txtnotes.Text = suppliersgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
         #endregion
 

@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Show_stores : Form
     {
         double quantity;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public Show_stores()

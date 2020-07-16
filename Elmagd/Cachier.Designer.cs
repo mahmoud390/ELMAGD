@@ -30,6 +30,8 @@
         {
             this.cashiergrid = new System.Windows.Forms.DataGridView();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.txtTotalSales = new Telerik.WinControls.UI.RadTextBox();
+            this.btnTotalSales = new Telerik.WinControls.UI.RadButton();
             this.datetoedaa = new Telerik.WinControls.UI.RadDateTimePicker();
             this.datefromedaa = new Telerik.WinControls.UI.RadDateTimePicker();
             this.txtclientinvoice = new Telerik.WinControls.UI.RadTextBox();
@@ -45,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
+            this.txtTotalPaid = new Telerik.WinControls.UI.RadTextBox();
+            this.btnTotalPaid = new Telerik.WinControls.UI.RadButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtsuppliersinvoice = new Telerik.WinControls.UI.RadTextBox();
@@ -87,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cashiergrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datetoedaa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datefromedaa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtclientinvoice)).BeginInit();
@@ -101,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_netprofit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
             this.radGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalPaid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalPaid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtsuppliersinvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnsuppliers_invoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).BeginInit();
@@ -143,16 +151,18 @@
             // 
             this.cashiergrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.cashiergrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cashiergrid.Location = new System.Drawing.Point(10, 460);
+            this.cashiergrid.Location = new System.Drawing.Point(11, 460);
             this.cashiergrid.Name = "cashiergrid";
             this.cashiergrid.RowTemplate.Height = 24;
-            this.cashiergrid.Size = new System.Drawing.Size(1768, 520);
+            this.cashiergrid.Size = new System.Drawing.Size(2021, 520);
             this.cashiergrid.TabIndex = 0;
             this.cashiergrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cashiergrid_CellClick);
             // 
             // radGroupBox1
             // 
             this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox1.Controls.Add(this.txtTotalSales);
+            this.radGroupBox1.Controls.Add(this.btnTotalSales);
             this.radGroupBox1.Controls.Add(this.datetoedaa);
             this.radGroupBox1.Controls.Add(this.datefromedaa);
             this.radGroupBox1.Controls.Add(this.txtclientinvoice);
@@ -167,21 +177,42 @@
             this.radGroupBox1.Controls.Add(this.btn_netprofit);
             this.radGroupBox1.Controls.Add(this.label2);
             this.radGroupBox1.Controls.Add(this.label1);
+            this.radGroupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox1.HeaderText = "الإيداع";
-            this.radGroupBox1.Location = new System.Drawing.Point(22, 12);
+            this.radGroupBox1.Location = new System.Drawing.Point(25, 12);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(404, 395);
+            this.radGroupBox1.Size = new System.Drawing.Size(608, 442);
             this.radGroupBox1.TabIndex = 1;
             this.radGroupBox1.Text = "الإيداع";
             this.radGroupBox1.Click += new System.EventHandler(this.radGroupBox1_Click);
             // 
+            // txtTotalSales
+            // 
+            this.txtTotalSales.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtTotalSales.Location = new System.Drawing.Point(174, 399);
+            this.txtTotalSales.Name = "txtTotalSales";
+            this.txtTotalSales.ReadOnly = true;
+            this.txtTotalSales.Size = new System.Drawing.Size(226, 32);
+            this.txtTotalSales.TabIndex = 9;
+            // 
+            // btnTotalSales
+            // 
+            this.btnTotalSales.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnTotalSales.Location = new System.Drawing.Point(163, 336);
+            this.btnTotalSales.Name = "btnTotalSales";
+            this.btnTotalSales.Size = new System.Drawing.Size(252, 42);
+            this.btnTotalSales.TabIndex = 4;
+            this.btnTotalSales.Text = "إجمالي المقبوضات خلال فتره";
+            this.btnTotalSales.Click += new System.EventHandler(this.btnTotalSales_Click);
+            // 
             // datetoedaa
             // 
             this.datetoedaa.CustomFormat = "dd-MM-yyyy";
+            this.datetoedaa.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datetoedaa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetoedaa.Location = new System.Drawing.Point(18, 29);
+            this.datetoedaa.Location = new System.Drawing.Point(17, 35);
             this.datetoedaa.Name = "datetoedaa";
-            this.datetoedaa.Size = new System.Drawing.Size(109, 20);
+            this.datetoedaa.Size = new System.Drawing.Size(160, 32);
             this.datetoedaa.TabIndex = 10;
             this.datetoedaa.TabStop = false;
             this.datetoedaa.Text = "30-06-2020";
@@ -190,10 +221,11 @@
             // datefromedaa
             // 
             this.datefromedaa.CustomFormat = "dd-MM-yyyy";
+            this.datefromedaa.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datefromedaa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datefromedaa.Location = new System.Drawing.Point(213, 29);
+            this.datefromedaa.Location = new System.Drawing.Point(325, 31);
             this.datefromedaa.Name = "datefromedaa";
-            this.datefromedaa.Size = new System.Drawing.Size(109, 20);
+            this.datefromedaa.Size = new System.Drawing.Size(155, 32);
             this.datefromedaa.TabIndex = 9;
             this.datefromedaa.TabStop = false;
             this.datefromedaa.Text = "30-06-2020";
@@ -201,84 +233,94 @@
             // 
             // txtclientinvoice
             // 
-            this.txtclientinvoice.Location = new System.Drawing.Point(26, 325);
+            this.txtclientinvoice.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtclientinvoice.Location = new System.Drawing.Point(30, 292);
             this.txtclientinvoice.Name = "txtclientinvoice";
             this.txtclientinvoice.ReadOnly = true;
-            this.txtclientinvoice.Size = new System.Drawing.Size(185, 20);
+            this.txtclientinvoice.Size = new System.Drawing.Size(211, 32);
             this.txtclientinvoice.TabIndex = 8;
             // 
             // txtgeneralreceipts
             // 
-            this.txtgeneralreceipts.Location = new System.Drawing.Point(26, 266);
+            this.txtgeneralreceipts.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtgeneralreceipts.Location = new System.Drawing.Point(30, 235);
             this.txtgeneralreceipts.Name = "txtgeneralreceipts";
             this.txtgeneralreceipts.ReadOnly = true;
-            this.txtgeneralreceipts.Size = new System.Drawing.Size(185, 20);
+            this.txtgeneralreceipts.Size = new System.Drawing.Size(211, 32);
             this.txtgeneralreceipts.TabIndex = 7;
             // 
             // txtreceiptsclient
             // 
-            this.txtreceiptsclient.Location = new System.Drawing.Point(26, 204);
+            this.txtreceiptsclient.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtreceiptsclient.Location = new System.Drawing.Point(30, 183);
             this.txtreceiptsclient.Name = "txtreceiptsclient";
             this.txtreceiptsclient.ReadOnly = true;
-            this.txtreceiptsclient.Size = new System.Drawing.Size(185, 20);
+            this.txtreceiptsclient.Size = new System.Drawing.Size(211, 32);
             this.txtreceiptsclient.TabIndex = 6;
             // 
             // txtexternalsourses
             // 
-            this.txtexternalsourses.Location = new System.Drawing.Point(26, 147);
+            this.txtexternalsourses.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtexternalsourses.Location = new System.Drawing.Point(30, 133);
             this.txtexternalsourses.Name = "txtexternalsourses";
             this.txtexternalsourses.ReadOnly = true;
-            this.txtexternalsourses.Size = new System.Drawing.Size(185, 20);
+            this.txtexternalsourses.Size = new System.Drawing.Size(211, 32);
             this.txtexternalsourses.TabIndex = 5;
             // 
             // txtnetprofit
             // 
-            this.txtnetprofit.Location = new System.Drawing.Point(26, 82);
+            this.txtnetprofit.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtnetprofit.Location = new System.Drawing.Point(30, 85);
             this.txtnetprofit.Name = "txtnetprofit";
-            this.txtnetprofit.Size = new System.Drawing.Size(185, 20);
+            this.txtnetprofit.Size = new System.Drawing.Size(211, 32);
             this.txtnetprofit.TabIndex = 4;
             // 
             // btnexternal_soures
             // 
-            this.btnexternal_soures.Location = new System.Drawing.Point(243, 141);
+            this.btnexternal_soures.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnexternal_soures.Location = new System.Drawing.Point(378, 127);
             this.btnexternal_soures.Name = "btnexternal_soures";
-            this.btnexternal_soures.Size = new System.Drawing.Size(120, 30);
+            this.btnexternal_soures.Size = new System.Drawing.Size(199, 33);
             this.btnexternal_soures.TabIndex = 3;
             this.btnexternal_soures.Text = "المصدر الخارجي";
             this.btnexternal_soures.Click += new System.EventHandler(this.btnexternal_soures_Click);
             // 
             // btnrecipts_client
             // 
-            this.btnrecipts_client.Location = new System.Drawing.Point(243, 197);
+            this.btnrecipts_client.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnrecipts_client.Location = new System.Drawing.Point(378, 178);
             this.btnrecipts_client.Name = "btnrecipts_client";
-            this.btnrecipts_client.Size = new System.Drawing.Size(120, 30);
+            this.btnrecipts_client.Size = new System.Drawing.Size(199, 36);
             this.btnrecipts_client.TabIndex = 3;
             this.btnrecipts_client.Text = "مقبوضات من عميل";
             this.btnrecipts_client.Click += new System.EventHandler(this.btnrecipts_client_Click);
             // 
             // btngeneral_receptis
             // 
-            this.btngeneral_receptis.Location = new System.Drawing.Point(243, 260);
+            this.btngeneral_receptis.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btngeneral_receptis.Location = new System.Drawing.Point(378, 233);
             this.btngeneral_receptis.Name = "btngeneral_receptis";
-            this.btngeneral_receptis.Size = new System.Drawing.Size(120, 30);
+            this.btngeneral_receptis.Size = new System.Drawing.Size(199, 35);
             this.btngeneral_receptis.TabIndex = 3;
             this.btngeneral_receptis.Text = "مقبوضات عامة";
             this.btngeneral_receptis.Click += new System.EventHandler(this.btngeneral_receptis_Click);
             // 
             // btnclient_invoice
             // 
-            this.btnclient_invoice.Location = new System.Drawing.Point(243, 319);
+            this.btnclient_invoice.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnclient_invoice.Location = new System.Drawing.Point(378, 288);
             this.btnclient_invoice.Name = "btnclient_invoice";
-            this.btnclient_invoice.Size = new System.Drawing.Size(120, 30);
+            this.btnclient_invoice.Size = new System.Drawing.Size(199, 42);
             this.btnclient_invoice.TabIndex = 3;
             this.btnclient_invoice.Text = "مقبوضات فواتير العملاء";
             this.btnclient_invoice.Click += new System.EventHandler(this.btnclient_invoice_Click);
             // 
             // btn_netprofit
             // 
-            this.btn_netprofit.Location = new System.Drawing.Point(243, 81);
+            this.btn_netprofit.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_netprofit.Location = new System.Drawing.Point(378, 79);
             this.btn_netprofit.Name = "btn_netprofit";
-            this.btn_netprofit.Size = new System.Drawing.Size(120, 30);
+            this.btn_netprofit.Size = new System.Drawing.Size(199, 33);
             this.btn_netprofit.TabIndex = 2;
             this.btn_netprofit.Text = "صافي الربح";
             this.btn_netprofit.Click += new System.EventHandler(this.btn_netprofit_Click);
@@ -286,24 +328,28 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(144, 32);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label2.Location = new System.Drawing.Point(196, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 19);
+            this.label2.Size = new System.Drawing.Size(99, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "التاريخ الي";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(335, 32);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label1.Location = new System.Drawing.Point(504, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 19);
+            this.label1.Size = new System.Drawing.Size(95, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "التاريخ من";
             // 
             // radGroupBox2
             // 
             this.radGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox2.Controls.Add(this.txtTotalPaid);
+            this.radGroupBox2.Controls.Add(this.btnTotalPaid);
             this.radGroupBox2.Controls.Add(this.label3);
             this.radGroupBox2.Controls.Add(this.label4);
             this.radGroupBox2.Controls.Add(this.txtsuppliersinvoice);
@@ -315,45 +361,69 @@
             this.radGroupBox2.Controls.Add(this.txtpaymentsuppliers);
             this.radGroupBox2.Controls.Add(this.btngeneral_payments);
             this.radGroupBox2.Controls.Add(this.btnpayments_supplier);
+            this.radGroupBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox2.HeaderText = "السحب";
-            this.radGroupBox2.Location = new System.Drawing.Point(452, 18);
+            this.radGroupBox2.Location = new System.Drawing.Point(649, 12);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(459, 389);
+            this.radGroupBox2.Size = new System.Drawing.Size(559, 442);
             this.radGroupBox2.TabIndex = 11;
             this.radGroupBox2.Text = "السحب";
             this.radGroupBox2.Click += new System.EventHandler(this.radGroupBox2_Click);
             // 
+            // txtTotalPaid
+            // 
+            this.txtTotalPaid.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtTotalPaid.Location = new System.Drawing.Point(27, 222);
+            this.txtTotalPaid.Name = "txtTotalPaid";
+            this.txtTotalPaid.ReadOnly = true;
+            this.txtTotalPaid.Size = new System.Drawing.Size(211, 32);
+            this.txtTotalPaid.TabIndex = 8;
+            // 
+            // btnTotalPaid
+            // 
+            this.btnTotalPaid.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnTotalPaid.Location = new System.Drawing.Point(293, 222);
+            this.btnTotalPaid.Name = "btnTotalPaid";
+            this.btnTotalPaid.Size = new System.Drawing.Size(255, 35);
+            this.btnTotalPaid.TabIndex = 7;
+            this.btnTotalPaid.Text = "إجمالي المدفوعات خلال فتره";
+            this.btnTotalPaid.Click += new System.EventHandler(this.btnTotalPaid_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(128, 29);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label3.Location = new System.Drawing.Point(173, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 19);
+            this.label3.Size = new System.Drawing.Size(99, 28);
             this.label3.TabIndex = 11;
             this.label3.Text = "التاريخ الي";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(319, 32);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label4.Location = new System.Drawing.Point(453, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.Size = new System.Drawing.Size(95, 28);
             this.label4.TabIndex = 11;
             this.label4.Text = "التاريخ من";
             // 
             // txtsuppliersinvoice
             // 
-            this.txtsuppliersinvoice.Location = new System.Drawing.Point(24, 180);
+            this.txtsuppliersinvoice.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtsuppliersinvoice.Location = new System.Drawing.Point(27, 178);
             this.txtsuppliersinvoice.Name = "txtsuppliersinvoice";
             this.txtsuppliersinvoice.ReadOnly = true;
-            this.txtsuppliersinvoice.Size = new System.Drawing.Size(185, 20);
+            this.txtsuppliersinvoice.Size = new System.Drawing.Size(211, 32);
             this.txtsuppliersinvoice.TabIndex = 7;
             // 
             // btnsuppliers_invoice
             // 
-            this.btnsuppliers_invoice.Location = new System.Drawing.Point(241, 174);
+            this.btnsuppliers_invoice.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnsuppliers_invoice.Location = new System.Drawing.Point(293, 181);
             this.btnsuppliers_invoice.Name = "btnsuppliers_invoice";
-            this.btnsuppliers_invoice.Size = new System.Drawing.Size(120, 30);
+            this.btnsuppliers_invoice.Size = new System.Drawing.Size(255, 35);
             this.btnsuppliers_invoice.TabIndex = 6;
             this.btnsuppliers_invoice.Text = "مدفوعات فواتير الموردين";
             this.btnsuppliers_invoice.Click += new System.EventHandler(this.btnsuppliers_invoice_Click);
@@ -367,27 +437,30 @@
             this.radGroupBox3.Controls.Add(this.btnsahbdelet);
             this.radGroupBox3.Controls.Add(this.txtadminsahb);
             this.radGroupBox3.Controls.Add(this.btnadminsahb);
+            this.radGroupBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox3.HeaderText = "سحب المالك";
-            this.radGroupBox3.Location = new System.Drawing.Point(18, 210);
+            this.radGroupBox3.Location = new System.Drawing.Point(23, 258);
             this.radGroupBox3.Name = "radGroupBox3";
-            this.radGroupBox3.Size = new System.Drawing.Size(340, 159);
+            this.radGroupBox3.Size = new System.Drawing.Size(525, 173);
             this.radGroupBox3.TabIndex = 12;
             this.radGroupBox3.Text = "سحب المالك";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(244, 74);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label7.Location = new System.Drawing.Point(380, 71);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 19);
+            this.label7.Size = new System.Drawing.Size(117, 28);
             this.label7.TabIndex = 14;
             this.label7.Text = "تاريخ السحب";
             // 
             // btnsahb
             // 
-            this.btnsahb.Location = new System.Drawing.Point(203, 119);
+            this.btnsahb.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnsahb.Location = new System.Drawing.Point(311, 126);
             this.btnsahb.Name = "btnsahb";
-            this.btnsahb.Size = new System.Drawing.Size(120, 30);
+            this.btnsahb.Size = new System.Drawing.Size(137, 41);
             this.btnsahb.TabIndex = 9;
             this.btnsahb.Text = "سحب";
             this.btnsahb.Click += new System.EventHandler(this.btnsahb_Click);
@@ -395,10 +468,11 @@
             // datesahb
             // 
             this.datesahb.CustomFormat = "dd-MM-yyyy";
+            this.datesahb.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datesahb.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datesahb.Location = new System.Drawing.Point(9, 71);
+            this.datesahb.Location = new System.Drawing.Point(10, 71);
             this.datesahb.Name = "datesahb";
-            this.datesahb.Size = new System.Drawing.Size(178, 20);
+            this.datesahb.Size = new System.Drawing.Size(203, 32);
             this.datesahb.TabIndex = 13;
             this.datesahb.TabStop = false;
             this.datesahb.Text = "30-06-2020";
@@ -406,25 +480,28 @@
             // 
             // btnsahbdelet
             // 
-            this.btnsahbdelet.Location = new System.Drawing.Point(31, 118);
+            this.btnsahbdelet.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnsahbdelet.Location = new System.Drawing.Point(92, 126);
             this.btnsahbdelet.Name = "btnsahbdelet";
-            this.btnsahbdelet.Size = new System.Drawing.Size(120, 30);
+            this.btnsahbdelet.Size = new System.Drawing.Size(137, 41);
             this.btnsahbdelet.TabIndex = 10;
             this.btnsahbdelet.Text = "حذف";
             this.btnsahbdelet.Click += new System.EventHandler(this.btnsahbdelet_Click);
             // 
             // txtadminsahb
             // 
-            this.txtadminsahb.Location = new System.Drawing.Point(9, 29);
+            this.txtadminsahb.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtadminsahb.Location = new System.Drawing.Point(10, 29);
             this.txtadminsahb.Name = "txtadminsahb";
-            this.txtadminsahb.Size = new System.Drawing.Size(178, 20);
+            this.txtadminsahb.Size = new System.Drawing.Size(203, 32);
             this.txtadminsahb.TabIndex = 11;
             // 
             // btnadminsahb
             // 
-            this.btnadminsahb.Location = new System.Drawing.Point(211, 23);
+            this.btnadminsahb.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnadminsahb.Location = new System.Drawing.Point(373, 21);
             this.btnadminsahb.Name = "btnadminsahb";
-            this.btnadminsahb.Size = new System.Drawing.Size(120, 30);
+            this.btnadminsahb.Size = new System.Drawing.Size(137, 32);
             this.btnadminsahb.TabIndex = 8;
             this.btnadminsahb.Text = "سحب المالك";
             this.btnadminsahb.Click += new System.EventHandler(this.btnadminsahb_Click);
@@ -432,10 +509,11 @@
             // datetosahb
             // 
             this.datetosahb.CustomFormat = "dd-MM-yyyy";
+            this.datetosahb.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datetosahb.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetosahb.Location = new System.Drawing.Point(8, 29);
+            this.datetosahb.Location = new System.Drawing.Point(9, 34);
             this.datetosahb.Name = "datetosahb";
-            this.datetosahb.Size = new System.Drawing.Size(109, 20);
+            this.datetosahb.Size = new System.Drawing.Size(158, 32);
             this.datetosahb.TabIndex = 10;
             this.datetosahb.TabStop = false;
             this.datetosahb.Text = "30-06-2020";
@@ -444,10 +522,11 @@
             // datefromsahb
             // 
             this.datefromsahb.CustomFormat = "dd-MM-yyyy";
+            this.datefromsahb.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datefromsahb.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datefromsahb.Location = new System.Drawing.Point(196, 29);
+            this.datefromsahb.Location = new System.Drawing.Point(293, 34);
             this.datefromsahb.Name = "datefromsahb";
-            this.datefromsahb.Size = new System.Drawing.Size(109, 20);
+            this.datefromsahb.Size = new System.Drawing.Size(146, 32);
             this.datefromsahb.TabIndex = 9;
             this.datefromsahb.TabStop = false;
             this.datefromsahb.Text = "30-06-2020";
@@ -455,34 +534,38 @@
             // 
             // txtgeneralpaymentes
             // 
-            this.txtgeneralpaymentes.Location = new System.Drawing.Point(24, 134);
+            this.txtgeneralpaymentes.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtgeneralpaymentes.Location = new System.Drawing.Point(27, 134);
             this.txtgeneralpaymentes.Name = "txtgeneralpaymentes";
             this.txtgeneralpaymentes.ReadOnly = true;
-            this.txtgeneralpaymentes.Size = new System.Drawing.Size(185, 20);
+            this.txtgeneralpaymentes.Size = new System.Drawing.Size(211, 32);
             this.txtgeneralpaymentes.TabIndex = 5;
             // 
             // txtpaymentsuppliers
             // 
-            this.txtpaymentsuppliers.Location = new System.Drawing.Point(24, 82);
+            this.txtpaymentsuppliers.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtpaymentsuppliers.Location = new System.Drawing.Point(27, 92);
             this.txtpaymentsuppliers.Name = "txtpaymentsuppliers";
             this.txtpaymentsuppliers.ReadOnly = true;
-            this.txtpaymentsuppliers.Size = new System.Drawing.Size(185, 20);
+            this.txtpaymentsuppliers.Size = new System.Drawing.Size(211, 32);
             this.txtpaymentsuppliers.TabIndex = 4;
             // 
             // btngeneral_payments
             // 
-            this.btngeneral_payments.Location = new System.Drawing.Point(241, 128);
+            this.btngeneral_payments.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btngeneral_payments.Location = new System.Drawing.Point(293, 131);
             this.btngeneral_payments.Name = "btngeneral_payments";
-            this.btngeneral_payments.Size = new System.Drawing.Size(120, 30);
+            this.btngeneral_payments.Size = new System.Drawing.Size(255, 43);
             this.btngeneral_payments.TabIndex = 3;
             this.btngeneral_payments.Text = "مدفوعات عامة";
             this.btngeneral_payments.Click += new System.EventHandler(this.btngeneral_payments_Click);
             // 
             // btnpayments_supplier
             // 
-            this.btnpayments_supplier.Location = new System.Drawing.Point(241, 81);
+            this.btnpayments_supplier.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnpayments_supplier.Location = new System.Drawing.Point(293, 82);
             this.btnpayments_supplier.Name = "btnpayments_supplier";
-            this.btnpayments_supplier.Size = new System.Drawing.Size(120, 30);
+            this.btnpayments_supplier.Size = new System.Drawing.Size(255, 40);
             this.btnpayments_supplier.TabIndex = 2;
             this.btnpayments_supplier.Text = "مدفوعات لمورد";
             this.btnpayments_supplier.Click += new System.EventHandler(this.btnpayments_supplier_Click);
@@ -496,38 +579,42 @@
             this.radGroupBox4.Controls.Add(this.datefromtotal);
             this.radGroupBox4.Controls.Add(this.txttotal);
             this.radGroupBox4.Controls.Add(this.btntotal);
+            this.radGroupBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox4.HeaderText = "إجمالي ما في الخزنه خلال فترة";
-            this.radGroupBox4.Location = new System.Drawing.Point(916, 18);
+            this.radGroupBox4.Location = new System.Drawing.Point(1214, 12);
             this.radGroupBox4.Name = "radGroupBox4";
-            this.radGroupBox4.Size = new System.Drawing.Size(354, 170);
+            this.radGroupBox4.Size = new System.Drawing.Size(435, 205);
             this.radGroupBox4.TabIndex = 13;
             this.radGroupBox4.Text = "إجمالي ما في الخزنه خلال فترة";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(122, 22);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label5.Location = new System.Drawing.Point(107, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 19);
+            this.label5.Size = new System.Drawing.Size(83, 23);
             this.label5.TabIndex = 13;
             this.label5.Text = "التاريخ الي";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(290, 18);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label6.Location = new System.Drawing.Point(329, 23);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 19);
+            this.label6.Size = new System.Drawing.Size(80, 23);
             this.label6.TabIndex = 13;
             this.label6.Text = "التاريخ من";
             // 
             // datetototal
             // 
             this.datetototal.CustomFormat = "dd-MM-yyyy";
+            this.datetototal.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datetototal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetototal.Location = new System.Drawing.Point(10, 47);
+            this.datetototal.Location = new System.Drawing.Point(11, 60);
             this.datetototal.Name = "datetototal";
-            this.datetototal.Size = new System.Drawing.Size(141, 20);
+            this.datetototal.Size = new System.Drawing.Size(161, 32);
             this.datetototal.TabIndex = 14;
             this.datetototal.TabStop = false;
             this.datetototal.Text = "30-06-2020";
@@ -536,10 +623,11 @@
             // datefromtotal
             // 
             this.datefromtotal.CustomFormat = "dd-MM-yyyy";
+            this.datefromtotal.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.datefromtotal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datefromtotal.Location = new System.Drawing.Point(194, 47);
+            this.datefromtotal.Location = new System.Drawing.Point(245, 59);
             this.datefromtotal.Name = "datefromtotal";
-            this.datefromtotal.Size = new System.Drawing.Size(141, 20);
+            this.datefromtotal.Size = new System.Drawing.Size(161, 32);
             this.datefromtotal.TabIndex = 13;
             this.datefromtotal.TabStop = false;
             this.datefromtotal.Text = "30-06-2020";
@@ -547,16 +635,18 @@
             // 
             // txttotal
             // 
-            this.txttotal.Location = new System.Drawing.Point(13, 130);
+            this.txttotal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txttotal.Location = new System.Drawing.Point(11, 132);
             this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(178, 20);
+            this.txttotal.Size = new System.Drawing.Size(203, 32);
             this.txttotal.TabIndex = 11;
             // 
             // btntotal
             // 
-            this.btntotal.Location = new System.Drawing.Point(215, 124);
+            this.btntotal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btntotal.Location = new System.Drawing.Point(246, 124);
             this.btntotal.Name = "btntotal";
-            this.btntotal.Size = new System.Drawing.Size(120, 30);
+            this.btntotal.Size = new System.Drawing.Size(163, 41);
             this.btntotal.TabIndex = 8;
             this.btntotal.Text = "إجمالي ما في الخزنة";
             this.btntotal.Click += new System.EventHandler(this.btntotal_Click);
@@ -571,66 +661,80 @@
             this.radGroupBox5.Controls.Add(this.btncommission);
             this.radGroupBox5.Controls.Add(this.btnbiskoul);
             this.radGroupBox5.Controls.Add(this.btnmashal);
+            this.radGroupBox5.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox5.HeaderText = "العرض التفصيلي";
-            this.radGroupBox5.Location = new System.Drawing.Point(1275, 18);
+            this.radGroupBox5.Location = new System.Drawing.Point(1673, 30);
             this.radGroupBox5.Name = "radGroupBox5";
-            this.radGroupBox5.Size = new System.Drawing.Size(289, 377);
+            this.radGroupBox5.Size = new System.Drawing.Size(330, 413);
             this.radGroupBox5.TabIndex = 14;
             this.radGroupBox5.Text = "العرض التفصيلي";
             // 
             // btn_general_receipts
             // 
-            this.btn_general_receipts.Location = new System.Drawing.Point(97, 316);
+            this.btn_general_receipts.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_general_receipts.Location = new System.Drawing.Point(87, 316);
             this.btn_general_receipts.Name = "btn_general_receipts";
-            this.btn_general_receipts.Size = new System.Drawing.Size(120, 30);
+            this.btn_general_receipts.Size = new System.Drawing.Size(161, 41);
             this.btn_general_receipts.TabIndex = 15;
             this.btn_general_receipts.Text = "المقبوضات العامة";
+            this.btn_general_receipts.Click += new System.EventHandler(this.btn_general_receipts_Click);
             // 
             // btn_grnreal_payments
             // 
-            this.btn_grnreal_payments.Location = new System.Drawing.Point(10, 231);
+            this.btn_grnreal_payments.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_grnreal_payments.Location = new System.Drawing.Point(11, 231);
             this.btn_grnreal_payments.Name = "btn_grnreal_payments";
-            this.btn_grnreal_payments.Size = new System.Drawing.Size(120, 30);
+            this.btn_grnreal_payments.Size = new System.Drawing.Size(146, 41);
             this.btn_grnreal_payments.TabIndex = 14;
             this.btn_grnreal_payments.Text = "المدفوعات العامة";
+            this.btn_grnreal_payments.Click += new System.EventHandler(this.btn_grnreal_payments_Click);
             // 
             // btnsuppliers
             // 
-            this.btnsuppliers.Location = new System.Drawing.Point(159, 231);
+            this.btnsuppliers.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnsuppliers.Location = new System.Drawing.Point(182, 231);
             this.btnsuppliers.Name = "btnsuppliers";
-            this.btnsuppliers.Size = new System.Drawing.Size(120, 30);
+            this.btnsuppliers.Size = new System.Drawing.Size(137, 41);
             this.btnsuppliers.TabIndex = 13;
             this.btnsuppliers.Text = "الموردين";
+            this.btnsuppliers.Click += new System.EventHandler(this.btnsuppliers_Click);
             // 
             // btnclient
             // 
-            this.btnclient.Location = new System.Drawing.Point(10, 138);
+            this.btnclient.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnclient.Location = new System.Drawing.Point(11, 138);
             this.btnclient.Name = "btnclient";
-            this.btnclient.Size = new System.Drawing.Size(120, 30);
+            this.btnclient.Size = new System.Drawing.Size(137, 43);
             this.btnclient.TabIndex = 12;
             this.btnclient.Text = "العملاء";
+            this.btnclient.Click += new System.EventHandler(this.btnclient_Click);
             // 
             // btncommission
             // 
-            this.btncommission.Location = new System.Drawing.Point(159, 136);
+            this.btncommission.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btncommission.Location = new System.Drawing.Point(182, 136);
             this.btncommission.Name = "btncommission";
-            this.btncommission.Size = new System.Drawing.Size(120, 30);
+            this.btncommission.Size = new System.Drawing.Size(137, 45);
             this.btncommission.TabIndex = 11;
             this.btncommission.Text = "عمولات";
+            this.btncommission.Click += new System.EventHandler(this.btncommission_Click);
             // 
             // btnbiskoul
             // 
-            this.btnbiskoul.Location = new System.Drawing.Point(10, 40);
+            this.btnbiskoul.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnbiskoul.Location = new System.Drawing.Point(11, 40);
             this.btnbiskoul.Name = "btnbiskoul";
-            this.btnbiskoul.Size = new System.Drawing.Size(120, 30);
+            this.btnbiskoul.Size = new System.Drawing.Size(137, 48);
             this.btnbiskoul.TabIndex = 10;
             this.btnbiskoul.Text = "بسكول";
+            this.btnbiskoul.Click += new System.EventHandler(this.btnbiskoul_Click);
             // 
             // btnmashal
             // 
-            this.btnmashal.Location = new System.Drawing.Point(159, 40);
+            this.btnmashal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnmashal.Location = new System.Drawing.Point(182, 40);
             this.btnmashal.Name = "btnmashal";
-            this.btnmashal.Size = new System.Drawing.Size(120, 30);
+            this.btnmashal.Size = new System.Drawing.Size(137, 48);
             this.btnmashal.TabIndex = 9;
             this.btnmashal.Text = "مشال";
             this.btnmashal.Click += new System.EventHandler(this.btnmashal_Click);
@@ -644,36 +748,40 @@
             this.radGroupBox6.Controls.Add(this.dateedaa);
             this.radGroupBox6.Controls.Add(this.btnedaadelet);
             this.radGroupBox6.Controls.Add(this.txtedaa);
+            this.radGroupBox6.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox6.HeaderText = "إيداع من مصدر خارجي";
-            this.radGroupBox6.Location = new System.Drawing.Point(916, 229);
+            this.radGroupBox6.Location = new System.Drawing.Point(1214, 241);
             this.radGroupBox6.Name = "radGroupBox6";
-            this.radGroupBox6.Size = new System.Drawing.Size(354, 166);
+            this.radGroupBox6.Size = new System.Drawing.Size(435, 202);
             this.radGroupBox6.TabIndex = 15;
             this.radGroupBox6.Text = "إيداع من مصدر خارجي";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(253, 31);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label9.Location = new System.Drawing.Point(324, 29);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 19);
+            this.label9.Size = new System.Drawing.Size(62, 28);
             this.label9.TabIndex = 15;
             this.label9.Text = "المبلغ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 74);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(279, 85);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 19);
+            this.label8.Size = new System.Drawing.Size(107, 28);
             this.label8.TabIndex = 14;
             this.label8.Text = "تاريخ الإيداع";
             // 
             // btnedaa
             // 
-            this.btnedaa.Location = new System.Drawing.Point(203, 119);
+            this.btnedaa.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnedaa.Location = new System.Drawing.Point(269, 150);
             this.btnedaa.Name = "btnedaa";
-            this.btnedaa.Size = new System.Drawing.Size(120, 30);
+            this.btnedaa.Size = new System.Drawing.Size(140, 35);
             this.btnedaa.TabIndex = 9;
             this.btnedaa.Text = "إيداع";
             this.btnedaa.Click += new System.EventHandler(this.btnedaa_Click);
@@ -681,10 +789,11 @@
             // dateedaa
             // 
             this.dateedaa.CustomFormat = "dd-MM-yyyy";
+            this.dateedaa.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateedaa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateedaa.Location = new System.Drawing.Point(9, 71);
+            this.dateedaa.Location = new System.Drawing.Point(11, 94);
             this.dateedaa.Name = "dateedaa";
-            this.dateedaa.Size = new System.Drawing.Size(178, 20);
+            this.dateedaa.Size = new System.Drawing.Size(203, 32);
             this.dateedaa.TabIndex = 13;
             this.dateedaa.TabStop = false;
             this.dateedaa.Text = "30-06-2020";
@@ -692,25 +801,28 @@
             // 
             // btnedaadelet
             // 
-            this.btnedaadelet.Location = new System.Drawing.Point(31, 118);
+            this.btnedaadelet.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnedaadelet.Location = new System.Drawing.Point(35, 150);
             this.btnedaadelet.Name = "btnedaadelet";
-            this.btnedaadelet.Size = new System.Drawing.Size(120, 30);
+            this.btnedaadelet.Size = new System.Drawing.Size(143, 35);
             this.btnedaadelet.TabIndex = 10;
             this.btnedaadelet.Text = "حذف";
             this.btnedaadelet.Click += new System.EventHandler(this.btnedaadelet_Click);
             // 
             // txtedaa
             // 
-            this.txtedaa.Location = new System.Drawing.Point(9, 29);
+            this.txtedaa.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtedaa.Location = new System.Drawing.Point(11, 37);
             this.txtedaa.Name = "txtedaa";
-            this.txtedaa.Size = new System.Drawing.Size(178, 20);
+            this.txtedaa.Size = new System.Drawing.Size(203, 32);
             this.txtedaa.TabIndex = 11;
             // 
             // Cachier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1574, 771);
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(1799, 771);
             this.Controls.Add(this.radGroupBox6);
             this.Controls.Add(this.radGroupBox5);
             this.Controls.Add(this.radGroupBox4);
@@ -725,6 +837,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
             this.radGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalSales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datetoedaa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datefromedaa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtclientinvoice)).EndInit();
@@ -740,6 +854,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
             this.radGroupBox2.ResumeLayout(false);
             this.radGroupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalPaid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalPaid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtsuppliersinvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnsuppliers_invoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).EndInit();
@@ -841,5 +957,9 @@
         private Telerik.WinControls.UI.RadButton btnedaa;
         private Telerik.WinControls.UI.RadDateTimePicker dateedaa;
         private Telerik.WinControls.UI.RadButton btnedaadelet;
+        private Telerik.WinControls.UI.RadTextBox txtTotalSales;
+        private Telerik.WinControls.UI.RadButton btnTotalSales;
+        private Telerik.WinControls.UI.RadTextBox txtTotalPaid;
+        private Telerik.WinControls.UI.RadButton btnTotalPaid;
     }
 }

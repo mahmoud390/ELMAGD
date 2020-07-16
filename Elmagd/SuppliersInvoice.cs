@@ -15,7 +15,7 @@ namespace Elmagd
     {
         int id, store, cat, quantitytype, catid_DB;
         double total, quantity, price, bskoul, mashal, commession, rest, enter_quantity;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public SuppliersInvoice()
@@ -236,13 +236,17 @@ namespace Elmagd
         #region GRID_CELLCLICK
         private void tempsuppliergrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                tempsuppliergrid.CurrentRow.Selected = true;
-                id = int.Parse(tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                if (tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    tempsuppliergrid.CurrentRow.Selected = true;
+                    id = int.Parse(tempsuppliergrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                }
             }
+            catch (Exception ex) { }
         }
         #endregion
 

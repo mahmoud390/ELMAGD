@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Payments_Suppliers : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Payments_Suppliers()
         {
@@ -125,16 +125,20 @@ namespace Elmagd
         #region GRID_CELLCLICK
         private void sup_paymentsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (sup_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                sup_paymentsgrid.CurrentRow.Selected = true;
-                id = int.Parse(sup_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtvalue.Text = sup_paymentsgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                txtnotes.Text = sup_paymentsgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (sup_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    sup_paymentsgrid.CurrentRow.Selected = true;
+                    id = int.Parse(sup_paymentsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtvalue.Text = sup_paymentsgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    txtnotes.Text = sup_paymentsgrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
 
         }
         #endregion

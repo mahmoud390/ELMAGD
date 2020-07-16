@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Store : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Store()
         {
@@ -87,17 +87,21 @@ namespace Elmagd
         #region GRID_CELLCLICK
         private void storegrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (storegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                storegrid.CurrentRow.Selected = true;
-                id = int.Parse(storegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = storegrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtnotes.Text = storegrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (storegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    storegrid.CurrentRow.Selected = true;
+                    id = int.Parse(storegrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = storegrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtnotes.Text = storegrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    btnadd.Enabled = false;
 
+                }
             }
+            catch (Exception ex) { }
         }
         #endregion
 

@@ -37,6 +37,8 @@
             this.dateFrom = new Telerik.WinControls.UI.RadDateTimePicker();
             this.dateTo = new Telerik.WinControls.UI.RadDateTimePicker();
             this.btnShowDuringPeriod = new Telerik.WinControls.UI.RadButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtSarch = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -46,44 +48,50 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowDuringPeriod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).BeginInit();
             this.SuspendLayout();
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(1095, 175);
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel1.Location = new System.Drawing.Point(1177, 232);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(53, 18);
+            this.radLabel1.Size = new System.Drawing.Size(76, 25);
             this.radLabel1.TabIndex = 0;
             this.radLabel1.Text = "التاريخ من";
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(1112, 383);
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel2.Location = new System.Drawing.Point(1175, 329);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(55, 18);
+            this.radLabel2.Size = new System.Drawing.Size(78, 25);
             this.radLabel2.TabIndex = 1;
             this.radLabel2.Text = "التاريخ إلى";
             // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(740, 92);
+            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel3.Location = new System.Drawing.Point(1194, 526);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(35, 18);
+            this.radLabel3.Size = new System.Drawing.Size(49, 25);
             this.radLabel3.TabIndex = 3;
             this.radLabel3.Text = "القيمة";
             // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(547, 92);
+            this.txtValue.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtValue.Location = new System.Drawing.Point(928, 526);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(159, 24);
+            this.txtValue.Size = new System.Drawing.Size(197, 32);
             this.txtValue.TabIndex = 6;
             // 
             // btnCalc
             // 
-            this.btnCalc.Location = new System.Drawing.Point(292, 79);
+            this.btnCalc.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnCalc.Location = new System.Drawing.Point(955, 415);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(137, 30);
+            this.btnCalc.Size = new System.Drawing.Size(170, 44);
             this.btnCalc.TabIndex = 7;
             this.btnCalc.Text = "حساب";
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
@@ -91,19 +99,20 @@
             // gridMashal
             // 
             this.gridMashal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridMashal.Location = new System.Drawing.Point(89, 247);
+            this.gridMashal.Location = new System.Drawing.Point(21, 103);
             this.gridMashal.Name = "gridMashal";
             this.gridMashal.RowTemplate.Height = 26;
-            this.gridMashal.Size = new System.Drawing.Size(629, 260);
+            this.gridMashal.Size = new System.Drawing.Size(836, 576);
             this.gridMashal.TabIndex = 8;
             // 
             // dateFrom
             // 
             this.dateFrom.CustomFormat = "dd-MM-yyyy";
+            this.dateFrom.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateFrom.Location = new System.Drawing.Point(826, 169);
+            this.dateFrom.Location = new System.Drawing.Point(928, 232);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(172, 24);
+            this.dateFrom.Size = new System.Drawing.Size(197, 39);
             this.dateFrom.TabIndex = 10;
             this.dateFrom.TabStop = false;
             this.dateFrom.Text = "30-06-2020";
@@ -113,10 +122,11 @@
             // dateTo
             // 
             this.dateTo.CustomFormat = "dd-MM-yyyy";
+            this.dateTo.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTo.Location = new System.Drawing.Point(826, 378);
+            this.dateTo.Location = new System.Drawing.Point(928, 329);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Size = new System.Drawing.Size(172, 24);
+            this.dateTo.Size = new System.Drawing.Size(197, 39);
             this.dateTo.TabIndex = 11;
             this.dateTo.TabStop = false;
             this.dateTo.Text = "30-06-2020";
@@ -125,18 +135,41 @@
             // 
             // btnShowDuringPeriod
             // 
-            this.btnShowDuringPeriod.Location = new System.Drawing.Point(292, 169);
+            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnShowDuringPeriod.Location = new System.Drawing.Point(656, 51);
             this.btnShowDuringPeriod.Name = "btnShowDuringPeriod";
-            this.btnShowDuringPeriod.Size = new System.Drawing.Size(137, 30);
+            this.btnShowDuringPeriod.Size = new System.Drawing.Size(190, 46);
             this.btnShowDuringPeriod.TabIndex = 12;
             this.btnShowDuringPeriod.Text = "عرض خلال فترة";
             this.btnShowDuringPeriod.Click += new System.EventHandler(this.btnShowDuringPeriod_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(570, 59);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(38, 24);
+            this.label9.TabIndex = 95;
+            this.label9.Text = "بحث";
+            // 
+            // txtSarch
+            // 
+            this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSarch.Location = new System.Drawing.Point(56, 55);
+            this.txtSarch.Name = "txtSarch";
+            this.txtSarch.Size = new System.Drawing.Size(491, 32);
+            this.txtSarch.TabIndex = 94;
+            this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
+            // 
             // Mashal_Detail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 605);
+            this.BackColor = System.Drawing.Color.DarkCyan;
+            this.ClientSize = new System.Drawing.Size(1295, 691);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtSarch);
             this.Controls.Add(this.btnShowDuringPeriod);
             this.Controls.Add(this.dateTo);
             this.Controls.Add(this.dateFrom);
@@ -157,6 +190,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowDuringPeriod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +207,7 @@
         private Telerik.WinControls.UI.RadDateTimePicker dateFrom;
         private Telerik.WinControls.UI.RadDateTimePicker dateTo;
         private Telerik.WinControls.UI.RadButton btnShowDuringPeriod;
+        private System.Windows.Forms.Label label9;
+        private Telerik.WinControls.UI.RadTextBox txtSarch;
     }
 }

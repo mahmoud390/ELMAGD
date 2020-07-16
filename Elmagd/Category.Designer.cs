@@ -116,6 +116,7 @@
             this.categorygrid.Size = new System.Drawing.Size(2020, 620);
             this.categorygrid.TabIndex = 29;
             this.categorygrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.categorygrid_CellClick);
+            this.categorygrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.categorygrid_CellContentClick);
             // 
             // btndelet
             // 

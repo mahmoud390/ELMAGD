@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class General_Receipts : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public General_Receipts()
@@ -92,18 +92,21 @@ namespace Elmagd
 
         private void generalgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (generalgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                generalgrid.CurrentRow.Selected = true;
-                id = int.Parse(generalgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = generalgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtvalue.Text = generalgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtnotes.Text = generalgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (generalgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    generalgrid.CurrentRow.Selected = true;
+                    id = int.Parse(generalgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = generalgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtvalue.Text = generalgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtnotes.Text = generalgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void btnedite_Click(object sender, EventArgs e)

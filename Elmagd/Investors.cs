@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class Investors : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Investors()
         {
@@ -75,17 +75,21 @@ namespace Elmagd
 
         private void Investorsgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Investorsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                Investorsgrid.CurrentRow.Selected = true;
-                id = int.Parse(Investorsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = Investorsgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtphone.Text = Investorsgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtnotes.Text = Investorsgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (Investorsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    Investorsgrid.CurrentRow.Selected = true;
+                    id = int.Parse(Investorsgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = Investorsgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtphone.Text = Investorsgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtnotes.Text = Investorsgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
 
         #region EDITE_INVESTORS

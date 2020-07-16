@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class General_payments : Form
     {
         int id;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public General_payments()
@@ -92,18 +92,21 @@ namespace Elmagd
 
         private void generalpaymentgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (generalpaymentgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                generalpaymentgrid.CurrentRow.Selected = true;
-                id = int.Parse(generalpaymentgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtvalue.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtnotes.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                btnadd.Enabled = false;
+                if (generalpaymentgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    generalpaymentgrid.CurrentRow.Selected = true;
+                    id = int.Parse(generalpaymentgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtvalue.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtnotes.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void btnedite_Click(object sender, EventArgs e)
@@ -179,6 +182,11 @@ namespace Elmagd
                 MessageBox.Show("يجب ادخال حروف فقط");
                 txtname.Text = txtname.Text.Remove(txtname.Text.Length - 1);
             }    
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

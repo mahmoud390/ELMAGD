@@ -98,7 +98,7 @@
             this.txtaddress.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtaddress.Location = new System.Drawing.Point(453, 29);
             this.txtaddress.Name = "txtaddress";
-            this.txtaddress.Size = new System.Drawing.Size(303, 27);
+            this.txtaddress.Size = new System.Drawing.Size(303, 32);
             this.txtaddress.TabIndex = 15;
             // 
             // txtphone
@@ -107,7 +107,7 @@
             this.txtphone.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtphone.Location = new System.Drawing.Point(874, 29);
             this.txtphone.Name = "txtphone";
-            this.txtphone.Size = new System.Drawing.Size(303, 27);
+            this.txtphone.Size = new System.Drawing.Size(303, 32);
             this.txtphone.TabIndex = 14;
             this.txtphone.TextChanged += new System.EventHandler(this.txtphone_TextChanged);
             // 
@@ -117,7 +117,7 @@
             this.txtname.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtname.Location = new System.Drawing.Point(1342, 29);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(303, 27);
+            this.txtname.Size = new System.Drawing.Size(303, 32);
             this.txtname.TabIndex = 13;
             this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
             // 
@@ -159,7 +159,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1253, 300);
+            this.label9.Location = new System.Drawing.Point(1253, 291);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 24);
             this.label9.TabIndex = 28;
@@ -169,9 +169,9 @@
             // 
             this.txtSarch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtSarch.Location = new System.Drawing.Point(705, 296);
+            this.txtSarch.Location = new System.Drawing.Point(705, 287);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(525, 27);
+            this.txtSarch.Size = new System.Drawing.Size(525, 32);
             this.txtSarch.TabIndex = 27;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 

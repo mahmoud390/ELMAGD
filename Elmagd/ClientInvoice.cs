@@ -15,7 +15,8 @@ namespace Elmagd
     {
         int id, store, cat, quantitytype;
         double total, quantity, price, bskoul, mashal, commession, rest, enterquantity;
-        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;User ID=test;Password=test;");
+        //SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
+        SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
         public ClientInvoice()
@@ -136,26 +137,26 @@ namespace Elmagd
 
             else
             {
-                
-                if (txtmashal.Text.Equals("") )
+
+                if (txtmashal.Text.Equals(""))
                 {
                     txtmashal.Text = "0";
                 }
-                 if (txtcommestion.Text.Equals(""))
+                if (txtcommestion.Text.Equals(""))
                 {
                     txtcommestion.Text = "0";
                 }
-                 if (txtbskoul.Text.Equals(""))
+                if (txtbskoul.Text.Equals(""))
                 {
                     txtbskoul.Text = "0";
                 }
 
-                    bskoul = double.Parse(txtbskoul.Text);
-                    mashal = double.Parse(txtmashal.Text);
-                    commession = double.Parse(txtcommestion.Text);
-                    rest = total + (bskoul + mashal + commession);
-                    txtrest.Text = rest.ToString();
-               
+                bskoul = double.Parse(txtbskoul.Text);
+                mashal = double.Parse(txtmashal.Text);
+                commession = double.Parse(txtcommestion.Text);
+                rest = total + (bskoul + mashal + commession);
+                txtrest.Text = rest.ToString();
+
             }
         }
 
@@ -266,18 +267,23 @@ namespace Elmagd
 
         private void tempclientgrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (tempclientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            try
             {
-                tempclientgrid.CurrentRow.Selected = true;
-                id = int.Parse(tempclientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                btnadd.Enabled = false;
+                if (tempclientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    tempclientgrid.CurrentRow.Selected = true;
+                    id = int.Parse(tempclientgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    btnadd.Enabled = false;
+                }
             }
+            catch (Exception ex) { }
         }
         //delet temp
         private void btndelet_Click(object sender, EventArgs e)
         {
+
             if (id == 0)
                 MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
             else
@@ -294,6 +300,7 @@ namespace Elmagd
 
                 }
                 conn.Close();
+
                 //---------------------------------
                 //update mainstore
                 conn.Open();

@@ -54,6 +54,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Biskoul_Drtail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Biskoul_Drtail.Designer.cs">
+      <DependentUpon>Biskoul_Drtail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cachier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,17 +84,41 @@
     <Compile Include="Clients.Designer.cs">
       <DependentUpon>Clients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clint_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clint_Detail.Designer.cs">
+      <DependentUpon>Clint_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commission_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Commission_Detail.Designer.cs">
+      <DependentUpon>Commission_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="General_payments.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="General_payments.Designer.cs">
       <DependentUpon>General_payments.cs</DependentUpon>
     </Compile>
+    <Compile Include="General_Payments_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Payments_Detail.Designer.cs">
+      <DependentUpon>General_Payments_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="General_Receipts.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="General_Receipts.Designer.cs">
       <DependentUpon>General_Receipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General_Receipts_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Receipts_Detail.Designer.cs">
+      <DependentUpon>General_Receipts_Detail.cs</DependentUpon>
     </Compile>
     <Compile Include="Homeform.cs">
       <SubType>Form</SubType>
@@ -182,8 +212,17 @@
     <Compile Include="SuppliersInvoice.Designer.cs">
       <DependentUpon>SuppliersInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Suppliers_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers_Detail.Designer.cs">
+      <DependentUpon>Suppliers_Detail.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Biskoul_Drtail.resx">
+      <DependentUpon>Biskoul_Drtail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cachier.resx">
       <DependentUpon>Cachier.cs</DependentUpon>
@@ -197,11 +236,23 @@
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clint_Detail.resx">
+      <DependentUpon>Clint_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Commission_Detail.resx">
+      <DependentUpon>Commission_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="General_payments.resx">
       <DependentUpon>General_payments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="General_Payments_Detail.resx">
+      <DependentUpon>General_Payments_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="General_Receipts.resx">
       <DependentUpon>General_Receipts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General_Receipts_Detail.resx">
+      <DependentUpon>General_Receipts_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Homeform.resx">
       <DependentUpon>Homeform.cs</DependentUpon>
@@ -258,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SuppliersInvoice.resx">
       <DependentUpon>SuppliersInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers_Detail.resx">
+      <DependentUpon>Suppliers_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

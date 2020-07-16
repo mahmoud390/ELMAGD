@@ -58,7 +58,7 @@
             this.txtvalue.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtvalue.Location = new System.Drawing.Point(503, 16);
             this.txtvalue.Name = "txtvalue";
-            this.txtvalue.Size = new System.Drawing.Size(286, 27);
+            this.txtvalue.Size = new System.Drawing.Size(286, 32);
             this.txtvalue.TabIndex = 88;
             this.txtvalue.TextChanged += new System.EventHandler(this.txtvalue_TextChanged);
             // 
@@ -117,13 +117,14 @@
             this.label9.Size = new System.Drawing.Size(38, 24);
             this.label9.TabIndex = 83;
             this.label9.Text = "بحث";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txtSarch
             // 
             this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtSarch.Location = new System.Drawing.Point(643, 229);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(491, 27);
+            this.txtSarch.Size = new System.Drawing.Size(491, 32);
             this.txtSarch.TabIndex = 82;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 
@@ -176,7 +177,7 @@
             this.generaldate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.generaldate.Location = new System.Drawing.Point(1436, 19);
             this.generaldate.Name = "generaldate";
-            this.generaldate.Size = new System.Drawing.Size(286, 27);
+            this.generaldate.Size = new System.Drawing.Size(286, 32);
             this.generaldate.TabIndex = 77;
             this.generaldate.TabStop = false;
             this.generaldate.Text = "23-06-2020";
@@ -197,7 +198,7 @@
             this.txtname.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtname.Location = new System.Drawing.Point(958, 16);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(286, 27);
+            this.txtname.Size = new System.Drawing.Size(286, 32);
             this.txtname.TabIndex = 75;
             this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
             // 
