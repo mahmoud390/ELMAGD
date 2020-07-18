@@ -15,7 +15,6 @@ namespace Elmagd
     {
         int id;
         //SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-KFQ7M4O,1433;Initial Catalog=ELMAGD;Integrated Security=true;");
-      //  SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Suppliers()

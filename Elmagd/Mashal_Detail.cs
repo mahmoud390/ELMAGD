@@ -26,7 +26,7 @@ namespace Elmagd
         {
 
             conn.Open();
-            if (dateFromDummy == dateToDummy)
+            if (dateFromDummy == dateToDummy && firstLoad == 0)
                 cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE";
             else
                 cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
@@ -77,6 +77,12 @@ namespace Elmagd
         {
             conn.Open();
             SqlDataAdapter dataadapter = new SqlDataAdapter("select CLIENT_INVOICE.mashal المشال,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id  where CLIENT.name LIKE N'%" + txtSarch.Text + "%'", conn);
+            if (dateFromDummy == dateToDummy && firstLoad == 0)
+                cmd.CommandText = @"select CLIENT_INVOICE.mashal المشال,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id";
+            else
+                cmd.CommandText = @"select CLIENT_INVOICE.mashal المشال,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن  from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             dataadapter.Fill(dt);
             gridMashal.DataSource = dt;

@@ -128,3 +128,9 @@ E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Pay
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts_Detail.resources
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.Clint_Detail.resources
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers_Detail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Biskoul_Drtail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Clint_Detail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Commission_Detail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Payments_Detail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts_Detail.resources
+D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers_Detail.resources

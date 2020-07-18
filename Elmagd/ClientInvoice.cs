@@ -13,8 +13,9 @@ namespace Elmagd
 {
     public partial class ClientInvoice : Form
     {
-        int id, store, cat, quantitytype;
+        int id, store, cat, quantitytype, clientIndex, clientIndexAfterAdd;
         double total, quantity, price, bskoul, mashal, commession, rest, enterquantity;
+        string invoiceNo, invoiceDate, clientName;
         //SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
@@ -38,7 +39,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select TEMP_CLIENT.id,CLIENT.name as إسم_العميل,CATEGORY.name as إسم_الصنف ,STORE.name as إسم_المخزن,TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكميه,TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as الإجمالي_بعدالخصم,TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
+            cmd.CommandText = @"select TEMP_CLIENT.id,TEMP_CLIENT.invoiceNo رقم_الفاتورة,CLIENT.name as إسم_العميل,CATEGORY.name as إسم_الصنف ,STORE.name as إسم_المخزن,TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكميه,TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as الإجمالي_بعدالخصم,TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -160,8 +161,9 @@ namespace Elmagd
             }
         }
 
-        private void btnadd1_Click(object sender, EventArgs e)
+        private void btnadd1_Click(object sender, EventArgs e)//add button
         {
+            clientIndex = (int)comboclient.SelectedIndex;
             if ((int)comboclient.SelectedIndex == 0)
                 MessageBox.Show("برجاء اختبارعميل");
             else if ((int)combocategory.SelectedIndex == 0)
@@ -174,7 +176,8 @@ namespace Elmagd
                 MessageBox.Show("برجاء الضغط علي حساب الاجمالي اولا");
             else if (txtrest.Text.Equals(""))
                 MessageBox.Show("برجاء الضغط علي حساب الباقي اولا");
-
+            else if (txtInvoiceNo.Text.Equals(""))
+                MessageBox.Show("يجب إدخال رقم الفاتورة أولا");
             else
             {
                 enterquantity = double.Parse(txtquantity.Text);
@@ -205,60 +208,77 @@ namespace Elmagd
                     }
                     else
                     {
+                        //check invoice number is exist or not
                         conn.Open();
-                        cmd.CommandText = @"insert into TEMP_CLIENT (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date) values(@client_id,@cat_id,@quantity,@quantitytype_id,@price,@total,@biskoul,@mashal,@commissions,@rest,@paid,@baky,@store_id,@date)";
-                        cmd.Connection = conn;
-                        cmd.Parameters.AddWithValue("@client_id", (int)comboclient.SelectedValue);
-                        cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                        cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
-                        cmd.Parameters.AddWithValue("@price", txtprice.Text);
-                        cmd.Parameters.AddWithValue("@total", txttotal.Text);
-                        cmd.Parameters.AddWithValue("@biskoul", txtbskoul.Text);
-                        cmd.Parameters.AddWithValue("@mashal", txtmashal.Text);
-                        cmd.Parameters.AddWithValue("@commissions", txtcommestion.Text);
-                        cmd.Parameters.AddWithValue("@rest", txtrest.Text);
-                        cmd.Parameters.AddWithValue("@paid", txtpaid.Text);
-                        cmd.Parameters.AddWithValue("@baky", txtbaky.Text);
-                        cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
-                        cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
-                        BindGrid();
-
-                        MessageBox.Show("تمت عمليه الاضافه");
-                        //----------------------------------------
-                        //select quntity ,store, quantity type,category
-                        conn.Open();
-                        cmd.CommandText = @" select quantity from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                        cmd.CommandText = @"select invoiceNo from CLIENT_INVOICE where invoiceNo ='" + txtInvoiceNo.Text + "'";
                         reader = cmd.ExecuteReader();
-                        while (reader.Read())
+                        if (reader.HasRows || (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0))
                         {
-                            quantity = double.Parse(reader[0].ToString());
+                            MessageBox.Show("رقم الفاتورة موجود بالفعل");
+                            conn.Close();
                         }
-                        conn.Close();
-                        //---------------------------------
-                        //update mainstore
-                        conn.Open();
-                        cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
-                        cmd.Connection = conn;
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
-                        txtbskoul.Text = "";
-                        txtcommestion.Text = "";
-                        txtmashal.Text = "";
-                        txtprice.Text = "";
-                        txtquantity.Text = "";
-                        txtrest.Text = "";
-                        txttotal.Text = "";
-                        txtpaid.Text = "";
-                        txtbaky.Text = "";
-                        comboclient.SelectedIndex = 0;
-                        combocategory.SelectedIndex = 0;
-                        comboquantitytype.SelectedIndex = 0;
-                        combostore.SelectedIndex = 0;
+                        else if (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0)
+                            MessageBox.Show("يجب إختيار نفس العميل لنفس الفاتورة");
+                        else
+                        {
+                            conn.Close();
+                            conn.Open();
+                            cmd.CommandText = @"insert into TEMP_CLIENT (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) values(@client_id,@cat_id,@quantity,@quantitytype_id,@price,@total,@biskoul,@mashal,@commissions,@rest,@paid,@baky,@store_id,@date,@invoiceNo)";
+                            cmd.Connection = conn;
+                            cmd.Parameters.AddWithValue("@client_id", (int)comboclient.SelectedValue);
+                            cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
+                            cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                            cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
+                            cmd.Parameters.AddWithValue("@price", txtprice.Text);
+                            cmd.Parameters.AddWithValue("@total", txttotal.Text);
+                            cmd.Parameters.AddWithValue("@biskoul", txtbskoul.Text);
+                            cmd.Parameters.AddWithValue("@mashal", txtmashal.Text);
+                            cmd.Parameters.AddWithValue("@commissions", txtcommestion.Text);
+                            cmd.Parameters.AddWithValue("@rest", txtrest.Text);
+                            cmd.Parameters.AddWithValue("@paid", txtpaid.Text);
+                            cmd.Parameters.AddWithValue("@baky", txtbaky.Text);
+                            cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
+                            cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
+                            cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
+                            BindGrid();
+
+                            MessageBox.Show("تمت عمليه الاضافه");
+                            clientIndexAfterAdd = clientIndex;
+                            //----------------------------------------
+                            //select quntity ,store, quantity type,category
+                            conn.Open();
+                            cmd.CommandText = @" select quantity from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                            reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                quantity = double.Parse(reader[0].ToString());
+                            }
+                            conn.Close();
+                            //---------------------------------
+                            //update mainstore
+                            conn.Open();
+                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
+                            txtbskoul.Text = "";
+                            txtcommestion.Text = "";
+                            txtmashal.Text = "";
+                            txtprice.Text = "";
+                            txtquantity.Text = "";
+                            txtrest.Text = "";
+                            txttotal.Text = "";
+                            txtpaid.Text = "";
+                            txtbaky.Text = "";
+                            comboclient.SelectedIndex = 0;
+                            combocategory.SelectedIndex = 0;
+                            comboquantitytype.SelectedIndex = 0;
+                            combostore.SelectedIndex = 0;
+                        }
                     }
                 }
 
@@ -323,12 +343,10 @@ namespace Elmagd
                     id = 0;
                     btnadd.Enabled = true;
                 }
-
-
             }
         }
 
-        private void btnadd_Click(object sender, EventArgs e)
+        private void btnadd_Click(object sender, EventArgs e)//print button
         {
             conn.Open();
             cmd.CommandText = @"select id from TEMP_CLIENT  ";
@@ -338,9 +356,10 @@ namespace Elmagd
             else
             {
                 //add client invoice
+                clientIndexAfterAdd = 0;
                 conn.Close();
                 conn.Open();
-                cmd.CommandText = @"insert into CLIENT_INVOICE (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date) select  client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date from TEMP_CLIENT ";
+                cmd.CommandText = @"insert into CLIENT_INVOICE (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) select  client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo from TEMP_CLIENT ";
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -371,9 +390,12 @@ namespace Elmagd
                 conn.Close();
                 //-------------------------------------
 
-                //print
-
-
+                //print client invoice
+                ((Form)printPreviewDialog1).WindowState = FormWindowState.Maximized;
+                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
                 // delete temp client
                 conn.Open();
                 cmd.CommandText = @"delete from TEMP_CLIENT ";
@@ -381,6 +403,7 @@ namespace Elmagd
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 BindGrid();
+                txtInvoiceNo.Text = "";
             }
         }
 
@@ -448,15 +471,71 @@ namespace Elmagd
 
         private void txtpaid_TextChanged(object sender, EventArgs e)
         {
-
-            //if (System.Text.RegularExpressions.Regex.IsMatch(txtpaid.Text, "[^0-9]"))
-            //{
-            //    MessageBox.Show("يجب إدخال أرقام فقط");
-            //    txtpaid.Text = txtpaid.Text.Remove(txtpaid.Text.Length - 1);
-            //}
         }
 
-
-
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float margin = 40;
+            Font font = new Font("Arial", 18, FontStyle.Bold);
+            string title = "شركة المجد - فاتورة عميل";
+            invoiceNo = "رقم الفاتورة" + " : "+tempclientgrid.Rows[0].Cells[1].Value.ToString(); 
+            invoiceDate = "تاريخ الفاتورة : " + clientinvoicedate.Value.Date.ToShortDateString();
+            clientName = "اسم العميل : " + tempclientgrid.Rows[0].Cells[2].Value.ToString();
+            SizeF fontTitle = e.Graphics.MeasureString(title, font);
+            SizeF fontInvoiceNo = e.Graphics.MeasureString(invoiceNo, font);
+            SizeF fontInvoiceDate = e.Graphics.MeasureString(invoiceDate, font);
+            SizeF fontClientName = e.Graphics.MeasureString(clientName, font);
+            e.Graphics.DrawImage(Properties.Resources._0000000011111111111111111, 5, 5, 200, 200);
+            e.Graphics.DrawString(title, font, Brushes.Red, (e.PageBounds.Width - fontTitle.Width) / 2, margin);
+            e.Graphics.DrawString(invoiceNo, font, Brushes.Red, e.PageBounds.Width - fontInvoiceNo.Width - margin, margin + fontTitle.Height);
+            e.Graphics.DrawString(invoiceDate, font, Brushes.Black, e.PageBounds.Width - fontInvoiceDate.Width - margin, margin + fontTitle.Height + fontInvoiceNo.Height);
+            e.Graphics.DrawString(clientName, font, Brushes.Blue, e.PageBounds.Width - fontClientName.Width - margin, margin + fontTitle.Height + fontInvoiceNo.Height + fontInvoiceDate.Height);
+            float preHieght = margin + fontTitle.Height + fontInvoiceNo.Height + fontInvoiceDate.Height + fontClientName.Height;
+            e.Graphics.DrawRectangle(Pens.Black, 5, preHieght, e.PageBounds.Width - 5 * 2, e.PageBounds.Height - 5 - preHieght);
+            float colHieght = 50, col1width = 330, col2width = 60 + col1width, col3width = 100 + col2width, col4width = 100 + col3width, col5width = 100 + col4width, col6width = 100 + col5width, col7width = 10 + col6width;
+            e.Graphics.DrawLine(Pens.Black, 5, preHieght + colHieght, e.PageBounds.Width - 5, preHieght + colHieght);
+            e.Graphics.DrawString("الصنف", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col1width+200, preHieght);
+            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col1width, preHieght, e.PageBounds.Width - margin * 2 - col1width, e.PageBounds.Height - margin);
+            e.Graphics.DrawString("الكمية", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght);
+            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght, e.PageBounds.Width - margin * 2 - col2width, e.PageBounds.Height - margin);
+            e.Graphics.DrawString("نوع الكمية", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght);
+            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght, e.PageBounds.Width - margin * 2 - col3width, e.PageBounds.Height - margin);
+            e.Graphics.DrawString("سعر الوحدة", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght);
+            e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght, e.PageBounds.Width - margin * 2 - col4width, e.PageBounds.Height - margin);
+            e.Graphics.DrawString("الإجمالى", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col5width, preHieght);
+            float rowsHieght = 55;
+            double totalAll=0.0,totalPayment=0.0,totalRemain=0.0;
+            for (int i = 0; i < tempclientgrid.Rows.Count-1; i++)
+            {
+                e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[3].Value.ToString(), font, Brushes.Navy, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[5].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[6].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[7].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[12].Value.ToString(), font, Brushes.DeepPink, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght);
+                e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght);
+                rowsHieght += 55;
+                totalAll += double.Parse(tempclientgrid.Rows[i].Cells[8].Value.ToString());
+                totalPayment += double.Parse(tempclientgrid.Rows[i].Cells[13].Value.ToString());
+                totalRemain += double.Parse(tempclientgrid.Rows[i].Cells[14].Value.ToString());
+            }
+            e.Graphics.DrawString("الإجمالى الكلى", font, Brushes.Green, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
+            e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght);
+            e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght);
+            e.Graphics.DrawString("إجمالى المدفوعات", font, Brushes.Green, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght + 55);
+            e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght + 55);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght + 55);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght + 55);
+            e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght+55, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght+55);
+            e.Graphics.DrawString("إجمالى المتبقى", font, Brushes.Green, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght + 110);
+            e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght + 110);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght + 110);
+            e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght + 110);
+            e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght + 110, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght + 110);
+            e.Graphics.DrawString(totalAll.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght);
+            e.Graphics.DrawString(totalPayment.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght + 55);
+            e.Graphics.DrawString(totalRemain.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght + 110);
+        }
     }
 }
