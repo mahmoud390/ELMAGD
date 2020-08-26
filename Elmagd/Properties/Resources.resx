@@ -118,19 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="رز" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\رز.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blog-wp-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blog-wp-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="0000000011111111111111111" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\0000000011111111111111111.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="10101020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10101020.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="أفضل_نوع_أرز" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\أفضل_نوع_أرز.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blog-wp-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blog-wp-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="قائمه الدخل - كل شيء عن قائمة الدخل مع الأمثلة" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\قائمه الدخل - كل شيء عن قائمة الدخل مع الأمثلة.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="0000000011111111111111111" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\0000000011111111111111111.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="رز" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\رز.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="000000000000000002222222222222222" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\000000000000000002222222222222222.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="0_2hauu4oZyh9T2R2v" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\0_2hauu4oZyh9T2R2v.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

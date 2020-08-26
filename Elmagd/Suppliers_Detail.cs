@@ -60,9 +60,9 @@ namespace Elmagd
             {
                 conn.Open();
                 if (dateFromDummy == dateToDummy)
-                    cmd.CommandText = @"select SUPPLIERS_INVOICE.paid المدفوع_للمورد,SUPPLIERS_INVOICE.date التاريخ,SUPPLIERS.name إسم_المورد  from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id=SUPPLIERS.id ";
+                    cmd.CommandText = @"select SUPPLIERS_INVOICE.paid المدفوع_للمورد,SUPPLIERS_INVOICE.baky as الباقي_من_فواتير_الموردين,SUPPLIERS_INVOICE.date التاريخ,SUPPLIERS.name إسم_المورد  from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id=SUPPLIERS.id ";
                 else
-                    cmd.CommandText = @"select SUPPLIERS_INVOICE.paid المدفوع_للمورد,SUPPLIERS_INVOICE.date التاريخ,SUPPLIERS.name إسم_المورد from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id=SUPPLIERS.id  where SUPPLIERS_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                    cmd.CommandText = @"select SUPPLIERS_INVOICE.paid المدفوع_للمورد,SUPPLIERS_INVOICE.baky as الباقي_من_فواتير_الموردين,SUPPLIERS_INVOICE.date التاريخ,SUPPLIERS.name إسم_المورد from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id=SUPPLIERS.id  where SUPPLIERS_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
                 cmd.Connection = conn;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();

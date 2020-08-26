@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SuppliersInvoice));
             this.label1 = new System.Windows.Forms.Label();
             this.suppliersinvoicedate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,6 +67,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.comboquantitytype = new System.Windows.Forms.ComboBox();
             this.btnadd = new Telerik.WinControls.UI.RadButton();
+            this.txtInvoiceNo = new Telerik.WinControls.UI.RadTextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.suppliersinvoicedate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtprice)).BeginInit();
@@ -83,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbskoul)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempsuppliergrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInvoiceNo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -277,6 +285,7 @@
             this.radGroupBox1.Controls.Add(this.label8);
             this.radGroupBox1.Controls.Add(this.txtmashal);
             this.radGroupBox1.Controls.Add(this.txtbskoul);
+            this.radGroupBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radGroupBox1.HeaderText = "الخصم والإضافة";
             this.radGroupBox1.Location = new System.Drawing.Point(193, 210);
             this.radGroupBox1.Name = "radGroupBox1";
@@ -451,6 +460,17 @@
             // 
             // tempsuppliergrid
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tempsuppliergrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.tempsuppliergrid.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tempsuppliergrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tempsuppliergrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tempsuppliergrid.Location = new System.Drawing.Point(18, 429);
             this.tempsuppliergrid.Name = "tempsuppliergrid";
@@ -495,12 +515,49 @@
             this.btnadd.Text = "طباعة";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
+            // txtInvoiceNo
+            // 
+            this.txtInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtInvoiceNo.ForeColor = System.Drawing.Color.Red;
+            this.txtInvoiceNo.Location = new System.Drawing.Point(13, 371);
+            this.txtInvoiceNo.Name = "txtInvoiceNo";
+            this.txtInvoiceNo.Size = new System.Drawing.Size(153, 32);
+            this.txtInvoiceNo.TabIndex = 90;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(44, 344);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(88, 24);
+            this.label15.TabIndex = 89;
+            this.label15.Text = "رقم الفاتورة";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // SuppliersInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1777, 782);
+            this.Controls.Add(this.txtInvoiceNo);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboquantitytype);
@@ -545,6 +602,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtbskoul)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempsuppliergrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInvoiceNo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,5 +646,9 @@
         private Telerik.WinControls.UI.RadButton btnbaky;
         private System.Windows.Forms.Label label13;
         private Telerik.WinControls.UI.RadTextBox txtpaid;
+        private Telerik.WinControls.UI.RadTextBox txtInvoiceNo;
+        private System.Windows.Forms.Label label15;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

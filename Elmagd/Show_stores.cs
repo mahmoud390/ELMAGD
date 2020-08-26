@@ -13,7 +13,7 @@ namespace Elmagd
 {
     public partial class Show_stores : Form
     {
-        double quantity;
+        double quantity, storequantity;
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
@@ -98,15 +98,12 @@ namespace Elmagd
                 MessageBox.Show("برجاء اختيار مخزن");
             else if ((int)combocategory.SelectedIndex == 0)
                 MessageBox.Show("برجاء اختيار صنف");
-            else if ((int)comboquantitytype.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختيار نوع الكمية");
+
             else
             {
-                
+
                 conn.Open();
-                //cmd.CommandText = @"select (sum)quantity from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "' ";
-              //  SqlDataReader reader = cmd.ExecuteReader();
-                SqlCommand cmd = new SqlCommand("select sum (quantity) from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "' ", conn);
+                SqlCommand cmd = new SqlCommand("select sum (quantity) from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id =1 ", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -122,7 +119,29 @@ namespace Elmagd
                     txtquantity.Text = "0";
                 }
                 else
-                    txtquantity.Text = quantity.ToString();
+                {
+                    if ((int)comboquantitytype.SelectedValue == 2)
+                    {
+                        storequantity = quantity / 1000;
+                        txtquantity.Text = storequantity.ToString();
+
+                    }
+                    else if ((int)comboquantitytype.SelectedValue == 3)
+                    {
+                        storequantity = quantity / 150;
+                        txtquantity.Text = storequantity.ToString();
+
+                    }
+                    else if ((int)comboquantitytype.SelectedValue == 4)
+                    {
+                        storequantity = quantity / 155;
+                        txtquantity.Text = storequantity.ToString();
+
+                    }
+                    else
+                        txtquantity.Text = quantity.ToString();
+                }
+
             }
         }
         #endregion

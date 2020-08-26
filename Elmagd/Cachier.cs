@@ -331,13 +331,15 @@ namespace Elmagd
             if (datefromedaa.Value != datefromtotal.Value)
                 MessageBox.Show("برجاء اختيار نفس الفتره التي تم اختيارها في الايداع والسحب");
             else if (datetoedaa.Value != datetototal.Value)
-                MessageBox.Show("برجاء اختيار نفس الفتر هالتي تم اختيارها في الايداع والسحب");
+                MessageBox.Show("برجاء اختيار نفس الفتره التي تم اختيارها في الايداع والسحب");
             else if (datefromsahb.Value != datefromtotal.Value)
                 MessageBox.Show("برجاء اختيار نفس الفتر هالتي تم اختيارها في الايداع والسحب");
             else if (datetosahb.Value != datetototal.Value)
                 MessageBox.Show("برجاء اختيار نفس الفتر هالتي تم اختيارها في الايداع والسحب");
             else if (txtnetprofit.Text.Equals("") && txtexternalsourses.Text.Equals("") && txtadminsahb.Text.Equals(""))
                 MessageBox.Show("برجاء حساب الايداع والسحب خلال فتره");
+            else if (txtadminsahb.Text.Equals(""))
+                MessageBox.Show("برجاء حساب سحب المالك خلال الفتره");
             else
             {
                 double profit = double.Parse(txtnetprofit.Text);
@@ -485,6 +487,7 @@ namespace Elmagd
 
         private void btnTotalSales_Click(object sender, EventArgs e)
         {
+            //حساب صافي الربح
             conn.Open();
             cmd.CommandText = @"select sum(value) from RESEIPTS_CLIENT where RESEIPTS_CLIENT.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
             cmd.Connection = conn;
@@ -526,15 +529,11 @@ namespace Elmagd
             //------------------------------------------
 
             totalsales = resipt_client + general_receipt + client_invoice;
-            txtTotalSales.Text =  totalsales.ToString();
-        }
-
-        private void btnTotalPaid_Click(object sender, EventArgs e)
-        {
+            //-----------------------------------------
             conn.Open();
             cmd.CommandText = @"select sum(value) from PAYMENTS_SUPPLIERS where PAYMENTS_SUPPLIERS.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
             cmd.Connection = conn;
-            SqlDataReader reader = cmd.ExecuteReader();
+            reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 if (reader[0].ToString() == "")
@@ -571,7 +570,126 @@ namespace Elmagd
             conn.Close();
             //---------------------------------
             totalpaid = payment_supplier + general_payments + suppliers_invoice;
-            txtTotalPaid.Text = totalpaid.ToString();
+            //---------------------------------
+            netprofit = totalsales - totalpaid;
+            //------------------------
+            txtnetprofit.Text = netprofit.ToString();
+            //------------------------------------------------
+            //---------------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(external_soures) from CASHIER where CASHIER.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtexternalsourses.Text = "0";
+                else
+                    txtexternalsourses.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //---------------------------------------------
+            //---------------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(value) from RESEIPTS_CLIENT where RESEIPTS_CLIENT.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtreceiptsclient.Text = "0";
+                else
+                    txtreceiptsclient.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //---------------------------------------
+            //---------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(value) from GENERAL_RECEIPTS where GENERAL_RECEIPTS.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtgeneralreceipts.Text = "0";
+                else
+                    txtgeneralreceipts.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //---------------------------------------
+            //---------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(paid) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtclientinvoice.Text = "0";
+                else
+                    txtclientinvoice.Text = reader[0].ToString();
+            }
+            conn.Close();
+
+        }
+
+        private void btnTotalPaid_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            cmd.CommandText = @"select sum(value) from PAYMENTS_SUPPLIERS where PAYMENTS_SUPPLIERS.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtpaymentsuppliers.Text = "0";
+                else
+                    txtpaymentsuppliers.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //-------------------------------------------------
+            //-------------------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(value) from GENERAL_PAYMENTS where GENERAL_PAYMENTS.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtgeneralpaymentes.Text = "0";
+                else
+                    txtgeneralpaymentes.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //----------------------------------------------------
+            //----------------------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(paid) from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtsuppliersinvoice.Text = "0";
+                else
+                    txtsuppliersinvoice.Text = reader[0].ToString();
+            }
+            conn.Close();
+            //------------------------------------------------------
+            //---------------------------------------------------------
+            conn.Open();
+            cmd.CommandText = @"select sum(sahb) from CASHIER where CASHIER.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+             reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtadminsahb.Text = "0";
+                else
+                    txtadminsahb.Text = reader[0].ToString();
+            }
+            conn.Close();
+
         }
     }
 }

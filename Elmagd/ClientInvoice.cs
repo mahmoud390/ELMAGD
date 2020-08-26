@@ -13,9 +13,11 @@ namespace Elmagd
 {
     public partial class ClientInvoice : Form
     {
-        int id, store, cat, quantitytype, clientIndex, clientIndexAfterAdd;
-        double total, quantity, price, bskoul, mashal, commession, rest, enterquantity;
+
+        int id, store, cat, quantitytype, clientIndex, clientIndexAfterAdd, enter_quantity, tempqunqtitytype;
+        double total, quantity, price, bskoul, mashal, commession, rest, enterquantity, teenquantoty, tempquantity, quantity_db;
         string invoiceNo, invoiceDate, clientName;
+
         //SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
@@ -122,9 +124,21 @@ namespace Elmagd
             else
             {
                 quantity = double.Parse(txtquantity.Text);
+                if ((int)comboquantitytype.SelectedIndex == 2)
+                    teenquantoty = quantity * 1000;
+                else
+                    quantity = double.Parse(txtquantity.Text);
                 price = double.Parse(txtprice.Text);
-                total = quantity * price;
-                txttotal.Text = total.ToString();
+                if ((int)comboquantitytype.SelectedIndex == 2)
+                {
+                    total = teenquantoty * price;
+                    txttotal.Text = total.ToString();
+                }
+                else
+                {
+                    total = quantity * price;
+                    txttotal.Text = total.ToString();
+                }
             }
         }
         //حساب الإجمالي بعد الإضافات
@@ -182,7 +196,7 @@ namespace Elmagd
             {
                 enterquantity = double.Parse(txtquantity.Text);
                 conn.Open();
-                cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
                 {
@@ -244,23 +258,39 @@ namespace Elmagd
                             cmd.Parameters.Clear();
                             conn.Close();
                             BindGrid();
-
                             MessageBox.Show("تمت عمليه الاضافه");
                             clientIndexAfterAdd = clientIndex;
                             //----------------------------------------
                             //select quntity ,store, quantity type,category
                             conn.Open();
-                            cmd.CommandText = @" select quantity from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                            cmd.CommandText = @" select quantity,quantitytype_id from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= '" + (int)comboquantitytype.SelectedValue + "' ";
                             reader = cmd.ExecuteReader();
                             while (reader.Read())
                             {
-                                quantity = double.Parse(reader[0].ToString());
+                                tempquantity = double.Parse(reader[0].ToString());
+                                tempqunqtitytype = int.Parse(reader[1].ToString());
                             }
                             conn.Close();
                             //---------------------------------
                             //update mainstore
                             conn.Open();
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
+                            if (tempqunqtitytype == 2)
+                            {
+                                quantity_db = tempquantity * 1000;
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
+                            }
+                            else if (tempqunqtitytype == 3)
+                            {
+                                quantity_db = tempquantity * 150;
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
+                            }
+                            else if (tempqunqtitytype == 4)
+                            {
+                                quantity_db = tempquantity * 155;
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
+                            }
+                            else
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + tempquantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
                             cmd.Connection = conn;
                             cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
@@ -310,13 +340,13 @@ namespace Elmagd
             {
                 conn.Open();
                 cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_CLIENT where id='" + id + "' ";
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                SqlDataReader reader_temp = cmd.ExecuteReader();
+                while (reader_temp.Read())
                 {
-                    store = int.Parse(reader[0].ToString());
-                    cat = int.Parse(reader[1].ToString());
-                    quantity = double.Parse(reader[2].ToString());
-                    quantitytype = int.Parse(reader[3].ToString());
+                    store = int.Parse(reader_temp[0].ToString());
+                    cat = int.Parse(reader_temp[1].ToString());
+                    quantity = double.Parse(reader_temp[2].ToString());
+                    quantitytype = int.Parse(reader_temp[3].ToString());
 
                 }
                 conn.Close();
@@ -324,7 +354,23 @@ namespace Elmagd
                 //---------------------------------
                 //update mainstore
                 conn.Open();
-                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
+                if (quantitytype == 2)
+                {
+                    quantity_db = quantity * 1000;
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
+                }
+                else if (quantitytype == 3)
+                {
+                    quantity_db = quantity * 150;
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
+                }
+                else if (quantitytype == 4)
+                {
+                    quantity_db = quantity * 155;
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
+                }
+                else
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id =1  ";
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
@@ -382,12 +428,12 @@ namespace Elmagd
                 cmd.Parameters.Clear();
                 conn.Close();
                 //-------------------------------------------------------------------------------
-                ////addto sales
-                conn.Open();
-                cmd.CommandText = @"insert into SALES (client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date) select  client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date from TEMP_CLIENT ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                //////addto sales
+                //conn.Open();
+                //cmd.CommandText = @"insert into SALES (client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date) select  client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date from TEMP_CLIENT ";
+                //cmd.Connection = conn;
+                //cmd.ExecuteNonQuery();
+                //conn.Close();
                 //-------------------------------------
 
                 //print client invoice
@@ -425,7 +471,7 @@ namespace Elmagd
 
         private void txtquantity_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtquantity.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtquantity.Text, "[^0-9.]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtquantity.Text = txtquantity.Text.Remove(txtquantity.Text.Length - 1);
@@ -478,7 +524,7 @@ namespace Elmagd
             float margin = 40;
             Font font = new Font("Arial", 18, FontStyle.Bold);
             string title = "شركة المجد - فاتورة عميل";
-            invoiceNo = "رقم الفاتورة" + " : "+tempclientgrid.Rows[0].Cells[1].Value.ToString(); 
+            invoiceNo = "رقم الفاتورة" + " : " + tempclientgrid.Rows[0].Cells[1].Value.ToString();
             invoiceDate = "تاريخ الفاتورة : " + clientinvoicedate.Value.Date.ToShortDateString();
             clientName = "اسم العميل : " + tempclientgrid.Rows[0].Cells[2].Value.ToString();
             SizeF fontTitle = e.Graphics.MeasureString(title, font);
@@ -494,7 +540,7 @@ namespace Elmagd
             e.Graphics.DrawRectangle(Pens.Black, 5, preHieght, e.PageBounds.Width - 5 * 2, e.PageBounds.Height - 5 - preHieght);
             float colHieght = 50, col1width = 330, col2width = 60 + col1width, col3width = 100 + col2width, col4width = 100 + col3width, col5width = 100 + col4width, col6width = 100 + col5width, col7width = 10 + col6width;
             e.Graphics.DrawLine(Pens.Black, 5, preHieght + colHieght, e.PageBounds.Width - 5, preHieght + colHieght);
-            e.Graphics.DrawString("الصنف", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col1width+200, preHieght);
+            e.Graphics.DrawString("الصنف", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col1width + 200, preHieght);
             e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col1width, preHieght, e.PageBounds.Width - margin * 2 - col1width, e.PageBounds.Height - margin);
             e.Graphics.DrawString("الكمية", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght);
             e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght, e.PageBounds.Width - margin * 2 - col2width, e.PageBounds.Height - margin);
@@ -504,8 +550,8 @@ namespace Elmagd
             e.Graphics.DrawLine(Pens.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght, e.PageBounds.Width - margin * 2 - col4width, e.PageBounds.Height - margin);
             e.Graphics.DrawString("الإجمالى", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col5width, preHieght);
             float rowsHieght = 55;
-            double totalAll=0.0,totalPayment=0.0,totalRemain=0.0;
-            for (int i = 0; i < tempclientgrid.Rows.Count-1; i++)
+            double totalAll = 0.0, totalPayment = 0.0, totalRemain = 0.0;
+            for (int i = 0; i < tempclientgrid.Rows.Count - 1; i++)
             {
                 e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[3].Value.ToString(), font, Brushes.Navy, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
                 e.Graphics.DrawString(tempclientgrid.Rows[i].Cells[5].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
@@ -527,7 +573,7 @@ namespace Elmagd
             e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght + 55);
             e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght + 55);
             e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght + 55);
-            e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght+55, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght+55);
+            e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght + 55, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght + 55);
             e.Graphics.DrawString("إجمالى المتبقى", font, Brushes.Green, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght + 110);
             e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght + 110);
             e.Graphics.DrawString("<<<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght + 110);
@@ -536,6 +582,11 @@ namespace Elmagd
             e.Graphics.DrawString(totalAll.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght);
             e.Graphics.DrawString(totalPayment.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght + 55);
             e.Graphics.DrawString(totalRemain.ToString(), font, Brushes.Green, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght + 110);
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

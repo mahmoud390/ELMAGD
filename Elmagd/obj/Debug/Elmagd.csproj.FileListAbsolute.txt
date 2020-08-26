@@ -128,9 +128,62 @@ E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Pay
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts_Detail.resources
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.Clint_Detail.resources
 E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers_Detail.resources
+<<<<<<< Updated upstream
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Biskoul_Drtail.resources
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Clint_Detail.resources
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Commission_Detail.resources
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Payments_Detail.resources
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts_Detail.resources
 D:\Mine\Projects\ELMAGD_GITHUP\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers_Detail.resources
+=======
+E:\my work\Private Program\New folder\ELMAGD\Elmagd\obj\Debug\Elmagd.csprojResolveAssemblyReference.cache
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\bin\Debug\Elmagd.exe.config
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.exe
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.pdb
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\bin\Debug\Elmagd.exe
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\bin\Debug\Elmagd.pdb
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.csprojResolveAssemblyReference.cache
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Admin.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Biskoul_Drtail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Cachier.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Category.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.ClientInvoice.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Clients.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Clint_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Commission_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_payments.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Payments_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Receipts_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Homeform.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Incomes.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Internal_Exchange.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Investors.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Login.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Mashal_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Payments_Client.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Payments_Suppliers.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Properties.Resources.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipts_Client.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Receipt_Suppliers.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Sales.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Show_stores.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Store.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.SuppliersInvoice.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Suppliers_Detail.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.csproj.GenerateResource.Cache
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.exe.licenses
+>>>>>>> Stashed changes
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Main_Information.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Material.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Full_Production.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Operating__Model.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Supplier_Audit_Balance.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Client_Audit_balance.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Payment_Items.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.General_Recepits_Items.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Purchase_returns.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Sales_Returns.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.Profit_and_loss.resources
+E:\my work\Private Program\Elmagd_lastvergion\ELMAGD\Elmagd\obj\Debug\Elmagd.show_Profit_And_Loss.resources

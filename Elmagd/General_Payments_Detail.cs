@@ -60,9 +60,9 @@ namespace Elmagd
             {
                 conn.Open();
                 if (dateFromDummy == dateToDummy)
-                    cmd.CommandText = @"select GENERAL_PAYMENTS.value القيمة,GENERAL_PAYMENTS.date التاريخ,GENERAL_PAYMENTS.name  البند from GENERAL_PAYMENTS";
+                    cmd.CommandText = @"select GENERAL_PAYMENTS.value القيمة,GENERAL_PAYMENTS.date التاريخ,GENERAL_PAYMENT_ITEMS.name  البند from GENERAL_PAYMENTS inner join GENERAL_PAYMENT_ITEMS on GENERAL_PAYMENT_ITEMS.id =GENERAL_PAYMENTS.paymentitems_id";
                 else
-                    cmd.CommandText = @" select GENERAL_PAYMENTS.value القيمة, GENERAL_PAYMENTS.name البند from GENERAL_PAYMENTS where GENERAL_PAYMENTS.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                    cmd.CommandText = @" select GENERAL_PAYMENTS.value القيمة,GENERAL_PAYMENTS.date التاريخ,GENERAL_PAYMENT_ITEMS.name  البند from GENERAL_PAYMENTS inner join GENERAL_PAYMENT_ITEMS on GENERAL_PAYMENT_ITEMS.id =GENERAL_PAYMENTS.paymentitems_id where GENERAL_PAYMENTS.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
                 cmd.Connection = conn;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();

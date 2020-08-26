@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtvalue = new Telerik.WinControls.UI.RadTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btndelet = new Telerik.WinControls.UI.RadButton();
@@ -41,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.generaldate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtname = new Telerik.WinControls.UI.RadTextBox();
+            this.combopaymentitem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtvalue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btndelet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnedite)).BeginInit();
@@ -50,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.generalpaymentgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generaldate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtname)).BeginInit();
             this.SuspendLayout();
             // 
             // txtvalue
@@ -130,7 +131,18 @@
             // 
             // generalpaymentgrid
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generalpaymentgrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.generalpaymentgrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.generalpaymentgrid.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.generalpaymentgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.generalpaymentgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.generalpaymentgrid.Location = new System.Drawing.Point(12, 263);
             this.generalpaymentgrid.Name = "generalpaymentgrid";
@@ -193,14 +205,14 @@
             this.label1.TabIndex = 76;
             this.label1.Text = "الإسم ";
             // 
-            // txtname
+            // combopaymentitem
             // 
-            this.txtname.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtname.Location = new System.Drawing.Point(958, 16);
-            this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(286, 32);
-            this.txtname.TabIndex = 75;
-            this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
+            this.combopaymentitem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combopaymentitem.FormattingEnabled = true;
+            this.combopaymentitem.Location = new System.Drawing.Point(984, 19);
+            this.combopaymentitem.Name = "combopaymentitem";
+            this.combopaymentitem.Size = new System.Drawing.Size(260, 33);
+            this.combopaymentitem.TabIndex = 89;
             // 
             // General_payments
             // 
@@ -208,6 +220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1808, 776);
+            this.Controls.Add(this.combopaymentitem);
             this.Controls.Add(this.txtvalue);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btndelet);
@@ -221,7 +234,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.generaldate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtname);
             this.Name = "General_payments";
             this.Text = "المدفوعات العامة";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -234,7 +246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.generalpaymentgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generaldate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtname)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +266,6 @@
         private System.Windows.Forms.Label label2;
         private Telerik.WinControls.UI.RadDateTimePicker generaldate;
         private System.Windows.Forms.Label label1;
-        private Telerik.WinControls.UI.RadTextBox txtname;
+        private System.Windows.Forms.ComboBox combopaymentitem;
     }
 }

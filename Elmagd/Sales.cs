@@ -31,7 +31,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select SALES.id, CLIENT.name as العميل,CATEGORY.name as الصنف,SALES.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,STORE.name as المخزن,SALES.rest as الإجمالي_بعدالخصومات,SALES.paid as المدفوع,SALES.baky as الباقي,SALES.date as التاريخ from SALES inner join CLIENT on SALES.cat_id =CLIENT.id inner join CATEGORY on SALES.cat_id =CATEGORY.id inner join QUANTITY_TYPE on SALES.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SALES.store_id =STORE.id";
+            cmd.CommandText = @"select CLIENT_INVOICE.id,CLIENT.name as إسم_العميل,CATEGORY.name as إسم_الصنف,CLIENT_INVOICE.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,CLIENT_INVOICE.price as السعر,CLIENT_INVOICE.total as الإجمالي,CLIENT_INVOICE.biskoul as بسكول,CLIENT_INVOICE.mashal as مشال,CLIENT_INVOICE.commission as عمولات,CLIENT_INVOICE.rest as الإجمالي_بعد_الإضافات,CLIENT_INVOICE.paid as المدفوع,CLIENT_INVOICE.baky as الباقي,CLIENT_INVOICE.date as التاريخ from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join CATEGORY on CLIENT_INVOICE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on CLIENT_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on CLIENT_INVOICE.store_id =STORE.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

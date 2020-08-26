@@ -36,6 +36,7 @@
             this.radRibbonBarGroup7 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup8 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup17 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup22 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.ribbonTab3 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup2 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup4 = new Telerik.WinControls.UI.RadRibbonBarGroup();
@@ -43,6 +44,7 @@
             this.radRibbonBarGroup10 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup11 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup16 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup23 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.ribbonTab4 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup3 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.ribbonTab5 = new Telerik.WinControls.UI.RibbonTab();
@@ -52,10 +54,20 @@
             this.ribbonTab7 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup12 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup13 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup18 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup21 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.ribbonTab8 = new Telerik.WinControls.UI.RibbonTab();
+            this.ribbonTab10 = new Telerik.WinControls.UI.RibbonTab();
+            this.radRibbonBarGroup24 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup25 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.ribbonTab9 = new Telerik.WinControls.UI.RibbonTab();
+            this.radRibbonBarGroup19 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.radRibbonBarGroup20 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.ribbonTab11 = new Telerik.WinControls.UI.RibbonTab();
             this.btnexit = new Telerik.WinControls.UI.RadButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ribbonTab6 = new Telerik.WinControls.UI.RibbonTab();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ribbonTab12 = new Telerik.WinControls.UI.RibbonTab();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnexit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,7 +82,11 @@
             this.ribbonTab4,
             this.ribbonTab5,
             this.ribbonTab7,
-            this.ribbonTab8});
+            this.ribbonTab8,
+            this.ribbonTab10,
+            this.ribbonTab9,
+            this.ribbonTab11,
+            this.ribbonTab12});
             // 
             // 
             // 
@@ -85,6 +101,7 @@
             this.radRibbonBar1.Size = new System.Drawing.Size(1702, 169);
             this.radRibbonBar1.TabIndex = 0;
             this.radRibbonBar1.Text = "الصفحة الرئيسية";
+            this.radRibbonBar1.Click += new System.EventHandler(this.radRibbonBar1_Click);
             // 
             // ribbonTab1
             // 
@@ -104,7 +121,8 @@
             this.radRibbonBarGroup6,
             this.radRibbonBarGroup7,
             this.radRibbonBarGroup8,
-            this.radRibbonBarGroup17});
+            this.radRibbonBarGroup17,
+            this.radRibbonBarGroup22});
             this.ribbonTab2.Name = "ribbonTab2";
             this.ribbonTab2.Text = "الموردين";
             this.ribbonTab2.UseMnemonic = false;
@@ -140,6 +158,12 @@
             this.radRibbonBarGroup17.Text = "التوريدات";
             this.radRibbonBarGroup17.Click += new System.EventHandler(this.radRibbonBarGroup17_Click);
             // 
+            // radRibbonBarGroup22
+            // 
+            this.radRibbonBarGroup22.Name = "radRibbonBarGroup22";
+            this.radRibbonBarGroup22.Text = "ميزان مراجعة الموردين";
+            this.radRibbonBarGroup22.Click += new System.EventHandler(this.radRibbonBarGroup22_Click);
+            // 
             // ribbonTab3
             // 
             this.ribbonTab3.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -150,7 +174,8 @@
             this.radRibbonBarGroup9,
             this.radRibbonBarGroup10,
             this.radRibbonBarGroup11,
-            this.radRibbonBarGroup16});
+            this.radRibbonBarGroup16,
+            this.radRibbonBarGroup23});
             this.ribbonTab3.Name = "ribbonTab3";
             this.ribbonTab3.Text = "العملاء";
             this.ribbonTab3.UseMnemonic = false;
@@ -166,7 +191,7 @@
             // 
             this.radRibbonBarGroup4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radRibbonBarGroup4.Name = "radRibbonBarGroup4";
-            this.radRibbonBarGroup4.Text = "إضافة مستسمر";
+            this.radRibbonBarGroup4.Text = "إضافة مستثمر";
             this.radRibbonBarGroup4.Click += new System.EventHandler(this.radRibbonBarGroup4_Click);
             // 
             // radRibbonBarGroup9
@@ -192,6 +217,12 @@
             this.radRibbonBarGroup16.Name = "radRibbonBarGroup16";
             this.radRibbonBarGroup16.Text = "عرض المبيعات";
             this.radRibbonBarGroup16.Click += new System.EventHandler(this.radRibbonBarGroup16_Click);
+            // 
+            // radRibbonBarGroup23
+            // 
+            this.radRibbonBarGroup23.Name = "radRibbonBarGroup23";
+            this.radRibbonBarGroup23.Text = "ميزان مراجعة العملاء";
+            this.radRibbonBarGroup23.Click += new System.EventHandler(this.radRibbonBarGroup23_Click);
             // 
             // ribbonTab4
             // 
@@ -246,7 +277,9 @@
             this.ribbonTab7.IsSelected = false;
             this.ribbonTab7.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup12,
-            this.radRibbonBarGroup13});
+            this.radRibbonBarGroup13,
+            this.radRibbonBarGroup18,
+            this.radRibbonBarGroup21});
             this.ribbonTab7.Name = "ribbonTab7";
             this.ribbonTab7.Text = "المقبوضات والمدفوعات";
             this.ribbonTab7.UseMnemonic = false;
@@ -261,17 +294,86 @@
             // radRibbonBarGroup13
             // 
             this.radRibbonBarGroup13.Name = "radRibbonBarGroup13";
-            this.radRibbonBarGroup13.Text = "المدفوعات العمة";
+            this.radRibbonBarGroup13.Text = "المدفوعات العامة";
             this.radRibbonBarGroup13.Click += new System.EventHandler(this.radRibbonBarGroup13_Click);
+            // 
+            // radRibbonBarGroup18
+            // 
+            this.radRibbonBarGroup18.Name = "radRibbonBarGroup18";
+            this.radRibbonBarGroup18.Text = "بنود المقبوضات العامة";
+            this.radRibbonBarGroup18.Click += new System.EventHandler(this.radRibbonBarGroup18_Click_1);
+            // 
+            // radRibbonBarGroup21
+            // 
+            this.radRibbonBarGroup21.Name = "radRibbonBarGroup21";
+            this.radRibbonBarGroup21.Text = "بنود المدفوعات العامة";
+            this.radRibbonBarGroup21.Click += new System.EventHandler(this.radRibbonBarGroup21_Click);
             // 
             // ribbonTab8
             // 
             this.ribbonTab8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ribbonTab8.IsSelected = true;
+            this.ribbonTab8.IsSelected = false;
             this.ribbonTab8.Name = "ribbonTab8";
             this.ribbonTab8.Text = "الخزنة";
             this.ribbonTab8.UseMnemonic = false;
             this.ribbonTab8.Click += new System.EventHandler(this.ribbonTab8_Click);
+            // 
+            // ribbonTab10
+            // 
+            this.ribbonTab10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab10.IsSelected = false;
+            this.ribbonTab10.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup24,
+            this.radRibbonBarGroup25});
+            this.ribbonTab10.Name = "ribbonTab10";
+            this.ribbonTab10.Text = "المرتجعات";
+            this.ribbonTab10.UseMnemonic = false;
+            // 
+            // radRibbonBarGroup24
+            // 
+            this.radRibbonBarGroup24.Name = "radRibbonBarGroup24";
+            this.radRibbonBarGroup24.Text = "مرتجعات المشتريات";
+            this.radRibbonBarGroup24.Click += new System.EventHandler(this.radRibbonBarGroup24_Click);
+            // 
+            // radRibbonBarGroup25
+            // 
+            this.radRibbonBarGroup25.Name = "radRibbonBarGroup25";
+            this.radRibbonBarGroup25.Text = "مرتجعات المبيعات";
+            this.radRibbonBarGroup25.Click += new System.EventHandler(this.radRibbonBarGroup25_Click);
+            // 
+            // ribbonTab9
+            // 
+            this.ribbonTab9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab9.IsSelected = false;
+            this.ribbonTab9.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup19,
+            this.radRibbonBarGroup20});
+            this.ribbonTab9.Name = "ribbonTab9";
+            this.ribbonTab9.Text = "نموذج التشغيل";
+            this.ribbonTab9.UseMnemonic = false;
+            // 
+            // radRibbonBarGroup19
+            // 
+            this.radRibbonBarGroup19.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.radRibbonBarGroup19.Name = "radRibbonBarGroup19";
+            this.radRibbonBarGroup19.Text = "الخامات";
+            this.radRibbonBarGroup19.Click += new System.EventHandler(this.radRibbonBarGroup19_Click);
+            // 
+            // radRibbonBarGroup20
+            // 
+            this.radRibbonBarGroup20.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.radRibbonBarGroup20.Name = "radRibbonBarGroup20";
+            this.radRibbonBarGroup20.Text = "الإنتاج التام";
+            this.radRibbonBarGroup20.Click += new System.EventHandler(this.radRibbonBarGroup20_Click);
+            // 
+            // ribbonTab11
+            // 
+            this.ribbonTab11.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab11.IsSelected = false;
+            this.ribbonTab11.Name = "ribbonTab11";
+            this.ribbonTab11.Text = "قائمة ارباح وخسائر";
+            this.ribbonTab11.UseMnemonic = false;
+            this.ribbonTab11.Click += new System.EventHandler(this.ribbonTab11_Click);
             // 
             // btnexit
             // 
@@ -282,17 +384,6 @@
             this.btnexit.TabIndex = 1;
             this.btnexit.Text = "إغلاق";
             this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::Elmagd.Properties.Resources._000000000000000002222222222222222;
-            this.pictureBox1.Location = new System.Drawing.Point(516, 256);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(652, 405);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // ribbonTab6
             // 
@@ -305,6 +396,26 @@
             this.ribbonTab6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.ribbonTab6.UseCompatibleTextRendering = false;
             this.ribbonTab6.UseMnemonic = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::Elmagd.Properties.Resources._000000000000000002222222222222222;
+            this.pictureBox1.Location = new System.Drawing.Point(444, 284);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(761, 405);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ribbonTab12
+            // 
+            this.ribbonTab12.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab12.IsSelected = true;
+            this.ribbonTab12.Name = "ribbonTab12";
+            this.ribbonTab12.Text = "عرض قائمة ارباح وخسائر عن السنوات المالية";
+            this.ribbonTab12.UseMnemonic = false;
+            this.ribbonTab12.Click += new System.EventHandler(this.ribbonTab12_Click);
             // 
             // Homeform
             // 
@@ -357,6 +468,18 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.UI.RibbonTab ribbonTab6;
         private Telerik.WinControls.UI.RibbonTab ribbonTab8;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab9;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup19;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup20;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup18;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup21;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup22;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup23;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab10;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup24;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup25;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab11;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab12;
 
     }
 }

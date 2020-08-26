@@ -63,6 +63,16 @@ namespace Elmagd.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _0_2hauu4oZyh9T2R2v {
+            get {
+                object obj = ResourceManager.GetObject("0_2hauu4oZyh9T2R2v", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _000000000000000002222222222222222 {
             get {
                 object obj = ResourceManager.GetObject("000000000000000002222222222222222", resourceCulture);
@@ -76,6 +86,16 @@ namespace Elmagd.Properties {
         internal static System.Drawing.Bitmap _0000000011111111111111111 {
             get {
                 object obj = ResourceManager.GetObject("0000000011111111111111111", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10101020 {
+            get {
+                object obj = ResourceManager.GetObject("10101020", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +126,16 @@ namespace Elmagd.Properties {
         internal static System.Drawing.Bitmap رز {
             get {
                 object obj = ResourceManager.GetObject("رز", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap قائمه_الدخل___كل_شيء_عن_قائمة_الدخل_مع_الأمثلة {
+            get {
+                object obj = ResourceManager.GetObject("قائمه الدخل - كل شيء عن قائمة الدخل مع الأمثلة", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

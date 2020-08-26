@@ -26,13 +26,14 @@ namespace Elmagd
         {
             generaldate.Value = DateTime.Now;
             BindGrid();
+            Loadpaymentitem();
         }
 
         #region BINDGRID
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select GENERAL_PAYMENTS.id, GENERAL_PAYMENTS.name as الاسم  ,GENERAL_PAYMENTS.value as المبلغ,GENERAL_PAYMENTS.notes as الملاحظات ,GENERAL_PAYMENTS.date as التاريخ from GENERAL_PAYMENTS ";
+            cmd.CommandText = @"select GENERAL_PAYMENTS.id, GENERAL_PAYMENT_ITEMS.name as بند_المدفوعات_العامة  ,GENERAL_PAYMENTS.value as المبلغ,GENERAL_PAYMENTS.notes as الملاحظات ,GENERAL_PAYMENTS.date as التاريخ from GENERAL_PAYMENTS inner join GENERAL_PAYMENT_ITEMS on GENERAL_PAYMENT_ITEMS.id = GENERAL_PAYMENTS.paymentitems_id ";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -41,12 +42,24 @@ namespace Elmagd
             conn.Close();
         }
         #endregion
+        private void Loadpaymentitem()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("Select * From GENERAL_PAYMENT_ITEMS", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DataRow dr = dt.NewRow();
+            dr["name"] = "---اختر بند---";
+            dt.Rows.InsertAt(dr, 0);
+            combopaymentitem.ValueMember = "id";
+            combopaymentitem.DisplayMember = "name";
+            combopaymentitem.DataSource = dt;
+        }
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            if (txtname.Text.Equals(""))
+            if ((int)combopaymentitem.SelectedIndex==0)
             {
-                MessageBox.Show("برجاء إدخال الاسم");
+                MessageBox.Show("برجاء اختير بند المدفوعات العامة");
             }
             else if (txtvalue.Text.Equals(""))
             {
@@ -55,9 +68,9 @@ namespace Elmagd
             else
             {
                 conn.Open();
-                cmd.CommandText = @"insert into GENERAL_PAYMENTS (name,value,date,notes) values(@name,@value,@date,@notes)";
+                cmd.CommandText = @"insert into GENERAL_PAYMENTS (paymentitems_id,value,date,notes) values(@paymentitems_id,@value,@date,@notes)";
                 cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@name", txtname.Text);
+                cmd.Parameters.AddWithValue("@paymentitems_id", (int)combopaymentitem.SelectedValue);
                 cmd.Parameters.AddWithValue("@value", double.Parse(txtvalue.Text));
                 cmd.Parameters.AddWithValue("@date", generaldate.Value.Date.ToShortDateString());
                 cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
@@ -65,6 +78,7 @@ namespace Elmagd
                 cmd.Parameters.Clear();
                 conn.Close();
                 BindGrid();
+                combopaymentitem.SelectedIndex = 0;
                 txtvalue.Text = "";
                 txtnotes.Text = "";
                 MessageBox.Show("تمت عمليه الاضافه");
@@ -100,7 +114,7 @@ namespace Elmagd
                 {
                     generalpaymentgrid.CurrentRow.Selected = true;
                     id = int.Parse(generalpaymentgrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                    txtname.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    combopaymentitem.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                     txtvalue.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
                     txtnotes.Text = generalpaymentgrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
                     btnadd.Enabled = false;
@@ -116,14 +130,14 @@ namespace Elmagd
             else
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("update GENERAL_PAYMENTS set name=@name,value=@value,notes =@notes where id = '" + id + "'", conn);
-                cmd.Parameters.AddWithValue("@name", txtname.Text);
+                SqlCommand cmd = new SqlCommand("update GENERAL_PAYMENTS set paymentitems_id=@paymentitems_id,value=@value,notes =@notes where id = '" + id + "'", conn);
+                cmd.Parameters.AddWithValue("@paymentitems_id", (int)combopaymentitem.SelectedValue);
                 cmd.Parameters.AddWithValue("@value", double.Parse(txtvalue.Text));
                 cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 BindGrid();
-                txtname.Text = "";
+                combopaymentitem.SelectedIndex = 0;
                 txtvalue.Text = "";
                 txtnotes.Text = "";
                 MessageBox.Show("تم التعديل");
@@ -147,6 +161,7 @@ namespace Elmagd
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     BindGrid();
+                    combopaymentitem.SelectedIndex = 0;
                     txtvalue.Text = "";
                     txtnotes.Text = "";
                     MessageBox.Show("تم الحذف");
@@ -175,14 +190,14 @@ namespace Elmagd
             }
         }
 
-        private void txtname_TextChanged(object sender, EventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtname.Text, "[0-9.*]"))
-            {
-                MessageBox.Show("يجب ادخال حروف فقط");
-                txtname.Text = txtname.Text.Remove(txtname.Text.Length - 1);
-            }    
-        }
+        //private void txtname_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (System.Text.RegularExpressions.Regex.IsMatch(txtname.Text, "[0-9.*]"))
+        //    {
+        //        MessageBox.Show("يجب ادخال حروف فقط");
+        //        txtname.Text = txtname.Text.Remove(txtname.Text.Length - 1);
+        //    }    
+        //}
 
         private void label9_Click(object sender, EventArgs e)
         {

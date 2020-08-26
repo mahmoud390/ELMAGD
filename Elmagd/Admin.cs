@@ -43,17 +43,22 @@ namespace Elmagd
 
         private void admingrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (admingrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
-                MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
-            else
+            btnadd.Enabled = false;
+            try
             {
-                admingrid.CurrentRow.Selected = true;
-                id = int.Parse(admingrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
-                txtname.Text = admingrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtphone.Text = admingrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
-                txtusername.Text = admingrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
-                txtpassword.Text = admingrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                if (admingrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString() == "")
+                    MessageBox.Show("يجب الضغط على صف يحتوى على بيانات بالفعل");
+                else
+                {
+                    admingrid.CurrentRow.Selected = true;
+                    id = int.Parse(admingrid.Rows[e.RowIndex].Cells[0].FormattedValue.ToString());
+                    txtname.Text = admingrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    txtphone.Text = admingrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                    txtusername.Text = admingrid.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+                    txtpassword.Text = admingrid.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void btnedite_Click(object sender, EventArgs e)
@@ -77,6 +82,7 @@ namespace Elmagd
                 txtpassword.Text = "";
                 MessageBox.Show("تم التعديل");
                 id = 0;
+                btnadd.Enabled = true;
             }
         }
 
@@ -102,6 +108,7 @@ namespace Elmagd
                     txtpassword.Text = "";
                     MessageBox.Show("تم الحذف");
                     id = 0;
+                    btnadd.Enabled = true;
                 }
             }
 
@@ -146,6 +153,7 @@ namespace Elmagd
                 MessageBox.Show("برجاء إدخال اسم المستخدم");
             else if (txtpassword.Text.Equals(""))
                 MessageBox.Show("برجاء إدخال الباسورد");
+            else
             {
 
                 //التشيك علي اسم المستخدم اذا كان موجود\ بالفعل

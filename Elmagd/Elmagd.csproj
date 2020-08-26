@@ -84,6 +84,12 @@
     <Compile Include="Clients.Designer.cs">
       <DependentUpon>Clients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Client_Audit_balance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client_Audit_balance.Designer.cs">
+      <DependentUpon>Client_Audit_balance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clint_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="Commission_Detail.Designer.cs">
       <DependentUpon>Commission_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Full_Production.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Full_Production.Designer.cs">
+      <DependentUpon>Full_Production.cs</DependentUpon>
     </Compile>
     <Compile Include="General_payments.cs">
       <SubType>Form</SubType>
@@ -108,6 +120,12 @@
     <Compile Include="General_Payments_Detail.Designer.cs">
       <DependentUpon>General_Payments_Detail.cs</DependentUpon>
     </Compile>
+    <Compile Include="General_Payment_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Payment_Items.Designer.cs">
+      <DependentUpon>General_Payment_Items.cs</DependentUpon>
+    </Compile>
     <Compile Include="General_Receipts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +137,12 @@
     </Compile>
     <Compile Include="General_Receipts_Detail.Designer.cs">
       <DependentUpon>General_Receipts_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General_Recepits_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Recepits_Items.Designer.cs">
+      <DependentUpon>General_Recepits_Items.cs</DependentUpon>
     </Compile>
     <Compile Include="Homeform.cs">
       <SubType>Form</SubType>
@@ -150,11 +174,29 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main_Information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main_Information.Designer.cs">
+      <DependentUpon>Main_Information.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mashal_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mashal_Detail.Designer.cs">
       <DependentUpon>Mashal_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Material.Designer.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operating _Model.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operating _Model.Designer.cs">
+      <DependentUpon>Operating _Model.cs</DependentUpon>
     </Compile>
     <Compile Include="Payments_Client.cs">
       <SubType>Form</SubType>
@@ -168,8 +210,20 @@
     <Compile Include="Payments_Suppliers.Designer.cs">
       <DependentUpon>Payments_Suppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profit_and_loss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profit_and_loss.Designer.cs">
+      <DependentUpon>Profit_and_loss.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase_returns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase_returns.Designer.cs">
+      <DependentUpon>Purchase_returns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receipts_Client.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +241,18 @@
     </Compile>
     <Compile Include="Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_Returns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales_Returns.Designer.cs">
+      <DependentUpon>Sales_Returns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show_Profit_And_Loss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show_Profit_And_Loss.Designer.cs">
+      <DependentUpon>show_Profit_And_Loss.cs</DependentUpon>
     </Compile>
     <Compile Include="Show_stores.cs">
       <SubType>Form</SubType>
@@ -218,6 +284,12 @@
     <Compile Include="Suppliers_Detail.Designer.cs">
       <DependentUpon>Suppliers_Detail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier_Audit_Balance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_Audit_Balance.Designer.cs">
+      <DependentUpon>Supplier_Audit_Balance.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,11 +308,17 @@
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Client_Audit_balance.resx">
+      <DependentUpon>Client_Audit_balance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clint_Detail.resx">
       <DependentUpon>Clint_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Commission_Detail.resx">
       <DependentUpon>Commission_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Full_Production.resx">
+      <DependentUpon>Full_Production.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General_payments.resx">
       <DependentUpon>General_payments.cs</DependentUpon>
@@ -248,11 +326,17 @@
     <EmbeddedResource Include="General_Payments_Detail.resx">
       <DependentUpon>General_Payments_Detail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="General_Payment_Items.resx">
+      <DependentUpon>General_Payment_Items.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="General_Receipts.resx">
       <DependentUpon>General_Receipts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General_Receipts_Detail.resx">
       <DependentUpon>General_Receipts_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General_Recepits_Items.resx">
+      <DependentUpon>General_Recepits_Items.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Homeform.resx">
       <DependentUpon>Homeform.cs</DependentUpon>
@@ -269,14 +353,26 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main_Information.resx">
+      <DependentUpon>Main_Information.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mashal_Detail.resx">
       <DependentUpon>Mashal_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Material.resx">
+      <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operating _Model.resx">
+      <DependentUpon>Operating _Model.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payments_Client.resx">
       <DependentUpon>Payments_Client.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payments_Suppliers.resx">
       <DependentUpon>Payments_Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profit_and_loss.resx">
+      <DependentUpon>Profit_and_loss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -289,6 +385,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Purchase_returns.resx">
+      <DependentUpon>Purchase_returns.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receipts_Client.resx">
       <DependentUpon>Receipts_Client.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales_Returns.resx">
+      <DependentUpon>Sales_Returns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_Profit_And_Loss.resx">
+      <DependentUpon>show_Profit_And_Loss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Show_stores.resx">
       <DependentUpon>Show_stores.cs</DependentUpon>
@@ -312,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Suppliers_Detail.resx">
       <DependentUpon>Suppliers_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_Audit_Balance.resx">
+      <DependentUpon>Supplier_Audit_Balance.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -340,6 +448,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\000000000000000002222222222222222.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10101020.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\قائمه الدخل - كل شيء عن قائمة الدخل مع الأمثلة.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0_2hauu4oZyh9T2R2v.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -147,6 +147,77 @@ namespace Elmagd
             Cachier.Show();
         }
 
+        private void radRibbonBarGroup18_Click(object sender, EventArgs e)
+        {
+            //Main_Information main_information = new Main_Information();
+            //main_information.Show();
+        }
+
+        private void radRibbonBarGroup19_Click(object sender, EventArgs e)
+        {
+            Material material = new Material();
+            material.Show();
+        }
+
+        private void radRibbonBarGroup20_Click(object sender, EventArgs e)
+        {
+            Full_Production full_production = new Full_Production();
+            full_production.Show();
+        }
+
+        private void radRibbonBarGroup21_Click(object sender, EventArgs e)
+        {
+            General_Payment_Items generl_payment_items = new General_Payment_Items();
+            generl_payment_items.Show();
+        }
+
+        private void radRibbonBarGroup18_Click_1(object sender, EventArgs e)
+        {
+            General_Recepits_Items general_recepits_items = new General_Recepits_Items();
+            general_recepits_items.Show();
+        }
+
+        private void radRibbonBarGroup22_Click(object sender, EventArgs e)
+        {
+            Supplier_Audit_Balance suppliers_audit_balance = new Supplier_Audit_Balance();
+            suppliers_audit_balance.Show();
+        }
+
+        private void radRibbonBarGroup23_Click(object sender, EventArgs e)
+        {
+            Client_Audit_balance client_audit_balance = new Client_Audit_balance();
+            client_audit_balance.Show();
+        }
+
+        private void radRibbonBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radRibbonBarGroup24_Click(object sender, EventArgs e)
+        {
+            Purchase_returns purchase_returns = new Purchase_returns();
+            purchase_returns.Show();
+        }
+
+        private void radRibbonBarGroup25_Click(object sender, EventArgs e)
+        {
+            Sales_Returns sales_returns = new Sales_Returns();
+            sales_returns.Show();
+        }
+
+        private void ribbonTab11_Click(object sender, EventArgs e)
+        {
+            Profit_and_loss profit_and_loss = new Profit_and_loss();
+            profit_and_loss.Show();
+        }
+
+        private void ribbonTab12_Click(object sender, EventArgs e)
+        {
+            show_Profit_And_Loss show_profit_and_loss = new show_Profit_And_Loss();
+            show_profit_and_loss.Show();
+        }
+
        
     }
 }
