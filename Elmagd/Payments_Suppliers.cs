@@ -170,25 +170,30 @@ namespace Elmagd
         #region DELET_PAYMENTS_SUPPLIERS
         private void btndelet_Click(object sender, EventArgs e)
         {
-            if (id == 0)
-                MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
-            else
+            try
             {
-                foreach (DataGridViewRow row in sup_paymentsgrid.SelectedRows)
+                if (id == 0)
+                    MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
+                else
                 {
-                    sup_paymentsgrid.Rows.RemoveAt(row.Index);
-                    conn.Open();
-                    cmd.CommandText = @"delete from PAYMENTS_SUPPLIERS where id = '" + id + "'";
-                    cmd.Connection = conn;
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    BindGrid();
-                    txtvalue.Text = "";
-                    txtnotes.Text = "";
-                    MessageBox.Show("تم الحذف");
-                    id = 0;
-                    btnadd.Enabled = true;
+                    foreach (DataGridViewRow row in sup_paymentsgrid.SelectedRows)
+                    {
+                        sup_paymentsgrid.Rows.RemoveAt(row.Index);
+                        conn.Open();
+                        cmd.CommandText = @"delete from PAYMENTS_SUPPLIERS where id = '" + id + "'";
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        BindGrid();
+                        txtvalue.Text = "";
+                        txtnotes.Text = "";
+                        MessageBox.Show("تم الحذف");
+                        id = 0;
+                        btnadd.Enabled = true;
+                    }
                 }
+            }catch(Exception ex){
+                MessageBox.Show("يجب حذف هذه العملية من الخزنة أولا");
             }
         }
         #endregion

@@ -141,7 +141,6 @@ namespace Elmagd
                     else
                         txtquantity.Text = quantity.ToString();
                 }
-
             }
         }
         #endregion
