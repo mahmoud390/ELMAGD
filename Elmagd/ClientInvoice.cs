@@ -41,7 +41,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select TEMP_CLIENT.id,TEMP_CLIENT.invoiceNo رقم_الفاتورة,CLIENT.name as إسم_العميل,CATEGORY.name as إسم_الصنف ,STORE.name as إسم_المخزن,TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكميه,TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as الإجمالي_بعدالخصم,TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
+            cmd.CommandText = @"select TEMP_CLIENT.id as م,TEMP_CLIENT.invoiceNo 'رقم الفاتورة',CLIENT.name as 'إسم العميل',CATEGORY.name as 'إسم الصنف' ,STORE.name as 'إسم المخزن',TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as 'الإجمالي بعد الإضافات',TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

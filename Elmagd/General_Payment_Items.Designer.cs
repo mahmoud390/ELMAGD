@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtname = new Telerik.WinControls.UI.RadTextBox();
             this.txtnotes = new Telerik.WinControls.UI.RadTextBox();
@@ -47,12 +48,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(878, 28);
+            this.label1.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(869, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 24);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(69, 30);
             this.label1.TabIndex = 78;
-            this.label1.Text = "الإسم ";
+            this.label1.Text = "الإسم :";
             // 
             // txtname
             // 
@@ -75,12 +77,13 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(866, 102);
+            this.label4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(846, 104);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 24);
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(92, 30);
             this.label4.TabIndex = 81;
-            this.label4.Text = "ملاحظات";
+            this.label4.Text = "ملاحظات:";
             // 
             // btndelet
             // 
@@ -120,9 +123,20 @@
             // 
             // General_Payment_Items_grid
             // 
+            this.General_Payment_Items_grid.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.General_Payment_Items_grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.General_Payment_Items_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.General_Payment_Items_grid.Location = new System.Drawing.Point(12, 379);
             this.General_Payment_Items_grid.Name = "General_Payment_Items_grid";
+            this.General_Payment_Items_grid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.General_Payment_Items_grid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.General_Payment_Items_grid.RowTemplate.Height = 24;
             this.General_Payment_Items_grid.Size = new System.Drawing.Size(926, 345);
             this.General_Payment_Items_grid.TabIndex = 90;
@@ -132,6 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(945, 736);
             this.Controls.Add(this.General_Payment_Items_grid);
             this.Controls.Add(this.btndelet);
@@ -141,6 +156,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtname);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "General_Payment_Items";
             this.Text = "بنود المدفوعات العامة";
             this.Load += new System.EventHandler(this.General_Payment_Items_Load);

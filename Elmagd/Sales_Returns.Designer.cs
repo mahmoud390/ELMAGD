@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label12 = new System.Windows.Forms.Label();
             this.comboquantitytype = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,35 +67,37 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(1255, 131);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 24);
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label12.Size = new System.Drawing.Size(107, 30);
             this.label12.TabIndex = 103;
-            this.label12.Text = "نوع الكمية";
+            this.label12.Text = "نوع الكمية:";
             // 
             // comboquantitytype
             // 
             this.comboquantitytype.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboquantitytype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboquantitytype.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboquantitytype.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboquantitytype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboquantitytype.FormattingEnabled = true;
             this.comboquantitytype.Location = new System.Drawing.Point(1041, 134);
             this.comboquantitytype.Name = "comboquantitytype";
-            this.comboquantitytype.Size = new System.Drawing.Size(172, 28);
+            this.comboquantitytype.Size = new System.Drawing.Size(172, 33);
             this.comboquantitytype.TabIndex = 102;
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(323, 130);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 24);
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label7.Size = new System.Drawing.Size(87, 30);
             this.label7.TabIndex = 101;
-            this.label7.Text = "الإجمالي";
+            this.label7.Text = "الإجمالي:";
             // 
             // txttotal
             // 
@@ -125,32 +127,34 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(938, 138);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 24);
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(67, 30);
             this.label6.TabIndex = 98;
-            this.label6.Text = "السعر";
+            this.label6.Text = "السعر:";
             // 
             // txtprice
             // 
             this.txtprice.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtprice.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtprice.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtprice.Location = new System.Drawing.Point(647, 138);
             this.txtprice.Name = "txtprice";
-            this.txtprice.Size = new System.Drawing.Size(239, 28);
+            this.txtprice.Size = new System.Drawing.Size(239, 32);
             this.txtprice.TabIndex = 97;
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(1684, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 24);
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(68, 30);
             this.label5.TabIndex = 96;
-            this.label5.Text = "الكميه";
+            this.label5.Text = "الكميه:";
             // 
             // txtquantity
             // 
@@ -165,81 +169,85 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(334, 48);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 24);
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(80, 30);
             this.label4.TabIndex = 94;
-            this.label4.Text = "المخزن";
+            this.label4.Text = "المخزن:";
             // 
             // combostore
             // 
             this.combostore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combostore.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combostore.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.combostore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combostore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combostore.FormattingEnabled = true;
             this.combostore.Location = new System.Drawing.Point(36, 48);
             this.combostore.Name = "combostore";
-            this.combostore.Size = new System.Drawing.Size(251, 28);
+            this.combostore.Size = new System.Drawing.Size(251, 33);
             this.combostore.TabIndex = 93;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(722, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 24);
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(77, 30);
             this.label3.TabIndex = 92;
-            this.label3.Text = "الصنف";
+            this.label3.Text = "الصنف:";
             // 
             // combocategory
             // 
             this.combocategory.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combocategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.combocategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combocategory.FormattingEnabled = true;
             this.combocategory.Location = new System.Drawing.Point(437, 48);
             this.combocategory.Name = "combocategory";
-            this.combocategory.Size = new System.Drawing.Size(241, 28);
+            this.combocategory.Size = new System.Drawing.Size(241, 33);
             this.combocategory.TabIndex = 91;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1223, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 24);
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(69, 30);
             this.label2.TabIndex = 90;
-            this.label2.Text = "العميل";
+            this.label2.Text = "العميل:";
             // 
             // comboclient
             // 
             this.comboclient.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboclient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboclient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboclient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboclient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboclient.FormattingEnabled = true;
             this.comboclient.Location = new System.Drawing.Point(838, 45);
             this.comboclient.Name = "comboclient";
-            this.comboclient.Size = new System.Drawing.Size(303, 28);
+            this.comboclient.Size = new System.Drawing.Size(303, 33);
             this.comboclient.TabIndex = 89;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1697, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 24);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(77, 30);
             this.label1.TabIndex = 88;
-            this.label1.Text = "التاريخ";
+            this.label1.Text = "التاريخ:";
             // 
             // clientinvoicedate
             // 
@@ -285,12 +293,13 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(1103, 328);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 24);
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(156, 30);
             this.label9.TabIndex = 108;
-            this.label9.Text = "بحث";
+            this.label9.Text = "بحث بإسم العميل:";
             // 
             // txtSarch
             // 
@@ -302,24 +311,26 @@
             // 
             // returnsgrid
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnsgrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnsgrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.returnsgrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.returnsgrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.returnsgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.returnsgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.returnsgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.returnsgrid.Location = new System.Drawing.Point(6, 373);
+            this.returnsgrid.Location = new System.Drawing.Point(8, 373);
             this.returnsgrid.Name = "returnsgrid";
             this.returnsgrid.ReadOnly = true;
+            this.returnsgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnsgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.returnsgrid.RowTemplate.Height = 24;
-            this.returnsgrid.Size = new System.Drawing.Size(1751, 400);
+            this.returnsgrid.Size = new System.Drawing.Size(2020, 600);
             this.returnsgrid.TabIndex = 106;
             this.returnsgrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.returnsgrid_CellClick);
             // 
@@ -327,6 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1774, 785);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSarch);
@@ -350,8 +362,10 @@
             this.Controls.Add(this.comboclient);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clientinvoicedate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Sales_Returns";
             this.Text = "Sales_Returns";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Sales_Returns_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txttotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btncalc)).EndInit();

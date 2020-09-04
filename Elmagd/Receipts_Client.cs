@@ -33,7 +33,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select RESEIPTS_CLIENT.id, RESEIPTS_CLIENT.date as التاريخ,CLIENT.name as الإسم ,RESEIPTS_CLIENT.value as المبلغ,RESEIPTS_CLIENT.notes as الملاحظات from RESEIPTS_CLIENT inner join CLIENT on RESEIPTS_CLIENT.client_id =CLIENT.id";
+            cmd.CommandText = @"select RESEIPTS_CLIENT.id as 'م', RESEIPTS_CLIENT.date as التاريخ,CLIENT.name as الإسم ,RESEIPTS_CLIENT.value as المبلغ,RESEIPTS_CLIENT.notes as الملاحظات from RESEIPTS_CLIENT inner join CLIENT on RESEIPTS_CLIENT.client_id =CLIENT.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

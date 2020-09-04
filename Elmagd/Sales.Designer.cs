@@ -55,6 +55,8 @@
             this.salesgrid.Location = new System.Drawing.Point(12, 83);
             this.salesgrid.Name = "salesgrid";
             this.salesgrid.ReadOnly = true;
+            this.salesgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.salesgrid.RowTemplate.Height = 24;
             this.salesgrid.Size = new System.Drawing.Size(2020, 900);
             this.salesgrid.TabIndex = 0;
@@ -85,11 +87,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1822, 764);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSarch);
             this.Controls.Add(this.salesgrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Sales";
             this.Text = "المبيعات";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

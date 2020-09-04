@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label9 = new System.Windows.Forms.Label();
             this.txtSarch = new Telerik.WinControls.UI.RadTextBox();
             this.btndelet = new Telerik.WinControls.UI.RadButton();
@@ -220,9 +221,19 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.sup_receiptsgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.sup_receiptsgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.sup_receiptsgrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.sup_receiptsgrid.Location = new System.Drawing.Point(12, 327);
             this.sup_receiptsgrid.Name = "sup_receiptsgrid";
             this.sup_receiptsgrid.ReadOnly = true;
+            this.sup_receiptsgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sup_receiptsgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.sup_receiptsgrid.RowTemplate.Height = 24;
             this.sup_receiptsgrid.Size = new System.Drawing.Size(2020, 650);
             this.sup_receiptsgrid.TabIndex = 53;
@@ -232,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(148)))), ((int)(((byte)(232)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1801, 777);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtSarch);
@@ -248,6 +259,7 @@
             this.Controls.Add(this.txtnotes);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.sup_receiptsgrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Receipt_Suppliers";
             this.Text = "مقبوضات من مورد";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

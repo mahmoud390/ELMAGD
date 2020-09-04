@@ -13,7 +13,7 @@ namespace Elmagd
 {
     public partial class Purchase_returns : Form
     {
-        int id, quntity_type,store_fromdb,cat_fromdb,quantitytype_fromdb;
+        int id, quntity_type, store_fromdb, cat_fromdb, quantitytype_fromdb;
         double enter_quantity, enterprice, totat, quantity_from_mainstore, total_quantity, quantity_fromdb, totalquantity_db, total_enter_quantity;
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
@@ -128,32 +128,15 @@ namespace Elmagd
                 MessageBox.Show("برجاء اختيار مورد");
             else if ((int)combocategory.SelectedIndex == 0)
                 MessageBox.Show("برجاء اختيار صنف");
-            else  if ((int)combostore.SelectedIndex == 0)
+            else if ((int)combostore.SelectedIndex == 0)
                 MessageBox.Show("برجاء اختيار مخزن");
             else if (txttotal.Text.Equals(""))
                 MessageBox.Show("برجاء الضغط علي زر اجمالي لحساب الاجمالي");
             else
             {
-                quntity_type=(int)comboquantitytype.SelectedValue;
-                conn.Close();
-                conn.Open();
-                cmd.CommandText = @"insert into PURCHASE_RETURNED (suppliers_id,category_id,quantity,quantitytype_id,price,total,store_id,date) values(@suppliers_id,@category_id,@quantity,@quantitytype_id,@price,@total,@store_id,@date)";
-                cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@suppliers_id", (int)combosuppliers.SelectedValue);
-                cmd.Parameters.AddWithValue("@category_id", (int)combocategory.SelectedValue);
-                cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
-                cmd.Parameters.AddWithValue("@price", txtprice.Text);
-                cmd.Parameters.AddWithValue("@total", txttotal.Text);
-                cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
-                cmd.Parameters.AddWithValue("@date", suppliersinvoicedate.Value.Date.ToShortDateString());
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                conn.Close();
-                BindGrid();
-                //----------------------------------------------
+                quntity_type = (int)comboquantitytype.SelectedValue;
                 // التشيك علي الكمية المراد ارجاعها
-                 conn.Open();
+                conn.Open();
                 cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
@@ -189,6 +172,7 @@ namespace Elmagd
                     }
                     else
                     {
+                        
                         conn.Open();
                         if (quntity_type == 2)
                         {
@@ -211,6 +195,25 @@ namespace Elmagd
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                         conn.Close();
+                        //---------------------------------
+                       //عملية الإضافة
+                        conn.Close();
+                        conn.Open();
+                        cmd.CommandText = @"insert into PURCHASE_RETURNED (suppliers_id,category_id,quantity,quantitytype_id,price,total,store_id,date) values(@suppliers_id,@category_id,@quantity,@quantitytype_id,@price,@total,@store_id,@date)";
+                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@suppliers_id", (int)combosuppliers.SelectedValue);
+                        cmd.Parameters.AddWithValue("@category_id", (int)combocategory.SelectedValue);
+                        cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                        cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
+                        cmd.Parameters.AddWithValue("@price", txtprice.Text);
+                        cmd.Parameters.AddWithValue("@total", txttotal.Text);
+                        cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
+                        cmd.Parameters.AddWithValue("@date", suppliersinvoicedate.Value.Date.ToShortDateString());
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        conn.Close();
+                        BindGrid();
+                        //----------------------------------------------
                     }
                 }
             }
@@ -292,6 +295,6 @@ namespace Elmagd
             }
         }
 
-      
+
     }
 }

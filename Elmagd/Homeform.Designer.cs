@@ -64,10 +64,10 @@
             this.radRibbonBarGroup19 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.radRibbonBarGroup20 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.ribbonTab11 = new Telerik.WinControls.UI.RibbonTab();
+            this.ribbonTab12 = new Telerik.WinControls.UI.RibbonTab();
             this.btnexit = new Telerik.WinControls.UI.RadButton();
             this.ribbonTab6 = new Telerik.WinControls.UI.RibbonTab();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ribbonTab12 = new Telerik.WinControls.UI.RibbonTab();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnexit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,7 +106,7 @@
             // ribbonTab1
             // 
             this.ribbonTab1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ribbonTab1.IsSelected = false;
+            this.ribbonTab1.IsSelected = true;
             this.ribbonTab1.Name = "ribbonTab1";
             this.ribbonTab1.Text = "بيانات المدير";
             this.ribbonTab1.UseMnemonic = false;
@@ -375,6 +375,15 @@
             this.ribbonTab11.UseMnemonic = false;
             this.ribbonTab11.Click += new System.EventHandler(this.ribbonTab11_Click);
             // 
+            // ribbonTab12
+            // 
+            this.ribbonTab12.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ribbonTab12.IsSelected = false;
+            this.ribbonTab12.Name = "ribbonTab12";
+            this.ribbonTab12.Text = "عرض قائمة ارباح وخسائر عن السنوات المالية";
+            this.ribbonTab12.UseMnemonic = false;
+            this.ribbonTab12.Click += new System.EventHandler(this.ribbonTab12_Click);
+            // 
             // btnexit
             // 
             this.btnexit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -399,23 +408,14 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::Elmagd.Properties.Resources._000000000000000002222222222222222;
-            this.pictureBox1.Location = new System.Drawing.Point(444, 284);
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = global::Elmagd.Properties.Resources.لينكس;
+            this.pictureBox1.Location = new System.Drawing.Point(492, 191);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(761, 405);
+            this.pictureBox1.Size = new System.Drawing.Size(644, 552);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // ribbonTab12
-            // 
-            this.ribbonTab12.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ribbonTab12.IsSelected = true;
-            this.ribbonTab12.Name = "ribbonTab12";
-            this.ribbonTab12.Text = "عرض قائمة ارباح وخسائر عن السنوات المالية";
-            this.ribbonTab12.UseMnemonic = false;
-            this.ribbonTab12.Click += new System.EventHandler(this.ribbonTab12_Click);
             // 
             // Homeform
             // 
@@ -465,7 +465,6 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup15;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup16;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup17;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.UI.RibbonTab ribbonTab6;
         private Telerik.WinControls.UI.RibbonTab ribbonTab8;
         private Telerik.WinControls.UI.RibbonTab ribbonTab9;
@@ -480,6 +479,7 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup25;
         private Telerik.WinControls.UI.RibbonTab ribbonTab11;
         private Telerik.WinControls.UI.RibbonTab ribbonTab12;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }

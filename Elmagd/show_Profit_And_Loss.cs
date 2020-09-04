@@ -28,7 +28,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select id,total_sales,return_sales,net_sales,purchases,return_purchase,total_purchase,first_term,available_goods,last_term,costof_goods,net_profit,general_paymentd,general_recepits,totalnet_profit,datefrom,dateto from PROFIT_AND_LOSS";
+            cmd.CommandText = @"select id  as 'م',total_sales as 'إجمالي المبيعات',return_sales as 'مردودات المبيعات',net_sales as 'صافي المبيعات',purchases as 'إجمالي المشتريات',return_purchase as 'مردودات المشتريات',total_purchase as 'صافي المستريات',first_term as 'رصيد اول المدة',available_goods as 'تكلفة البضاعة المتاحة',last_term  as 'رصيد أخر المدة',costof_goods as 'تكلفة البضاعة المباعة',net_profit as 'صافي الربح',general_paymentd as 'إجالي المدفوعات العامة',general_recepits as 'إجمالي المقبوضات العامة',totalnet_profit as 'إجمالي صافر الربح',datefrom  as 'التاريخ من ',dateto as 'التاريخ إالي' from PROFIT_AND_LOSS";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

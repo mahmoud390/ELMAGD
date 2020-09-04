@@ -36,7 +36,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select MAIN_STORE.id,STORE.name as المخزن, CATEGORY.name as الصنف,MAIN_STORE.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية from MAIN_STORE inner join STORE on MAIN_STORE.store_id =STORE.id inner join CATEGORY on MAIN_STORE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on MAIN_STORE.quantitytype_id =QUANTITY_TYPE.id";
+            cmd.CommandText = @"select MAIN_STORE.id,STORE.name as المخزن, CATEGORY.name as الصنف,MAIN_STORE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية' from MAIN_STORE inner join STORE on MAIN_STORE.store_id =STORE.id inner join CATEGORY on MAIN_STORE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on MAIN_STORE.quantitytype_id =QUANTITY_TYPE.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

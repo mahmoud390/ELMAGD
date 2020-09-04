@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.combostore = new System.Windows.Forms.ComboBox();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtnotes = new Telerik.WinControls.UI.RadTextBox();
             this.btndelet = new Telerik.WinControls.UI.RadButton();
             this.Tempmaterialgrid = new System.Windows.Forms.DataGridView();
             this.btnadd = new Telerik.WinControls.UI.RadButton();
@@ -46,10 +50,9 @@
             this.txtSarch = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateStart = new Telerik.WinControls.UI.RadDateTimePicker();
-            this.txtnotes = new Telerik.WinControls.UI.RadTextBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btndelet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tempmaterialgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).BeginInit();
@@ -58,19 +61,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(1649, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 24);
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(80, 30);
             this.label4.TabIndex = 89;
-            this.label4.Text = "المخزن";
+            this.label4.Text = "المخزن:";
             // 
             // combostore
             // 
@@ -106,6 +109,26 @@
             this.radGroupBox1.TabIndex = 90;
             this.radGroupBox1.Text = "الخامات";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(517, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 24);
+            this.label2.TabIndex = 97;
+            this.label2.Text = "ملاحظات";
+            // 
+            // txtnotes
+            // 
+            this.txtnotes.AutoSize = false;
+            this.txtnotes.Location = new System.Drawing.Point(62, 87);
+            this.txtnotes.Multiline = true;
+            this.txtnotes.Name = "txtnotes";
+            this.txtnotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtnotes.Size = new System.Drawing.Size(431, 127);
+            this.txtnotes.TabIndex = 98;
+            // 
             // btndelet
             // 
             this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
@@ -121,8 +144,18 @@
             // Tempmaterialgrid
             // 
             this.Tempmaterialgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tempmaterialgrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.Tempmaterialgrid.Location = new System.Drawing.Point(51, 297);
             this.Tempmaterialgrid.Name = "Tempmaterialgrid";
+            this.Tempmaterialgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tempmaterialgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.Tempmaterialgrid.RowTemplate.Height = 24;
             this.Tempmaterialgrid.Size = new System.Drawing.Size(1000, 500);
             this.Tempmaterialgrid.TabIndex = 70;
@@ -222,9 +255,19 @@
             // 
             // Materialgrid
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Materialgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Materialgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Materialgrid.Location = new System.Drawing.Point(12, 125);
             this.Materialgrid.Name = "Materialgrid";
+            this.Materialgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Materialgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.Materialgrid.RowTemplate.Height = 24;
             this.Materialgrid.Size = new System.Drawing.Size(905, 820);
             this.Materialgrid.TabIndex = 71;
@@ -252,12 +295,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1763, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 24);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(112, 30);
             this.label1.TabIndex = 94;
-            this.label1.Text = "تاريخ البدء";
+            this.label1.Text = "تاريخ البدء:";
             // 
             // dateStart
             // 
@@ -272,31 +316,11 @@
             this.dateStart.Text = "30-06-2020";
             this.dateStart.Value = new System.DateTime(2020, 6, 30, 14, 41, 31, 882);
             // 
-            // txtnotes
-            // 
-            this.txtnotes.AutoSize = false;
-            this.txtnotes.Location = new System.Drawing.Point(62, 87);
-            this.txtnotes.Multiline = true;
-            this.txtnotes.Name = "txtnotes";
-            this.txtnotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtnotes.Size = new System.Drawing.Size(431, 127);
-            this.txtnotes.TabIndex = 98;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(517, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 24);
-            this.label2.TabIndex = 97;
-            this.label2.Text = "ملاحظات";
-            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1808, 775);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateStart);
@@ -307,6 +331,7 @@
             this.Controls.Add(this.radGroupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combostore);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Material";
             this.Text = "الخامات";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -314,6 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
             this.radGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btndelet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tempmaterialgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).EndInit();
@@ -322,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

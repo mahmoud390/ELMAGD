@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -180,6 +182,12 @@
     <Compile Include="Main_Information.Designer.cs">
       <DependentUpon>Main_Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main_Login.Designer.cs">
+      <DependentUpon>Main_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mashal_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +267,12 @@
     </Compile>
     <Compile Include="Show_stores.Designer.cs">
       <DependentUpon>Show_stores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splach_screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splach_screen.Designer.cs">
+      <DependentUpon>Splach_screen.cs</DependentUpon>
     </Compile>
     <Compile Include="Store.cs">
       <SubType>Form</SubType>
@@ -356,6 +370,9 @@
     <EmbeddedResource Include="Main_Information.resx">
       <DependentUpon>Main_Information.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main_Login.resx">
+      <DependentUpon>Main_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mashal_Detail.resx">
       <DependentUpon>Mashal_Detail.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Show_stores.resx">
       <DependentUpon>Show_stores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splach_screen.resx">
+      <DependentUpon>Splach_screen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store.resx">
       <DependentUpon>Store.cs</DependentUpon>
@@ -457,6 +477,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\0_2hauu4oZyh9T2R2v.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linux.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\لينكس.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\turn-off-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\489.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

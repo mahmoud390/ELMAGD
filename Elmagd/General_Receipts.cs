@@ -174,7 +174,7 @@ namespace Elmagd
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select GENERAL_RECEIPTS.id, GENERAL_RECEIPTS.name as الاسم  ,GENERAL_RECEIPTS.value as المبلغ,GENERAL_RECEIPTS.notes as الملاحظات ,GENERAL_RECEIPTS.date as التاريخ from GENERAL_RECEIPTS  where GENERAL_RECEIPTS.name LIKE N'%" + txtSarch.Text + "%'", conn);
+            SqlDataAdapter dataadapter = new SqlDataAdapter("select GENERAL_RECEIPTS.id, GENERAL_RECEIPTS_ITEMS.name as بند_المقبوضات_العامة  ,GENERAL_RECEIPTS.value as المبلغ,GENERAL_RECEIPTS.notes as الملاحظات ,GENERAL_RECEIPTS.date as التاريخ from GENERAL_RECEIPTS inner join GENERAL_RECEIPTS_ITEMS on GENERAL_RECEIPTS_ITEMS.id =GENERAL_RECEIPTS.recepitsitems_id  where GENERAL_RECEIPTS_ITEMS.name  LIKE N'%" + txtSarch.Text + "%'", conn);
             DataTable dt = new DataTable();
             dataadapter.Fill(dt);
             generalgrid.DataSource = dt;

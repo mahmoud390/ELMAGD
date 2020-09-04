@@ -100,9 +100,10 @@
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1673, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 24);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(61, 24);
             this.label1.TabIndex = 49;
-            this.label1.Text = "التاريخ";
+            this.label1.Text = "التاريخ:";
             // 
             // suppliersinvoicedate
             // 
@@ -125,9 +126,10 @@
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1200, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 24);
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(88, 24);
             this.label2.TabIndex = 51;
-            this.label2.Text = "إسم المورد";
+            this.label2.Text = "إسم المورد:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // combosuppliers
@@ -149,9 +151,10 @@
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(690, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 24);
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(61, 24);
             this.label3.TabIndex = 53;
-            this.label3.Text = "الصنف";
+            this.label3.Text = "الصنف:";
             // 
             // combocategory
             // 
@@ -172,9 +175,10 @@
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(310, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 24);
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(64, 24);
             this.label4.TabIndex = 55;
-            this.label4.Text = "المخزن";
+            this.label4.Text = "المخزن:";
             // 
             // combostore
             // 
@@ -205,9 +209,10 @@
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(1660, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 24);
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(54, 24);
             this.label5.TabIndex = 57;
-            this.label5.Text = "الكميه";
+            this.label5.Text = "الكميه:";
             // 
             // label6
             // 
@@ -216,9 +221,10 @@
             this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(920, 139);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 24);
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(54, 24);
             this.label6.TabIndex = 59;
-            this.label6.Text = "السعر";
+            this.label6.Text = "السعر:";
             // 
             // txtprice
             // 
@@ -250,9 +256,10 @@
             this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(316, 140);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 24);
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label7.Size = new System.Drawing.Size(71, 24);
             this.label7.TabIndex = 62;
-            this.label7.Text = "الإجمالي";
+            this.label7.Text = "الإجمالي:";
             // 
             // txttotal
             // 
@@ -300,9 +307,10 @@
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(717, 144);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 24);
+            this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label14.Size = new System.Drawing.Size(54, 24);
             this.label14.TabIndex = 75;
-            this.label14.Text = "الباقي";
+            this.label14.Text = "الباقي:";
             // 
             // txtbaky
             // 
@@ -332,9 +340,10 @@
             this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1229, 144);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 24);
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label13.Size = new System.Drawing.Size(67, 24);
             this.label13.TabIndex = 73;
-            this.label13.Text = "المدفوع";
+            this.label13.Text = "المدفوع:";
             // 
             // txtpaid
             // 
@@ -375,9 +384,10 @@
             this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(187, 42);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(164, 24);
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label11.Size = new System.Drawing.Size(171, 24);
             this.label11.TabIndex = 71;
-            this.label11.Text = "الإجمالي بعد الخصومات";
+            this.label11.Text = "الإجمالي بعد الخصومات:";
             // 
             // txtrest
             // 
@@ -405,11 +415,12 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(830, 40);
+            this.label10.Location = new System.Drawing.Point(827, 41);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 24);
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label10.Size = new System.Drawing.Size(68, 24);
             this.label10.TabIndex = 69;
-            this.label10.Text = "عمولات";
+            this.label10.Text = "عمولات:";
             // 
             // txtcommestion
             // 
@@ -426,9 +437,10 @@
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(1158, 40);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 24);
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(51, 24);
             this.label9.TabIndex = 67;
-            this.label9.Text = "مشال";
+            this.label9.Text = "مشال:";
             // 
             // label8
             // 
@@ -436,9 +448,10 @@
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(1402, 41);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 24);
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(104, 24);
             this.label8.TabIndex = 65;
-            this.label8.Text = "كارتت بسكول";
+            this.label8.Text = "كارتت بسكول:";
             // 
             // txtmashal
             // 
@@ -486,9 +499,10 @@
             this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(1225, 143);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 24);
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label12.Size = new System.Drawing.Size(85, 24);
             this.label12.TabIndex = 66;
-            this.label12.Text = "نوع الكمية";
+            this.label12.Text = "نوع الكمية:";
             // 
             // comboquantitytype
             // 
@@ -508,7 +522,7 @@
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(201)))), ((int)(((byte)(38)))));
             this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
-            this.btnadd.Location = new System.Drawing.Point(3, 278);
+            this.btnadd.Location = new System.Drawing.Point(14, 344);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(154, 48);
             this.btnadd.TabIndex = 62;
@@ -519,7 +533,7 @@
             // 
             this.txtInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtInvoiceNo.ForeColor = System.Drawing.Color.Red;
-            this.txtInvoiceNo.Location = new System.Drawing.Point(13, 371);
+            this.txtInvoiceNo.Location = new System.Drawing.Point(15, 285);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.Size = new System.Drawing.Size(153, 32);
             this.txtInvoiceNo.TabIndex = 90;
@@ -529,11 +543,12 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(44, 344);
+            this.label15.Location = new System.Drawing.Point(80, 252);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 24);
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label15.Size = new System.Drawing.Size(102, 24);
             this.label15.TabIndex = 89;
-            this.label15.Text = "رقم الفاتورة";
+            this.label15.Text = "رقم الفاتورة:-";
             // 
             // printDocument1
             // 
@@ -578,6 +593,7 @@
             this.Controls.Add(this.combosuppliers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.suppliersinvoicedate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SuppliersInvoice";
             this.Text = "فاتورة مشتريات";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

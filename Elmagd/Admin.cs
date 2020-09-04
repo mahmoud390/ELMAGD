@@ -31,7 +31,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select id,name as الإسم, phone as الهاتف ,username as إسم_المستخدم ,password as كلمة_المرور from ADMIN";
+            cmd.CommandText = @"select id as 'م',name as الإسم, phone as الهاتف ,username as 'إسم المستخدم' ,password as 'كلمة المرور' from ADMIN";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

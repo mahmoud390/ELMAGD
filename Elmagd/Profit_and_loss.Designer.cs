@@ -71,6 +71,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnadd = new Telerik.WinControls.UI.RadButton();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnTotalsales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnreturnsales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnnetsales)).BeginInit();
@@ -93,41 +94,41 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel1.Location = new System.Drawing.Point(1373, 24);
+            this.panel1.Location = new System.Drawing.Point(1373, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(15, 744);
+            this.panel1.Size = new System.Drawing.Size(15, 965);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel2.Location = new System.Drawing.Point(1186, 24);
+            this.panel2.Location = new System.Drawing.Point(1186, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(15, 744);
+            this.panel2.Size = new System.Drawing.Size(15, 965);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel3.Location = new System.Drawing.Point(1005, 24);
+            this.panel3.Location = new System.Drawing.Point(1005, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(15, 744);
+            this.panel3.Size = new System.Drawing.Size(15, 965);
             this.panel3.TabIndex = 2;
             // 
             // btnTotalsales
             // 
-            this.btnTotalsales.Location = new System.Drawing.Point(766, 38);
+            this.btnTotalsales.Location = new System.Drawing.Point(766, 11);
             this.btnTotalsales.Name = "btnTotalsales";
-            this.btnTotalsales.Size = new System.Drawing.Size(214, 39);
+            this.btnTotalsales.Size = new System.Drawing.Size(214, 48);
             this.btnTotalsales.TabIndex = 3;
             this.btnTotalsales.Text = "جملة المبيعات";
             this.btnTotalsales.Click += new System.EventHandler(this.btnTotalsales_Click);
             // 
             // btnreturnsales
             // 
-            this.btnreturnsales.Location = new System.Drawing.Point(766, 103);
+            this.btnreturnsales.Location = new System.Drawing.Point(766, 97);
             this.btnreturnsales.Name = "btnreturnsales";
-            this.btnreturnsales.Size = new System.Drawing.Size(214, 39);
+            this.btnreturnsales.Size = new System.Drawing.Size(214, 50);
             this.btnreturnsales.TabIndex = 4;
             this.btnreturnsales.Text = "مردودات المبيعات";
             this.btnreturnsales.Click += new System.EventHandler(this.btnreturnsales_Click);
@@ -135,27 +136,27 @@
             // btnnetsales
             // 
             this.btnnetsales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnnetsales.Location = new System.Drawing.Point(766, 175);
+            this.btnnetsales.Location = new System.Drawing.Point(757, 175);
             this.btnnetsales.Name = "btnnetsales";
-            this.btnnetsales.Size = new System.Drawing.Size(214, 39);
+            this.btnnetsales.Size = new System.Drawing.Size(223, 43);
             this.btnnetsales.TabIndex = 5;
             this.btnnetsales.Text = "صافي المبيعات";
             this.btnnetsales.Click += new System.EventHandler(this.btnnetsales_Click);
             // 
             // btnpurchase
             // 
-            this.btnpurchase.Location = new System.Drawing.Point(766, 252);
+            this.btnpurchase.Location = new System.Drawing.Point(757, 260);
             this.btnpurchase.Name = "btnpurchase";
-            this.btnpurchase.Size = new System.Drawing.Size(214, 39);
+            this.btnpurchase.Size = new System.Drawing.Size(223, 48);
             this.btnpurchase.TabIndex = 4;
             this.btnpurchase.Text = "المشتريات";
             this.btnpurchase.Click += new System.EventHandler(this.btnpurchase_Click);
             // 
             // btnreturnpurchase
             // 
-            this.btnreturnpurchase.Location = new System.Drawing.Point(757, 366);
+            this.btnreturnpurchase.Location = new System.Drawing.Point(757, 379);
             this.btnreturnpurchase.Name = "btnreturnpurchase";
-            this.btnreturnpurchase.Size = new System.Drawing.Size(214, 39);
+            this.btnreturnpurchase.Size = new System.Drawing.Size(223, 46);
             this.btnreturnpurchase.TabIndex = 7;
             this.btnreturnpurchase.Text = "مردودات المشتريات";
             this.btnreturnpurchase.Click += new System.EventHandler(this.btnreturnpurchase_Click);
@@ -163,9 +164,9 @@
             // btnnetpruchase
             // 
             this.btnnetpruchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnnetpruchase.Location = new System.Drawing.Point(766, 497);
+            this.btnnetpruchase.Location = new System.Drawing.Point(770, 507);
             this.btnnetpruchase.Name = "btnnetpruchase";
-            this.btnnetpruchase.Size = new System.Drawing.Size(214, 39);
+            this.btnnetpruchase.Size = new System.Drawing.Size(214, 48);
             this.btnnetpruchase.TabIndex = 6;
             this.btnnetpruchase.Text = "صافي المشتريات";
             this.btnnetpruchase.Click += new System.EventHandler(this.btnnetpruchase_Click);
@@ -174,7 +175,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(805, 587);
+            this.label1.Location = new System.Drawing.Point(805, 607);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 29);
             this.label1.TabIndex = 8;
@@ -182,9 +183,9 @@
             // 
             // btnavailablgoods
             // 
-            this.btnavailablgoods.Location = new System.Drawing.Point(757, 674);
+            this.btnavailablgoods.Location = new System.Drawing.Point(765, 705);
             this.btnavailablgoods.Name = "btnavailablgoods";
-            this.btnavailablgoods.Size = new System.Drawing.Size(214, 39);
+            this.btnavailablgoods.Size = new System.Drawing.Size(214, 47);
             this.btnavailablgoods.TabIndex = 8;
             this.btnavailablgoods.Text = "تكلفة البضاعة المتاحه للبيع";
             this.btnavailablgoods.Click += new System.EventHandler(this.btnavailablgoods_Click);
@@ -192,33 +193,33 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkGray;
-            this.panel4.Location = new System.Drawing.Point(714, 24);
+            this.panel4.Location = new System.Drawing.Point(714, 7);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(15, 756);
+            this.panel4.Size = new System.Drawing.Size(15, 965);
             this.panel4.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel5.Location = new System.Drawing.Point(558, 24);
+            this.panel5.Location = new System.Drawing.Point(558, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(15, 756);
+            this.panel5.Size = new System.Drawing.Size(15, 965);
             this.panel5.TabIndex = 2;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel6.Location = new System.Drawing.Point(409, 24);
+            this.panel6.Location = new System.Drawing.Point(409, 6);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(15, 756);
+            this.panel6.Size = new System.Drawing.Size(15, 965);
             this.panel6.TabIndex = 3;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(82)))));
-            this.panel7.Location = new System.Drawing.Point(265, 24);
+            this.panel7.Location = new System.Drawing.Point(263, 7);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(15, 756);
+            this.panel7.Size = new System.Drawing.Size(17, 965);
             this.panel7.TabIndex = 4;
             // 
             // label2
@@ -233,9 +234,9 @@
             // 
             // btncostofgoods
             // 
-            this.btncostofgoods.Location = new System.Drawing.Point(16, 92);
+            this.btncostofgoods.Location = new System.Drawing.Point(16, 97);
             this.btncostofgoods.Name = "btncostofgoods";
-            this.btncostofgoods.Size = new System.Drawing.Size(214, 39);
+            this.btncostofgoods.Size = new System.Drawing.Size(214, 50);
             this.btncostofgoods.TabIndex = 9;
             this.btncostofgoods.Text = "تكلفة البضاعة المباعة";
             this.btncostofgoods.Click += new System.EventHandler(this.btncostofgoods_Click);
@@ -243,185 +244,201 @@
             // btnnetprofit
             // 
             this.btnnetprofit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnnetprofit.Location = new System.Drawing.Point(16, 160);
+            this.btnnetprofit.Location = new System.Drawing.Point(16, 217);
             this.btnnetprofit.Name = "btnnetprofit";
-            this.btnnetprofit.Size = new System.Drawing.Size(214, 39);
+            this.btnnetprofit.Size = new System.Drawing.Size(214, 48);
             this.btnnetprofit.TabIndex = 6;
             this.btnnetprofit.Text = "صافي الربح";
             this.btnnetprofit.Click += new System.EventHandler(this.btnnetprofit_Click);
             // 
             // btngeneralpayment
             // 
-            this.btngeneralpayment.Location = new System.Drawing.Point(16, 252);
+            this.btngeneralpayment.Location = new System.Drawing.Point(16, 341);
             this.btngeneralpayment.Name = "btngeneralpayment";
-            this.btngeneralpayment.Size = new System.Drawing.Size(214, 39);
+            this.btngeneralpayment.Size = new System.Drawing.Size(214, 47);
             this.btngeneralpayment.TabIndex = 10;
             this.btngeneralpayment.Text = "الدفوعات العامة";
             this.btngeneralpayment.Click += new System.EventHandler(this.btngeneralpayment_Click);
             // 
             // btngeneralrecepits
             // 
-            this.btngeneralrecepits.Location = new System.Drawing.Point(16, 333);
+            this.btngeneralrecepits.Location = new System.Drawing.Point(16, 450);
             this.btngeneralrecepits.Name = "btngeneralrecepits";
-            this.btngeneralrecepits.Size = new System.Drawing.Size(214, 39);
+            this.btngeneralrecepits.Size = new System.Drawing.Size(214, 47);
             this.btngeneralrecepits.TabIndex = 11;
             this.btngeneralrecepits.Text = "المقبوضات العامة";
             this.btngeneralrecepits.Click += new System.EventHandler(this.btngeneralrecepits_Click);
             // 
             // txttotalsales
             // 
-            this.txttotalsales.Location = new System.Drawing.Point(1229, 43);
+            this.txttotalsales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalsales.Location = new System.Drawing.Point(1229, 18);
             this.txttotalsales.Name = "txttotalsales";
             this.txttotalsales.ReadOnly = true;
-            this.txttotalsales.Size = new System.Drawing.Size(120, 22);
+            this.txttotalsales.Size = new System.Drawing.Size(120, 30);
             this.txttotalsales.TabIndex = 12;
             // 
             // txtreturnsales
             // 
-            this.txtreturnsales.Location = new System.Drawing.Point(1048, 109);
+            this.txtreturnsales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtreturnsales.Location = new System.Drawing.Point(1044, 109);
             this.txtreturnsales.Name = "txtreturnsales";
             this.txtreturnsales.ReadOnly = true;
-            this.txtreturnsales.Size = new System.Drawing.Size(120, 22);
+            this.txtreturnsales.Size = new System.Drawing.Size(120, 30);
             this.txtreturnsales.TabIndex = 13;
             // 
             // txtnetsales
             // 
-            this.txtnetsales.Location = new System.Drawing.Point(1412, 166);
+            this.txtnetsales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnetsales.Location = new System.Drawing.Point(1412, 164);
             this.txtnetsales.Name = "txtnetsales";
             this.txtnetsales.ReadOnly = true;
-            this.txtnetsales.Size = new System.Drawing.Size(120, 22);
+            this.txtnetsales.Size = new System.Drawing.Size(120, 30);
             this.txtnetsales.TabIndex = 14;
             // 
             // txtpurchase
             // 
-            this.txtpurchase.Location = new System.Drawing.Point(1048, 258);
+            this.txtpurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpurchase.Location = new System.Drawing.Point(1048, 264);
             this.txtpurchase.Name = "txtpurchase";
             this.txtpurchase.ReadOnly = true;
-            this.txtpurchase.Size = new System.Drawing.Size(120, 22);
+            this.txtpurchase.Size = new System.Drawing.Size(120, 30);
             this.txtpurchase.TabIndex = 15;
             // 
             // txtreturnpurchase
             // 
-            this.txtreturnpurchase.Location = new System.Drawing.Point(1048, 372);
+            this.txtreturnpurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtreturnpurchase.Location = new System.Drawing.Point(1048, 385);
             this.txtreturnpurchase.Name = "txtreturnpurchase";
             this.txtreturnpurchase.ReadOnly = true;
-            this.txtreturnpurchase.Size = new System.Drawing.Size(120, 22);
+            this.txtreturnpurchase.Size = new System.Drawing.Size(120, 30);
             this.txtreturnpurchase.TabIndex = 18;
             // 
             // txtnetpurchase
             // 
-            this.txtnetpurchase.Location = new System.Drawing.Point(1229, 497);
+            this.txtnetpurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnetpurchase.Location = new System.Drawing.Point(1229, 518);
             this.txtnetpurchase.Name = "txtnetpurchase";
             this.txtnetpurchase.ReadOnly = true;
-            this.txtnetpurchase.Size = new System.Drawing.Size(120, 22);
+            this.txtnetpurchase.Size = new System.Drawing.Size(120, 30);
             this.txtnetpurchase.TabIndex = 19;
             // 
             // txtfirstterm
             // 
-            this.txtfirstterm.Location = new System.Drawing.Point(1229, 583);
+            this.txtfirstterm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfirstterm.Location = new System.Drawing.Point(1229, 608);
             this.txtfirstterm.Name = "txtfirstterm";
-            this.txtfirstterm.Size = new System.Drawing.Size(120, 22);
+            this.txtfirstterm.Size = new System.Drawing.Size(120, 30);
             this.txtfirstterm.TabIndex = 20;
             // 
             // txtavailablgoods
             // 
-            this.txtavailablgoods.Location = new System.Drawing.Point(1229, 680);
+            this.txtavailablgoods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtavailablgoods.Location = new System.Drawing.Point(1229, 711);
             this.txtavailablgoods.Name = "txtavailablgoods";
             this.txtavailablgoods.ReadOnly = true;
-            this.txtavailablgoods.Size = new System.Drawing.Size(120, 22);
+            this.txtavailablgoods.Size = new System.Drawing.Size(120, 30);
             this.txtavailablgoods.TabIndex = 21;
             // 
             // txtlasttrem
             // 
+            this.txtlasttrem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtlasttrem.Location = new System.Drawing.Point(432, 38);
             this.txtlasttrem.Name = "txtlasttrem";
-            this.txtlasttrem.Size = new System.Drawing.Size(120, 22);
+            this.txtlasttrem.Size = new System.Drawing.Size(120, 30);
             this.txtlasttrem.TabIndex = 22;
             // 
             // txtcostofgoods
             // 
-            this.txtcostofgoods.Location = new System.Drawing.Point(588, 92);
+            this.txtcostofgoods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcostofgoods.Location = new System.Drawing.Point(588, 103);
             this.txtcostofgoods.Name = "txtcostofgoods";
             this.txtcostofgoods.ReadOnly = true;
-            this.txtcostofgoods.Size = new System.Drawing.Size(120, 22);
+            this.txtcostofgoods.Size = new System.Drawing.Size(120, 30);
             this.txtcostofgoods.TabIndex = 23;
             // 
             // txtnetprofit
             // 
-            this.txtnetprofit.Location = new System.Drawing.Point(588, 175);
+            this.txtnetprofit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnetprofit.Location = new System.Drawing.Point(588, 225);
             this.txtnetprofit.Name = "txtnetprofit";
             this.txtnetprofit.ReadOnly = true;
-            this.txtnetprofit.Size = new System.Drawing.Size(120, 22);
+            this.txtnetprofit.Size = new System.Drawing.Size(120, 30);
             this.txtnetprofit.TabIndex = 24;
             // 
             // txtgeneralpayment
             // 
-            this.txtgeneralpayment.Location = new System.Drawing.Point(283, 269);
+            this.txtgeneralpayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgeneralpayment.Location = new System.Drawing.Point(286, 358);
             this.txtgeneralpayment.Name = "txtgeneralpayment";
             this.txtgeneralpayment.ReadOnly = true;
-            this.txtgeneralpayment.Size = new System.Drawing.Size(120, 22);
+            this.txtgeneralpayment.Size = new System.Drawing.Size(120, 30);
             this.txtgeneralpayment.TabIndex = 25;
             // 
             // txtgeneralrecepits
             // 
-            this.txtgeneralrecepits.Location = new System.Drawing.Point(283, 350);
+            this.txtgeneralrecepits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgeneralrecepits.Location = new System.Drawing.Point(283, 458);
             this.txtgeneralrecepits.Name = "txtgeneralrecepits";
             this.txtgeneralrecepits.ReadOnly = true;
-            this.txtgeneralrecepits.Size = new System.Drawing.Size(120, 22);
+            this.txtgeneralrecepits.Size = new System.Drawing.Size(120, 30);
             this.txtgeneralrecepits.TabIndex = 26;
             // 
             // btntotalnetprofit
             // 
             this.btntotalnetprofit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btntotalnetprofit.Location = new System.Drawing.Point(16, 427);
+            this.btntotalnetprofit.Location = new System.Drawing.Point(16, 552);
             this.btntotalnetprofit.Name = "btntotalnetprofit";
-            this.btntotalnetprofit.Size = new System.Drawing.Size(214, 39);
+            this.btntotalnetprofit.Size = new System.Drawing.Size(214, 49);
             this.btntotalnetprofit.TabIndex = 7;
             this.btntotalnetprofit.Text = "إجمالي الربح";
             this.btntotalnetprofit.Click += new System.EventHandler(this.btntotalnetprofit_Click);
             // 
             // txttotalnetprofit
             // 
-            this.txttotalnetprofit.Location = new System.Drawing.Point(588, 444);
+            this.txttotalnetprofit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalnetprofit.Location = new System.Drawing.Point(588, 561);
             this.txttotalnetprofit.Name = "txttotalnetprofit";
             this.txttotalnetprofit.ReadOnly = true;
-            this.txttotalnetprofit.Size = new System.Drawing.Size(120, 22);
+            this.txttotalnetprofit.Size = new System.Drawing.Size(120, 30);
             this.txttotalnetprofit.TabIndex = 27;
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.DarkGray;
-            this.panel8.Location = new System.Drawing.Point(1562, 12);
+            this.panel8.Location = new System.Drawing.Point(1562, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(15, 756);
+            this.panel8.Size = new System.Drawing.Size(15, 965);
             this.panel8.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label5.Location = new System.Drawing.Point(1701, 138);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.label5.Location = new System.Drawing.Point(1796, 176);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 23);
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(125, 35);
             this.label5.TabIndex = 28;
-            this.label5.Text = "التاريخ الي";
+            this.label5.Text = "التاريخ الي:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label6.Location = new System.Drawing.Point(1704, 24);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.label6.Location = new System.Drawing.Point(1796, 62);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 23);
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(122, 35);
             this.label6.TabIndex = 29;
-            this.label6.Text = "التاريخ من";
+            this.label6.Text = "التاريخ من:";
             // 
             // dateto
             // 
             this.dateto.CustomFormat = "dd-MM-yyyy";
             this.dateto.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateto.Location = new System.Drawing.Point(1623, 202);
+            this.dateto.Location = new System.Drawing.Point(1624, 177);
             this.dateto.Name = "dateto";
             this.dateto.Size = new System.Drawing.Size(161, 32);
             this.dateto.TabIndex = 31;
@@ -445,40 +462,55 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Elmagd.Properties.Resources._0_2hauu4oZyh9T2R2v;
-            this.pictureBox1.Location = new System.Drawing.Point(1583, 285);
+            this.pictureBox1.Location = new System.Drawing.Point(1583, 240);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(201, 143);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Size = new System.Drawing.Size(450, 300);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Elmagd.Properties.Resources.قائمه_الدخل___كل_شيء_عن_قائمة_الدخل_مع_الأمثلة;
-            this.pictureBox2.Location = new System.Drawing.Point(1583, 625);
+            this.pictureBox2.Location = new System.Drawing.Point(1583, 611);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(201, 143);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.Size = new System.Drawing.Size(450, 350);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 33;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnadd
             // 
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
             this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
-            this.btnadd.Location = new System.Drawing.Point(31, 583);
+            this.btnadd.Location = new System.Drawing.Point(31, 680);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(179, 47);
+            this.btnadd.Size = new System.Drawing.Size(179, 75);
             this.btnadd.TabIndex = 85;
             this.btnadd.Text = "حفظ";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("PT Simple Bold Ruled", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(1600, 548);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 49);
+            this.label3.TabIndex = 86;
+            this.label3.Text = "شركة المجدللأعلاف";
             // 
             // Profit_and_loss
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1793, 780);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -522,8 +554,10 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Profit_and_loss";
             this.Text = "شاشة ارباح وخسائر";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Profit_and_loss_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnTotalsales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnreturnsales)).EndInit();
@@ -592,5 +626,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Telerik.WinControls.UI.RadButton btnadd;
+        private System.Windows.Forms.Label label3;
     }
 }

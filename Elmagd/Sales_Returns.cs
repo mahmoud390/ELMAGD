@@ -34,7 +34,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select SALES_RETURNS.id,CLIENT.name,CATEGORY.name,STORE.name,SALES_RETURNS.quantity,QUANTITY_TYPE.name,SALES_RETURNS.price,SALES_RETURNS.total ,SALES_RETURNS.date from SALES_RETURNS inner join CLIENT on CLIENT.id =SALES_RETURNS.client_id inner join CATEGORY on CATEGORY.id =SALES_RETURNS.category_id inner join STORE on STORE.id =SALES_RETURNS.store_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id =SALES_RETURNS.quantitytype_id";
+            cmd.CommandText = @"select SALES_RETURNS.id as 'م',CLIENT.name as 'إسم العميل',CATEGORY.name as 'الصنف',STORE.name as 'المخزن',SALES_RETURNS.quantity as 'الكمية',QUANTITY_TYPE.name as 'نوع الكمية',SALES_RETURNS.price as 'السعر',SALES_RETURNS.total as 'الإجمالي' ,SALES_RETURNS.date as 'التاريخ' from SALES_RETURNS inner join CLIENT on CLIENT.id =SALES_RETURNS.client_id inner join CATEGORY on CATEGORY.id =SALES_RETURNS.category_id inner join STORE on STORE.id =SALES_RETURNS.store_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id =SALES_RETURNS.quantitytype_id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -43,6 +43,7 @@ namespace Elmagd
             conn.Close();
         }
         #endregion
+
         #region  QUANTITY_TYPE
         private void Loadquantity_type()
         {
