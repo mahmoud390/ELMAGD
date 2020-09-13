@@ -45,11 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.combocategory = new System.Windows.Forms.ComboBox();
             this.btnsave = new Telerik.WinControls.UI.RadButton();
-            this.Materialgrid = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.txtSarch = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateStart = new Telerik.WinControls.UI.RadDateTimePicker();
+            this.Materialgrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtnotes)).BeginInit();
@@ -58,9 +58,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnsave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -143,10 +143,11 @@
             // 
             // Tempmaterialgrid
             // 
+            this.Tempmaterialgrid.BackgroundColor = System.Drawing.Color.White;
             this.Tempmaterialgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -253,25 +254,6 @@
             this.btnsave.Text = "حفظ";
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
-            // Materialgrid
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Materialgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.Materialgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Materialgrid.Location = new System.Drawing.Point(12, 125);
-            this.Materialgrid.Name = "Materialgrid";
-            this.Materialgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Materialgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.Materialgrid.RowTemplate.Height = 24;
-            this.Materialgrid.Size = new System.Drawing.Size(905, 820);
-            this.Materialgrid.TabIndex = 71;
-            // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -316,6 +298,26 @@
             this.dateStart.Text = "30-06-2020";
             this.dateStart.Value = new System.DateTime(2020, 6, 30, 14, 41, 31, 882);
             // 
+            // Materialgrid
+            // 
+            this.Materialgrid.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Materialgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.Materialgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Materialgrid.Location = new System.Drawing.Point(12, 125);
+            this.Materialgrid.Name = "Materialgrid";
+            this.Materialgrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Materialgrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Materialgrid.RowTemplate.Height = 24;
+            this.Materialgrid.Size = new System.Drawing.Size(905, 820);
+            this.Materialgrid.TabIndex = 71;
+            // 
             // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,9 +347,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnadd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnsave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Materialgrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +368,6 @@
         private System.Windows.Forms.ComboBox comboquantitytype;
         private System.Windows.Forms.DataGridView Tempmaterialgrid;
         private Telerik.WinControls.UI.RadButton btnadd;
-        private System.Windows.Forms.DataGridView Materialgrid;
         private Telerik.WinControls.UI.RadButton btndelet;
         private Telerik.WinControls.UI.RadButton btnsave;
         private System.Windows.Forms.Label label9;
@@ -375,6 +376,7 @@
         private Telerik.WinControls.UI.RadDateTimePicker dateStart;
         private System.Windows.Forms.Label label2;
         private Telerik.WinControls.UI.RadTextBox txtnotes;
+        private System.Windows.Forms.DataGridView Materialgrid;
 
     }
 }

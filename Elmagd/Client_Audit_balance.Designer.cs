@@ -65,7 +65,8 @@
             // 
             // showAutoGeneral
             // 
-            this.showAutoGeneral.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.showAutoGeneral.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.showAutoGeneral.ForeColor = System.Drawing.Color.Black;
             this.showAutoGeneral.Location = new System.Drawing.Point(264, 96);
             this.showAutoGeneral.Name = "showAutoGeneral";
             this.showAutoGeneral.Size = new System.Drawing.Size(187, 48);
@@ -75,7 +76,8 @@
             // 
             // btnShowDuringPeriod
             // 
-            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnShowDuringPeriod.ForeColor = System.Drawing.Color.Black;
             this.btnShowDuringPeriod.Location = new System.Drawing.Point(563, 96);
             this.btnShowDuringPeriod.Name = "btnShowDuringPeriod";
             this.btnShowDuringPeriod.Size = new System.Drawing.Size(187, 48);

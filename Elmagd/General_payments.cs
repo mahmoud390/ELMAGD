@@ -33,7 +33,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select GENERAL_PAYMENTS.id, GENERAL_PAYMENT_ITEMS.name as بند_المدفوعات_العامة  ,GENERAL_PAYMENTS.value as المبلغ,GENERAL_PAYMENTS.notes as الملاحظات ,GENERAL_PAYMENTS.date as التاريخ from GENERAL_PAYMENTS inner join GENERAL_PAYMENT_ITEMS on GENERAL_PAYMENT_ITEMS.id = GENERAL_PAYMENTS.paymentitems_id ";
+            cmd.CommandText = @"select GENERAL_PAYMENTS.id as م , GENERAL_PAYMENT_ITEMS.name as 'بند المدفوعات العامة'  ,GENERAL_PAYMENTS.value as المبلغ,GENERAL_PAYMENTS.notes as الملاحظات ,GENERAL_PAYMENTS.date as التاريخ from GENERAL_PAYMENTS inner join GENERAL_PAYMENT_ITEMS on GENERAL_PAYMENT_ITEMS.id = GENERAL_PAYMENTS.paymentitems_id ";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

@@ -32,27 +32,31 @@ namespace Elmagd
         #region LOADPAGE
         private void SuppliersInvoice_Load(object sender, EventArgs e)
         {
-            
+
             suppliersinvoicedate.Value = DateTime.Now;
-            BindGrid();
-            Loadquantity_type();
-            Loadsuppliers();
-            Loadstore();
-            Loadcategory();
+            /* BindGrid();
+             Loadquantity_type();
+             Loadsuppliers();
+             Loadstore();
+             Loadcategory();*/
         }
         #endregion
 
         #region BINDGRID
         private void BindGrid()
         {
-            conn.Open();
-            cmd.CommandText = @"select TEMP_SUPPLIERSINVOICE.id as 'م' ,SUPPLIERS.name as المورد,STORE.name as المخزن,CATEGORY.name as الصنف,TEMP_SUPPLIERSINVOICE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_SUPPLIERSINVOICE.price as السعر,TEMP_SUPPLIERSINVOICE.total as الإجمالي,TEMP_SUPPLIERSINVOICE.biskoul as بسكول,TEMP_SUPPLIERSINVOICE.mashal as مشال,TEMP_SUPPLIERSINVOICE.commissions as عمولات,TEMP_SUPPLIERSINVOICE.rest as 'الإجمالي بعد الخصومات',TEMP_SUPPLIERSINVOICE.paid as المدفوع,TEMP_SUPPLIERSINVOICE.baky as الباقي,TEMP_SUPPLIERSINVOICE.invoiceNo as 'رقم الفاتورة' from TEMP_SUPPLIERSINVOICE inner join SUPPLIERS on TEMP_SUPPLIERSINVOICE.suppliers_id =SUPPLIERS.id inner join STORE on TEMP_SUPPLIERSINVOICE.store_id = STORE.id inner join CATEGORY on TEMP_SUPPLIERSINVOICE.cat_id = CATEGORY.id inner join QUANTITY_TYPE on TEMP_SUPPLIERSINVOICE.quantitytype_id =QUANTITY_TYPE.id";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            tempsuppliergrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select TEMP_SUPPLIERSINVOICE.id as 'م' ,TEMP_SUPPLIERSINVOICE.invoiceNo as 'رقم الفاتورة',SUPPLIERS.name as المورد,STORE.name as المخزن,CATEGORY.name as الصنف,TEMP_SUPPLIERSINVOICE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_SUPPLIERSINVOICE.price as السعر,TEMP_SUPPLIERSINVOICE.total as الإجمالي,TEMP_SUPPLIERSINVOICE.biskoul as بسكول,TEMP_SUPPLIERSINVOICE.mashal as مشال,TEMP_SUPPLIERSINVOICE.commissions as عمولات,TEMP_SUPPLIERSINVOICE.rest as 'الإجمالي بعد الخصومات',TEMP_SUPPLIERSINVOICE.paid as المدفوع,TEMP_SUPPLIERSINVOICE.baky as الباقي from TEMP_SUPPLIERSINVOICE inner join SUPPLIERS on TEMP_SUPPLIERSINVOICE.suppliers_id =SUPPLIERS.id inner join STORE on TEMP_SUPPLIERSINVOICE.store_id = STORE.id inner join CATEGORY on TEMP_SUPPLIERSINVOICE.cat_id = CATEGORY.id inner join QUANTITY_TYPE on TEMP_SUPPLIERSINVOICE.quantitytype_id =QUANTITY_TYPE.id";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tempsuppliergrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -120,22 +124,25 @@ namespace Elmagd
         // حساب الاجمالي قبل الخصم والاضافة
         private void btncalc_Click(object sender, EventArgs e)
         {
-
-            if (txtquantity.Text.Equals(""))
+            try
             {
-                MessageBox.Show("برجاء إدخال الكمية");
+                if (txtquantity.Text.Equals(""))
+                {
+                    MessageBox.Show("برجاء إدخال الكمية");
+                }
+                else if ((int)comboquantitytype.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
+                else if (txtprice.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال السعر");
+                else
+                {
+                    quantity = double.Parse(txtquantity.Text);
+                    price = double.Parse(txtprice.Text);
+                    total = quantity * price;
+                    txttotal.Text = total.ToString();
+                }
             }
-            else if ((int)comboquantitytype.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else if (txtprice.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال السعر");
-            else
-            {
-                quantity = double.Parse(txtquantity.Text);
-                price = double.Parse(txtprice.Text);
-                total = quantity * price;
-                txttotal.Text = total.ToString();
-            }
+            catch (Exception ex) { }
 
         }
         #endregion
@@ -144,30 +151,34 @@ namespace Elmagd
         //حساب الباقي 
         private void btncalc2_Click(object sender, EventArgs e)
         {
-            if (txttotal.Text.Equals(""))
+            try
             {
-                MessageBox.Show("يجب الضغط علي حساب الاجمالي اولا");
+                if (txttotal.Text.Equals(""))
+                {
+                    MessageBox.Show("يجب الضغط علي حساب الاجمالي اولا");
+                }
+                else
+                {
+                    if (txtmashal.Text.Equals(""))
+                    {
+                        txtmashal.Text = "0";
+                    }
+                    if (txtcommestion.Text.Equals(""))
+                    {
+                        txtcommestion.Text = "0";
+                    }
+                    if (txtbskoul.Text.Equals(""))
+                    {
+                        txtbskoul.Text = "0";
+                    }
+                    bskoul = double.Parse(txtbskoul.Text);
+                    mashal = double.Parse(txtmashal.Text);
+                    commession = double.Parse(txtcommestion.Text);
+                    rest = total - (bskoul + mashal + commession);
+                    txtrest.Text = rest.ToString();
+                }
             }
-            else
-            {
-                if (txtmashal.Text.Equals(""))
-                {
-                    txtmashal.Text = "0";
-                }
-                if (txtcommestion.Text.Equals(""))
-                {
-                    txtcommestion.Text = "0";
-                }
-                if (txtbskoul.Text.Equals(""))
-                {
-                    txtbskoul.Text = "0";
-                }
-                bskoul = double.Parse(txtbskoul.Text);
-                mashal = double.Parse(txtmashal.Text);
-                commession = double.Parse(txtcommestion.Text);
-                rest = total - (bskoul + mashal + commession);
-                txtrest.Text = rest.ToString();
-            }
+            catch (Exception ex) { }
 
         }
         #endregion
@@ -265,6 +276,7 @@ namespace Elmagd
                         txttotal.Text = "";
                         txtpaid.Text = "";
                         txtbaky.Text = "";
+                        txtInvoiceNo.Text = "";
                         combosuppliers.SelectedIndex = 0;
                         combocategory.SelectedIndex = 0;
                         comboquantitytype.SelectedIndex = 0;
@@ -325,155 +337,131 @@ namespace Elmagd
         //إضافة في supplier invoice
         private void btnadd_Click(object sender, EventArgs e)//print btn
         {
-            conn.Close();
-            conn.Open();
-            cmd.CommandText = @"select id from TEMP_SUPPLIERSINVOICE  ";
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.HasRows)
-                MessageBox.Show("لاتوجد اي بيانات للطباعه");
-            else
+            try
             {
-                suppliersIndexAfterAdd = 0;
                 conn.Close();
-                //add to suppliers invoice
                 conn.Open();
-                cmd.CommandText = @"insert into SUPPLIERS_INVOICE (suppliers_id,catid,quantity,quantitytype_id,price,total,biskoul,mashal,commissions,rest,paid,baky,store_id,date,invoiceNo) select suppliers_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commissions,rest,paid,baky,store_id,date,invoiceNo from TEMP_SUPPLIERSINVOICE ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                //---------------------------------------------
-                //حركات الخزنه
-                conn.Open();
-                cmd.CommandText = @"select id from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date = '" + suppliersinvoicedate.Value.Date.ToShortDateString() + "'";
-                cmd.Connection = conn;
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
+                cmd.CommandText = @"select id from TEMP_SUPPLIERSINVOICE";
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                    MessageBox.Show("لاتوجد اي بيانات للطباعه");
+                else
                 {
-                    id = int.Parse(reader[0].ToString());
-                }
-                conn.Close();
-                conn.Open();
-                cmd.CommandText = @"insert into CASHIER (suplliersinvoice_id,date) values(@suplliersinvoice_id,@date)";
-                cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@suplliersinvoice_id", id);
-                cmd.Parameters.AddWithValue("@date", suppliersinvoicedate.Value.Date.ToShortDateString());
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                conn.Close();
-
-                //-------------------------------------------------------------------
-                // add to main store
-                conn.Open();
-                cmd.CommandText = @"select cat_id,quantitytype_id,quantity  from TEMP_SUPPLIERSINVOICE ";
-                SqlDataReader reader_cateid = cmd.ExecuteReader();
-                while (reader_cateid.Read())
-                {
-
-                    catid_DB = int.Parse(reader_cateid[0].ToString());
-                    quantitytype = int.Parse(reader_cateid[1].ToString());
-
-                }
-                conn.Close();
-                //----------------------------------------------
-                //إضافة مخزن ومنتج داخلmainstore في حالة عدم وجود هذا المخزن
-                conn.Open();
-                cmd.CommandText = @"select id  from MAIN_STORE where cat_id ='" + catid_DB + "'and quantitytype_id= '" + quantitytype + "'  ";
-                SqlDataReader reader_id = cmd.ExecuteReader();
-                while (reader_id.Read())
-                {
-                    if (reader_id[0].ToString() == "")
-                        id_store = 0;
-                    else
-                        id_store = int.Parse(reader_id[0].ToString());
-                }
-                conn.Close();
-                if (id_store == 0)
-                {
-
-                    if (quantitytype == 2)
-                    {
-                        select_temp();
-                        conn.Open();
-                        quantityconverttokilo = tempquantity * 1000;
-                        cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) values (@store_id,@cat_id,@quantity,@quantitytype_id) ";
-                        cmd.Parameters.AddWithValue("@store_id", store_id);
-                        cmd.Parameters.AddWithValue("@cat_id", catid_DB);
-                        cmd.Parameters.AddWithValue("@quantity", quantityconverttokilo);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", 1);
-                    }
-
-                    else if (quantitytype == 3)
-                    {
-                        select_temp();
-                        conn.Open();
-                        quantityconverttokilo = tempquantity * 150;
-                        cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) values (@store_id,@cat_id,@quantity,@quantitytype_id) ";
-                        cmd.Parameters.AddWithValue("@store_id", store_id);
-                        cmd.Parameters.AddWithValue("@cat_id", catid_DB);
-                        cmd.Parameters.AddWithValue("@quantity", quantityconverttokilo);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", 1);
-                    }
-                    else if (quantitytype == 4)
-                    {
-                        select_temp();
-                        conn.Open();
-                        quantityconverttokilo = tempquantity * 155;
-                        cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) values (@store_id,@cat_id,@quantity,@quantitytype_id) ";
-                        cmd.Parameters.AddWithValue("@store_id", store_id);
-                        cmd.Parameters.AddWithValue("@cat_id", catid_DB);
-                        cmd.Parameters.AddWithValue("@quantity", quantityconverttokilo);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", 1);
-                    }
-                    else
-                        conn.Open();
-                        cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
+                    suppliersIndexAfterAdd = 0;
+                    conn.Close();
+                    //add to suppliers invoice
+                    conn.Open();
+                    cmd.CommandText = @"insert into SUPPLIERS_INVOICE (suppliers_id,catid,quantity,quantitytype_id,price,total,biskoul,mashal,commissions,rest,paid,baky,store_id,date,invoiceNo) select suppliers_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commissions,rest,paid,baky,store_id,date,invoiceNo from TEMP_SUPPLIERSINVOICE ";
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
                     conn.Close();
-
-                }
-                else
-                {
-                    // سليكت الكمية الموجودة داخل المخزن ونوع الكمية
+                    //---------------------------------------------
+                    //حركات الخزنه
                     conn.Open();
-                    cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
+                    cmd.CommandText = @"select id from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date = '" + suppliersinvoicedate.Value.Date.ToShortDateString() + "'";
+                    cmd.Connection = conn;
                     reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        store = int.Parse(reader[0].ToString());
-                        cat = int.Parse(reader[1].ToString());
-                        enter_quantity = double.Parse(reader[2].ToString());
-                        quantitytype = int.Parse(reader[3].ToString());
-
-
+                        id = int.Parse(reader[0].ToString());
                     }
                     conn.Close();
-                    //-------------------------------------
-                    // ابديت الكمية في المين استور في حالة إضافة توريد جديد
                     conn.Open();
-                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + enter_quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
+                    cmd.CommandText = @"insert into CASHIER (suplliersinvoice_id,date) values(@suplliersinvoice_id,@date)";
                     cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("@suplliersinvoice_id", id);
+                    cmd.Parameters.AddWithValue("@date", suppliersinvoicedate.Value.Date.ToShortDateString());
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                     conn.Close();
-                }
 
-                // print
-                ((Form)printPreviewDialog1).WindowState = FormWindowState.Maximized;
-                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    printDocument1.Print();
-                }
+                    //-------------------------------------------------------------------
+                    // add to main store
+                    conn.Open();
+                    cmd.CommandText = @"select cat_id,quantitytype_id,quantity  from TEMP_SUPPLIERSINVOICE ";
+                    SqlDataReader reader_cateid = cmd.ExecuteReader();
+                    while (reader_cateid.Read())
+                    {
+                        catid_DB = int.Parse(reader_cateid[0].ToString());
+                        quantitytype = int.Parse(reader_cateid[1].ToString());
+                    }
+                    conn.Close();
+                    //----------------------------------------------
+                    //إضافة مخزن ومنتج داخلmainstore في حالة عدم وجود هذا المخزن
+                    int qtyTypeFromMainStore = 0, qtyTypeFromTempSupp = 0;
+                    conn.Open();
+                    cmd.CommandText = @"select id,quantitytype_id  from MAIN_STORE where cat_id ='" + catid_DB + "'";//and quantitytype_id= '" + quantitytype + "'  ";
+                    SqlDataReader reader_id = cmd.ExecuteReader();
+                    while (reader_id.Read())
+                    {
+                        if (reader_id[0].ToString() == "")
+                            id_store = 0;
+                        else
+                            id_store = int.Parse(reader_id[0].ToString());
+                        qtyTypeFromMainStore = int.Parse(reader_id[1].ToString());
+                    }
+                    conn.Close();
+                    if (id_store == 0)
+                    {
+                        conn.Open();
+                        cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
 
-                // delet temp suppliers invoice
-                conn.Open();
-                cmd.CommandText = @"delete from TEMP_SUPPLIERSINVOICE ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                BindGrid();
+                    }
+                    else
+                    {
+                        // سليكت الكمية الموجودة داخل المخزن ونوع الكمية
+                        conn.Open();
+                        cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            store = int.Parse(reader[0].ToString());
+                            cat = int.Parse(reader[1].ToString());
+                            enter_quantity = double.Parse(reader[2].ToString());
+                            quantitytype = int.Parse(reader[3].ToString());
+                            qtyTypeFromTempSupp = quantitytype;
+                        }
+                        conn.Close();
+                        //-------------------------------------
+                        // ابديت الكمية في المين استور في حالة إضافة توريد جديد
+                        if (qtyTypeFromTempSupp == qtyTypeFromMainStore)
+                            enter_quantity = enter_quantity;
+                        else if (qtyTypeFromMainStore == 1 && qtyTypeFromTempSupp == 2)
+                        {
+                            enter_quantity = enter_quantity * 1000;
+                        }
+                        else if (qtyTypeFromMainStore == 2 && qtyTypeFromTempSupp == 1)
+                        {
+                            enter_quantity = enter_quantity / 1000;
+                        }
+                        conn.Open();
+                        cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity +'" + enter_quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'";//and quantitytype_id ='" + quantitytype + "'   ";
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        conn.Close();
+                    }
+
+                    // print
+                    ((Form)printPreviewDialog1).WindowState = FormWindowState.Maximized;
+                    if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        printDocument1.Print();
+                    }
+
+                    // delet temp suppliers invoice
+                    conn.Open();
+                    cmd.CommandText = @"delete from TEMP_SUPPLIERSINVOICE ";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    BindGrid();
+                }
             }
-
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -486,25 +474,29 @@ namespace Elmagd
         //حساب الباقي بعد المبلغ المدفوع من الإجمالي بعد الخصومات
         private void btnbaky_Click(object sender, EventArgs e)
         {
-            double paid, baky;
-            if (txtrest.Text.Equals(""))
+            try
             {
-                MessageBox.Show("برجاء الضغط علي زر حساب الإجمالي بعد الخصومات");
+                double paid, baky;
+                if (txtrest.Text.Equals(""))
+                {
+                    MessageBox.Show("برجاء الضغط علي زر حساب الإجمالي بعد الخصومات");
+                }
+                else if (txtpaid.Text.Equals(""))
+                {
+                    txtpaid.Text = " 0";
+                }
+                paid = double.Parse(txtpaid.Text);
+                baky = rest - paid;
+                txtbaky.Text = baky.ToString();
             }
-            else if (txtpaid.Text.Equals(""))
-            {
-                txtpaid.Text = " 0";
-            }
-            paid = double.Parse(txtpaid.Text);
-            baky = rest - paid;
-            txtbaky.Text = baky.ToString();
+            catch (Exception ex) { }
         }
         #endregion
 
         #region TEXTCHANGE_TXTCOMMESTION
         private void txtcommestion_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtcommestion.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtcommestion.Text, "[^0-9.]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtcommestion.Text = txtcommestion.Text.Remove(txtcommestion.Text.Length - 1);
@@ -515,7 +507,7 @@ namespace Elmagd
         #region TEXTCHANGE_TXTQUANTITY
         private void txtquantity_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtquantity.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtquantity.Text, "[^0-9 .]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtquantity.Text = txtquantity.Text.Remove(txtquantity.Text.Length - 1);
@@ -526,7 +518,7 @@ namespace Elmagd
         #region TEXTCHANGE_TXTPRICE
         private void txtprice_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtprice.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtprice.Text, "[^0-9.]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtprice.Text = txtprice.Text.Remove(txtprice.Text.Length - 1);
@@ -537,7 +529,7 @@ namespace Elmagd
         #region TEXTCHANGE_TXTBAKY
         private void txtbskoul_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtbskoul.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtbskoul.Text, "[^0-9.]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtbskoul.Text = txtbskoul.Text.Remove(txtbskoul.Text.Length - 1);
@@ -548,7 +540,7 @@ namespace Elmagd
         #region TEXTCHANGE_TXTMASHAL
         private void txtmashal_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtmashal.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtmashal.Text, "[^0-9.]"))
             {
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtmashal.Text = txtmashal.Text.Remove(txtmashal.Text.Length - 1);
@@ -572,9 +564,9 @@ namespace Elmagd
             float margin = 40;
             Font font = new Font("Arial", 18, FontStyle.Bold);
             string title = "شركة المجد - فاتورة مورد";
-            invoiceNo = "رقم الفاتورة" + " : " + tempsuppliergrid.Rows[0].Cells[14].Value.ToString();
+            invoiceNo = "رقم الفاتورة" + " : " + tempsuppliergrid.Rows[0].Cells[1].Value.ToString();
             invoiceDate = "تاريخ الفاتورة : " + suppliersinvoicedate.Value.Date.ToShortDateString();
-            clientName = "اسم المورد : " + tempsuppliergrid.Rows[0].Cells[1].Value.ToString();
+            clientName = "اسم المورد : " + tempsuppliergrid.Rows[0].Cells[2].Value.ToString();
             SizeF fontTitle = e.Graphics.MeasureString(title, font);
             SizeF fontInvoiceNo = e.Graphics.MeasureString(invoiceNo, font);
             SizeF fontInvoiceDate = e.Graphics.MeasureString(invoiceDate, font);
@@ -601,16 +593,16 @@ namespace Elmagd
             double totalAll = 0.0, totalPayment = 0.0, totalRemain = 0.0;
             for (int i = 0; i < tempsuppliergrid.Rows.Count - 1; i++)
             {
-                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[3].Value.ToString(), font, Brushes.Navy, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
-                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[4].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
-                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[5].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght);
-                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[6].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght);
-                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[7].Value.ToString(), font, Brushes.DeepPink, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[4].Value.ToString(), font, Brushes.Navy, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[5].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[6].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col3width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[7].Value.ToString(), font, Brushes.Blue, e.PageBounds.Width - margin * 2 - col4width, preHieght + rowsHieght);
+                e.Graphics.DrawString(tempsuppliergrid.Rows[i].Cells[8].Value.ToString(), font, Brushes.DeepPink, e.PageBounds.Width - margin * 2 - col5width, preHieght + rowsHieght);
                 e.Graphics.DrawLine(Pens.Black, 5, preHieght + rowsHieght + colHieght, e.PageBounds.Width - 5, preHieght + rowsHieght + colHieght);
                 rowsHieght += 55;
-                totalAll += double.Parse(tempsuppliergrid.Rows[i].Cells[11].Value.ToString());
-                totalPayment += double.Parse(tempsuppliergrid.Rows[i].Cells[12].Value.ToString());
-                totalRemain += double.Parse(tempsuppliergrid.Rows[i].Cells[13].Value.ToString());
+                totalAll += double.Parse(tempsuppliergrid.Rows[i].Cells[12].Value.ToString());
+                totalPayment += double.Parse(tempsuppliergrid.Rows[i].Cells[13].Value.ToString());
+                totalRemain += double.Parse(tempsuppliergrid.Rows[i].Cells[14].Value.ToString());
             }
             e.Graphics.DrawString("الإجمالى الكلى", font, Brushes.Green, e.PageBounds.Width - margin * 2 - col1width, preHieght + rowsHieght);
             e.Graphics.DrawString("<<<<", font, Brushes.Black, e.PageBounds.Width - margin * 2 - col2width, preHieght + rowsHieght);
@@ -633,17 +625,21 @@ namespace Elmagd
         }
         private void select_temp()
         {
-            conn.Open();
-            cmd.CommandText = @"select store_id,cat_id,quantity from TEMP_SUPPLIERSINVOICE ";
-            SqlDataReader reader_tmep = cmd.ExecuteReader();
-            while (reader_tmep.Read())
+            try
             {
-                store_id = int.Parse(reader_tmep[0].ToString());
-                catid_DB = int.Parse(reader_tmep[1].ToString());
-                tempquantity = int.Parse(reader_tmep[2].ToString());
+                conn.Open();
+                cmd.CommandText = @"select store_id,cat_id,quantity from TEMP_SUPPLIERSINVOICE ";
+                SqlDataReader reader_tmep = cmd.ExecuteReader();
+                while (reader_tmep.Read())
+                {
+                    store_id = int.Parse(reader_tmep[0].ToString());
+                    catid_DB = int.Parse(reader_tmep[1].ToString());
+                    tempquantity = int.Parse(reader_tmep[2].ToString());
 
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex) { }
         }
 
 

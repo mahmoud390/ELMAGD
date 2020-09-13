@@ -55,7 +55,8 @@
             // 
             // btnShowDuringPeriod
             // 
-            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnShowDuringPeriod.ForeColor = System.Drawing.Color.Black;
             this.btnShowDuringPeriod.Location = new System.Drawing.Point(726, 77);
             this.btnShowDuringPeriod.Name = "btnShowDuringPeriod";
             this.btnShowDuringPeriod.Size = new System.Drawing.Size(175, 38);
@@ -115,7 +116,8 @@
             // 
             // btnCalc
             // 
-            this.btnCalc.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnCalc.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnCalc.ForeColor = System.Drawing.Color.Black;
             this.btnCalc.Location = new System.Drawing.Point(957, 384);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(157, 43);

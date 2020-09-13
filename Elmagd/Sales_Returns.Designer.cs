@@ -114,11 +114,11 @@
             // 
             this.btncalc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btncalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(247)))), ((int)(((byte)(10)))));
-            this.btncalc.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncalc.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncalc.ForeColor = System.Drawing.Color.Black;
             this.btncalc.Location = new System.Drawing.Point(437, 126);
             this.btncalc.Name = "btncalc";
-            this.btncalc.Size = new System.Drawing.Size(155, 38);
+            this.btncalc.Size = new System.Drawing.Size(170, 44);
             this.btncalc.TabIndex = 99;
             this.btncalc.Text = "حساب الإجمالي";
             this.btncalc.Click += new System.EventHandler(this.btncalc_Click);
@@ -267,7 +267,7 @@
             // 
             this.btndelet.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
-            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
             this.btndelet.Location = new System.Drawing.Point(619, 246);
             this.btndelet.Name = "btndelet";
@@ -280,7 +280,7 @@
             // 
             this.btnadd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Location = new System.Drawing.Point(930, 246);
             this.btnadd.Name = "btnadd";
@@ -364,7 +364,7 @@
             this.Controls.Add(this.clientinvoicedate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Sales_Returns";
-            this.Text = "Sales_Returns";
+            this.Text = "مرتجعات المبيعات";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Sales_Returns_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txttotal)).EndInit();

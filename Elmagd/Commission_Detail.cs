@@ -37,21 +37,25 @@ namespace Elmagd
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            if (dateFromDummy == dateToDummy)
-                cmd.CommandText = @"select sum(commission) from CLIENT_INVOICE";
-            else
-                cmd.CommandText = @"select sum(commission) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
-            cmd.Connection = conn;
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (reader[0].ToString() == "")
-                    txtValue.Text = "0";
+                conn.Open();
+                if (dateFromDummy == dateToDummy)
+                    cmd.CommandText = @"select sum(commission) from CLIENT_INVOICE";
                 else
-                    txtValue.Text = reader[0].ToString();
+                    cmd.CommandText = @"select sum(commission) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == "")
+                        txtValue.Text = "0";
+                    else
+                        txtValue.Text = reader[0].ToString();
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex) { }
         }
 
         private void btnShowDuringPeriod_Click(object sender, EventArgs e)
@@ -60,9 +64,9 @@ namespace Elmagd
             {
                 conn.Open();
                 if (dateFromDummy == dateToDummy)
-                    cmd.CommandText = @"select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id";
+                    cmd.CommandText = @"select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name العميل,STORE.name المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id";
                 else
-                    cmd.CommandText = @"select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن  from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                    cmd.CommandText = @"select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name العميل,STORE.name المخزن  from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
                 cmd.Connection = conn;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -75,12 +79,16 @@ namespace Elmagd
 
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name اسم_العميل,STORE.name اسم_المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id  where CLIENT.name LIKE N'%" + txtSarch.Text + "%'", conn);
-            DataTable dt = new DataTable();
-            dataadapter.Fill(dt);
-            gridCommission.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter dataadapter = new SqlDataAdapter("select CLIENT_INVOICE.commission العمولات,CLIENT_INVOICE.date التاريخ,CLIENT.name العميل,STORE.name المخزن from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join STORE on CLIENT_INVOICE.store_id=STORE.id  where CLIENT.name LIKE N'%" + txtSarch.Text + "%'", conn);
+                DataTable dt = new DataTable();
+                dataadapter.Fill(dt);
+                gridCommission.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
     }
 }

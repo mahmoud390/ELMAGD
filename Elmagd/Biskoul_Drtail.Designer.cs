@@ -86,7 +86,7 @@
             // 
             // btnCalc
             // 
-            this.btnCalc.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnCalc.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalc.Location = new System.Drawing.Point(1198, 389);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(247, 46);
@@ -115,7 +115,7 @@
             // 
             // btnShowDuringPeriod
             // 
-            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowDuringPeriod.Location = new System.Drawing.Point(939, 33);
             this.btnShowDuringPeriod.Name = "btnShowDuringPeriod";
             this.btnShowDuringPeriod.Size = new System.Drawing.Size(203, 40);
@@ -163,10 +163,11 @@
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.gridBiskoul.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridBiskoul.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridBiskoul.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -175,7 +176,7 @@
             this.gridBiskoul.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridBiskoul.Location = new System.Drawing.Point(5, 85);
             this.gridBiskoul.Name = "gridBiskoul";
-            this.gridBiskoul.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridBiskoul.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridBiskoul.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.gridBiskoul.RowTemplate.Height = 26;
             this.gridBiskoul.Size = new System.Drawing.Size(1148, 612);

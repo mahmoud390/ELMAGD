@@ -64,9 +64,9 @@
             this.combostore.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combostore.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combostore.FormattingEnabled = true;
-            this.combostore.Location = new System.Drawing.Point(1360, 34);
+            this.combostore.Location = new System.Drawing.Point(1214, 26);
             this.combostore.Name = "combostore";
-            this.combostore.Size = new System.Drawing.Size(241, 33);
+            this.combostore.Size = new System.Drawing.Size(387, 33);
             this.combostore.TabIndex = 69;
             // 
             // label3
@@ -88,16 +88,16 @@
             this.combocategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combocategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combocategory.FormattingEnabled = true;
-            this.combocategory.Location = new System.Drawing.Point(737, 29);
+            this.combocategory.Location = new System.Drawing.Point(612, 29);
             this.combocategory.Name = "combocategory";
-            this.combocategory.Size = new System.Drawing.Size(241, 33);
+            this.combocategory.Size = new System.Drawing.Size(366, 33);
             this.combocategory.TabIndex = 67;
             // 
             // btngard
             // 
             this.btngard.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btngard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(122)))), ((int)(((byte)(34)))));
-            this.btngard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btngard.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngard.ForeColor = System.Drawing.Color.Black;
             this.btngard.Location = new System.Drawing.Point(802, 127);
             this.btngard.Name = "btngard";
@@ -123,9 +123,9 @@
             this.txtquantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtquantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtquantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(122)))), ((int)(((byte)(34)))));
-            this.txtquantity.Location = new System.Drawing.Point(758, 249);
+            this.txtquantity.Location = new System.Drawing.Point(638, 249);
             this.txtquantity.Name = "txtquantity";
-            this.txtquantity.Size = new System.Drawing.Size(239, 32);
+            this.txtquantity.Size = new System.Drawing.Size(359, 32);
             this.txtquantity.TabIndex = 74;
             // 
             // showstoregrid

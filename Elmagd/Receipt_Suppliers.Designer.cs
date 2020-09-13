@@ -80,11 +80,11 @@
             // 
             this.btndelet.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
-            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
             this.btndelet.Location = new System.Drawing.Point(194, 219);
             this.btndelet.Name = "btndelet";
-            this.btndelet.Size = new System.Drawing.Size(150, 40);
+            this.btndelet.Size = new System.Drawing.Size(150, 43);
             this.btndelet.TabIndex = 64;
             this.btndelet.Text = "حذف";
             this.btndelet.Click += new System.EventHandler(this.btndelet_Click);
@@ -93,11 +93,11 @@
             // 
             this.btnedite.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnedite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(35)))));
-            this.btnedite.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnedite.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnedite.ForeColor = System.Drawing.Color.Black;
             this.btnedite.Location = new System.Drawing.Point(194, 117);
             this.btnedite.Name = "btnedite";
-            this.btnedite.Size = new System.Drawing.Size(149, 40);
+            this.btnedite.Size = new System.Drawing.Size(149, 43);
             this.btnedite.TabIndex = 63;
             this.btnedite.Text = "تعديل";
             this.btnedite.Click += new System.EventHandler(this.btnedite_Click);
@@ -106,11 +106,11 @@
             // 
             this.btnadd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Location = new System.Drawing.Point(198, 23);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(145, 40);
+            this.btnadd.Size = new System.Drawing.Size(145, 43);
             this.btnadd.TabIndex = 62;
             this.btnadd.Text = "إضافة";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);

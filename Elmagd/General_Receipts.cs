@@ -33,7 +33,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select GENERAL_RECEIPTS.id, GENERAL_RECEIPTS_ITEMS.name as بند_المقبوضات_العامة  ,GENERAL_RECEIPTS.value as المبلغ,GENERAL_RECEIPTS.notes as الملاحظات ,GENERAL_RECEIPTS.date as التاريخ from GENERAL_RECEIPTS inner join GENERAL_RECEIPTS_ITEMS on GENERAL_RECEIPTS_ITEMS.id =GENERAL_RECEIPTS.recepitsitems_id ";
+            cmd.CommandText = @"select GENERAL_RECEIPTS.id as م, GENERAL_RECEIPTS_ITEMS.name as 'بند المقبوضات العامة'  ,GENERAL_RECEIPTS.value as المبلغ,GENERAL_RECEIPTS.notes as الملاحظات ,GENERAL_RECEIPTS.date as التاريخ from GENERAL_RECEIPTS inner join GENERAL_RECEIPTS_ITEMS on GENERAL_RECEIPTS_ITEMS.id =GENERAL_RECEIPTS.recepitsitems_id ";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -193,6 +193,11 @@ namespace Elmagd
                 MessageBox.Show("يجب إدخال أرقام فقط");
                 txtvalue.Text = txtvalue.Text.Remove(txtvalue.Text.Length - 1);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void txtname_TextChanged(object sender, EventArgs e)

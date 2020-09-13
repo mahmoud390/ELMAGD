@@ -33,7 +33,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select id, name as الاسم,phone as الهاتف,address as العنوان ,notes as ملاحظات from SUPPLIERS";
+            cmd.CommandText = @"select id as م, name as الاسم,phone as الهاتف,address as العنوان ,notes as ملاحظات from SUPPLIERS";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

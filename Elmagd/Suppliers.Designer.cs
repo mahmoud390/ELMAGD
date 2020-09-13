@@ -183,11 +183,11 @@
             // btnadd
             // 
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Location = new System.Drawing.Point(68, 33);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(157, 44);
+            this.btnadd.Size = new System.Drawing.Size(157, 52);
             this.btnadd.TabIndex = 7;
             this.btnadd.Text = "إضافة";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
@@ -195,11 +195,11 @@
             // btnedite
             // 
             this.btnedite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(35)))));
-            this.btnedite.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnedite.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnedite.ForeColor = System.Drawing.Color.Black;
             this.btnedite.Location = new System.Drawing.Point(68, 137);
             this.btnedite.Name = "btnedite";
-            this.btnedite.Size = new System.Drawing.Size(157, 44);
+            this.btnedite.Size = new System.Drawing.Size(157, 49);
             this.btnedite.TabIndex = 8;
             this.btnedite.Text = "تعديل";
             this.btnedite.Click += new System.EventHandler(this.btnedite_Click);
@@ -207,7 +207,7 @@
             // btndelet
             // 
             this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
-            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
             this.btndelet.Location = new System.Drawing.Point(68, 237);
             this.btndelet.Name = "btndelet";

@@ -37,21 +37,25 @@ namespace Elmagd
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            if (dateFromDummy == dateToDummy)
-                cmd.CommandText = @"select sum(value) from GENERAL_PAYMENTS";
-            else
-                cmd.CommandText = @"select sum(value) from GENERAL_PAYMENTS where GENERAL_PAYMENTS.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
-            cmd.Connection = conn;
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (reader[0].ToString() == "")
-                    txtValue.Text = "0";
+                conn.Open();
+                if (dateFromDummy == dateToDummy)
+                    cmd.CommandText = @"select sum(value) from GENERAL_PAYMENTS";
                 else
-                    txtValue.Text = reader[0].ToString();
+                    cmd.CommandText = @"select sum(value) from GENERAL_PAYMENTS where GENERAL_PAYMENTS.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == "")
+                        txtValue.Text = "0";
+                    else
+                        txtValue.Text = reader[0].ToString();
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex) { }
         }
 
         private void btnShowDuringPeriod_Click(object sender, EventArgs e)
@@ -75,12 +79,16 @@ namespace Elmagd
 
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select GENERAL_PAYMENTS.value القيمة,GENERAL_PAYMENTS.date التاريخ,GENERAL_PAYMENTS.name  البند from GENERAL_PAYMENTS  where GENERAL_PAYMENTS.name LIKE N'%" + txtSarch.Text + "%'", conn);
-            DataTable dt = new DataTable();
-            dataadapter.Fill(dt);
-            gridGeneralPayments.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter dataadapter = new SqlDataAdapter("select GENERAL_PAYMENTS.value القيمة,GENERAL_PAYMENTS.date التاريخ,GENERAL_PAYMENTS.name  البند from GENERAL_PAYMENTS  where GENERAL_PAYMENTS.name LIKE N'%" + txtSarch.Text + "%'", conn);
+                DataTable dt = new DataTable();
+                dataadapter.Fill(dt);
+                gridGeneralPayments.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
 
         private void label9_Click(object sender, EventArgs e)

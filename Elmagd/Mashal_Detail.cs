@@ -24,22 +24,25 @@ namespace Elmagd
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-
-            conn.Open();
-            if (dateFromDummy == dateToDummy && firstLoad == 0)
-                cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE";
-            else
-                cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
-            cmd.Connection = conn;
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                if (reader[0].ToString() == "")
-                    txtValue.Text = "0";
+                conn.Open();
+                if (dateFromDummy == dateToDummy && firstLoad == 0)
+                    cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE";
                 else
-                    txtValue.Text = reader[0].ToString();
+                    cmd.CommandText = @"select sum(mashal) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == "")
+                        txtValue.Text = "0";
+                    else
+                        txtValue.Text = reader[0].ToString();
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex) { }
         }
 
         private void dateFrom_ValueChanged(object sender, EventArgs e)

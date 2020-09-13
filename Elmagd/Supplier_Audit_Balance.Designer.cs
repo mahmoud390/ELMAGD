@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dateFrom = new Telerik.WinControls.UI.RadDateTimePicker();
             this.dateTo = new Telerik.WinControls.UI.RadDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -100,7 +99,8 @@
             // 
             // btnShowDuringPeriod
             // 
-            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnShowDuringPeriod.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.btnShowDuringPeriod.ForeColor = System.Drawing.Color.Black;
             this.btnShowDuringPeriod.Location = new System.Drawing.Point(290, 89);
             this.btnShowDuringPeriod.Name = "btnShowDuringPeriod";
             this.btnShowDuringPeriod.Size = new System.Drawing.Size(187, 46);
@@ -110,7 +110,8 @@
             // 
             // radButton1
             // 
-            this.radButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radButton1.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.radButton1.ForeColor = System.Drawing.Color.Black;
             this.radButton1.Location = new System.Drawing.Point(628, 92);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(187, 46);
@@ -132,15 +133,8 @@
             // 
             // bakeygrid
             // 
+            this.bakeygrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.bakeygrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bakeygrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.bakeygrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bakeygrid.Location = new System.Drawing.Point(15, 26);
             this.bakeygrid.Name = "bakeygrid";

@@ -117,6 +117,7 @@
             // 
             // btnTotalsales
             // 
+            this.btnTotalsales.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnTotalsales.Location = new System.Drawing.Point(766, 11);
             this.btnTotalsales.Name = "btnTotalsales";
             this.btnTotalsales.Size = new System.Drawing.Size(214, 48);
@@ -126,6 +127,7 @@
             // 
             // btnreturnsales
             // 
+            this.btnreturnsales.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnreturnsales.Location = new System.Drawing.Point(766, 97);
             this.btnreturnsales.Name = "btnreturnsales";
             this.btnreturnsales.Size = new System.Drawing.Size(214, 50);
@@ -136,27 +138,30 @@
             // btnnetsales
             // 
             this.btnnetsales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnnetsales.Location = new System.Drawing.Point(757, 175);
+            this.btnnetsales.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnnetsales.Location = new System.Drawing.Point(765, 175);
             this.btnnetsales.Name = "btnnetsales";
-            this.btnnetsales.Size = new System.Drawing.Size(223, 43);
+            this.btnnetsales.Size = new System.Drawing.Size(215, 43);
             this.btnnetsales.TabIndex = 5;
             this.btnnetsales.Text = "صافي المبيعات";
             this.btnnetsales.Click += new System.EventHandler(this.btnnetsales_Click);
             // 
             // btnpurchase
             // 
-            this.btnpurchase.Location = new System.Drawing.Point(757, 260);
+            this.btnpurchase.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnpurchase.Location = new System.Drawing.Point(765, 260);
             this.btnpurchase.Name = "btnpurchase";
-            this.btnpurchase.Size = new System.Drawing.Size(223, 48);
+            this.btnpurchase.Size = new System.Drawing.Size(215, 48);
             this.btnpurchase.TabIndex = 4;
             this.btnpurchase.Text = "المشتريات";
             this.btnpurchase.Click += new System.EventHandler(this.btnpurchase_Click);
             // 
             // btnreturnpurchase
             // 
-            this.btnreturnpurchase.Location = new System.Drawing.Point(757, 379);
+            this.btnreturnpurchase.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnreturnpurchase.Location = new System.Drawing.Point(765, 379);
             this.btnreturnpurchase.Name = "btnreturnpurchase";
-            this.btnreturnpurchase.Size = new System.Drawing.Size(223, 46);
+            this.btnreturnpurchase.Size = new System.Drawing.Size(215, 46);
             this.btnreturnpurchase.TabIndex = 7;
             this.btnreturnpurchase.Text = "مردودات المشتريات";
             this.btnreturnpurchase.Click += new System.EventHandler(this.btnreturnpurchase_Click);
@@ -164,9 +169,10 @@
             // btnnetpruchase
             // 
             this.btnnetpruchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnnetpruchase.Location = new System.Drawing.Point(770, 507);
+            this.btnnetpruchase.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnnetpruchase.Location = new System.Drawing.Point(765, 507);
             this.btnnetpruchase.Name = "btnnetpruchase";
-            this.btnnetpruchase.Size = new System.Drawing.Size(214, 48);
+            this.btnnetpruchase.Size = new System.Drawing.Size(219, 48);
             this.btnnetpruchase.TabIndex = 6;
             this.btnnetpruchase.Text = "صافي المشتريات";
             this.btnnetpruchase.Click += new System.EventHandler(this.btnnetpruchase_Click);
@@ -183,9 +189,10 @@
             // 
             // btnavailablgoods
             // 
-            this.btnavailablgoods.Location = new System.Drawing.Point(765, 705);
+            this.btnavailablgoods.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnavailablgoods.Location = new System.Drawing.Point(766, 705);
             this.btnavailablgoods.Name = "btnavailablgoods";
-            this.btnavailablgoods.Size = new System.Drawing.Size(214, 47);
+            this.btnavailablgoods.Size = new System.Drawing.Size(213, 47);
             this.btnavailablgoods.TabIndex = 8;
             this.btnavailablgoods.Text = "تكلفة البضاعة المتاحه للبيع";
             this.btnavailablgoods.Click += new System.EventHandler(this.btnavailablgoods_Click);
@@ -234,6 +241,7 @@
             // 
             // btncostofgoods
             // 
+            this.btncostofgoods.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btncostofgoods.Location = new System.Drawing.Point(16, 97);
             this.btncostofgoods.Name = "btncostofgoods";
             this.btncostofgoods.Size = new System.Drawing.Size(214, 50);
@@ -244,6 +252,7 @@
             // btnnetprofit
             // 
             this.btnnetprofit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnnetprofit.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnnetprofit.Location = new System.Drawing.Point(16, 217);
             this.btnnetprofit.Name = "btnnetprofit";
             this.btnnetprofit.Size = new System.Drawing.Size(214, 48);
@@ -253,6 +262,7 @@
             // 
             // btngeneralpayment
             // 
+            this.btngeneralpayment.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btngeneralpayment.Location = new System.Drawing.Point(16, 341);
             this.btngeneralpayment.Name = "btngeneralpayment";
             this.btngeneralpayment.Size = new System.Drawing.Size(214, 47);
@@ -262,6 +272,7 @@
             // 
             // btngeneralrecepits
             // 
+            this.btngeneralrecepits.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btngeneralrecepits.Location = new System.Drawing.Point(16, 450);
             this.btngeneralrecepits.Name = "btngeneralrecepits";
             this.btngeneralrecepits.Size = new System.Drawing.Size(214, 47);
@@ -387,6 +398,7 @@
             // btntotalnetprofit
             // 
             this.btntotalnetprofit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btntotalnetprofit.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btntotalnetprofit.Location = new System.Drawing.Point(16, 552);
             this.btntotalnetprofit.Name = "btntotalnetprofit";
             this.btntotalnetprofit.Size = new System.Drawing.Size(214, 49);
@@ -483,7 +495,7 @@
             // btnadd
             // 
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Location = new System.Drawing.Point(31, 680);
             this.btnadd.Name = "btnadd";

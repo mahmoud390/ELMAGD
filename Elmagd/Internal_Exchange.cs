@@ -39,15 +39,19 @@ namespace Elmagd
         #region BINDGRID
         private void BindGrid()
         {
-            conn.Close();
-            conn.Open();
-            cmd.CommandText = @"select INTERNAL_EXCHANGE.id,STORE.name as المخزن_المنقول_منه,TOSTORE.name as المخزن_المنقول_إليه,CATEGORY.name as الصنف,INTERNAL_EXCHANGE.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,INTERNAL_EXCHANGE.date as التاريخ from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id inner join TOSTORE on INTERNAL_EXCHANGE.tostore = TOSTORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id  ";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            exchangegrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Close();
+                conn.Open();
+                cmd.CommandText = @"select INTERNAL_EXCHANGE.id as م,STORE.name as المخزن_المنقول_منه,TOSTORE.name as المخزن_المنقول_إليه,CATEGORY.name as الصنف,INTERNAL_EXCHANGE.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,INTERNAL_EXCHANGE.date as التاريخ from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id inner join TOSTORE on INTERNAL_EXCHANGE.tostore = TOSTORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id  ";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                exchangegrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -129,286 +133,290 @@ namespace Elmagd
 
         private void btnadd1_Click(object sender, EventArgs e)
         {
-            if ((int)combostore.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار المخزن المنقول منه");
-            else if ((int)combotostore.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار المخزن المنقل اليه");
-            else if ((int)combocategory.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else if (txtquantity.Text.Equals(""))
-                MessageBox.Show("برجاء ادخال الكمية المراد نقلها");
-            else if ((int)comboQtyTypeFrom.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else if ((int)combostore.SelectedIndex == (int)combotostore.SelectedIndex)
-                MessageBox.Show("لا يمكن نقل البضاعه من مخزن الي نفس المخزن برجاء اختيار مخزن اخر ");
-            else
+            try
             {
-                double enter_quantity, toStoreQuantity;
-                int storeToID;
-                enter_quantity = double.Parse(txtquantity.Text);
-                toStoreQuantity = enter_quantity;
-                //----------------------
-                conn.Open();
-                cmd.CommandText = @"select  quantity,quantitytype_id from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "' and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'";
-                cmd.Connection = conn;
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    if (reader[0].ToString() == "")
-                        quantityfrom_DB = 0;
-
-                    else
-                    {
-                        if (reader[1].ToString() == "1")//kilo
-                        {
-                            quantityfrom_DB = double.Parse(reader[0].ToString());
-                        }
-                        else if (reader[1].ToString() == "2")//ton
-                        {
-                            quantityfrom_DB = double.Parse(reader[0].ToString()) * 1000;
-                        }
-                        else if (reader[1].ToString() == "3")//ardab 150
-                        {
-                            quantityfrom_DB = double.Parse(reader[0].ToString()) * 150;
-                        }
-                        else if (reader[1].ToString() == "4")//ardab 155
-                        {
-                            quantityfrom_DB = double.Parse(reader[0].ToString()) * 155;
-                        }
-                    }
-                }
-                conn.Close();
-                if (enter_quantity > quantityfrom_DB)
-                {
-                    MessageBox.Show("لايمكنك نقل هذه الكمية حيث ان المخزن لا يوجد به هذه الكمية");
-
-                }
+                if ((int)combostore.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار المخزن المنقول منه");
+                else if ((int)combotostore.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار المخزن المنقل اليه");
+                else if ((int)combocategory.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
+                else if (txtquantity.Text.Equals(""))
+                    MessageBox.Show("برجاء ادخال الكمية المراد نقلها");
+                else if ((int)comboQtyTypeFrom.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
+                else if ((int)combostore.SelectedIndex == (int)combotostore.SelectedIndex)
+                    MessageBox.Show("لا يمكن نقل البضاعه من مخزن الي نفس المخزن برجاء اختيار مخزن اخر ");
                 else
                 {
+                    double enter_quantity, toStoreQuantity;
+                    int storeToID;
+                    enter_quantity = double.Parse(txtquantity.Text);
+                    toStoreQuantity = enter_quantity;
+                    //----------------------
                     conn.Open();
-                    cmd.CommandText = @"select  store_id from MAIN_STORE where store_id = '" + (int)combotostore.SelectedValue + "'";
+                    cmd.CommandText = @"select  quantity,quantitytype_id from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "' and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'";
                     cmd.Connection = conn;
-                    reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         if (reader[0].ToString() == "")
-                            storeToID = (int)combotostore.SelectedValue;
+                            quantityfrom_DB = 0;
 
                         else
-                            storeToID = int.Parse(reader[0].ToString());
+                        {
+                            if (reader[1].ToString() == "1")//kilo
+                            {
+                                quantityfrom_DB = double.Parse(reader[0].ToString());
+                            }
+                            else if (reader[1].ToString() == "2")//ton
+                            {
+                                quantityfrom_DB = double.Parse(reader[0].ToString()) * 1000;
+                            }
+                            else if (reader[1].ToString() == "3")//ardab 150
+                            {
+                                quantityfrom_DB = double.Parse(reader[0].ToString()) * 150;
+                            }
+                            else if (reader[1].ToString() == "4")//ardab 155
+                            {
+                                quantityfrom_DB = double.Parse(reader[0].ToString()) * 155;
+                            }
+                        }
                     }
                     conn.Close();
-                    conn.Open();
-                    cmd.CommandText = @"insert into INTERNAL_EXCHANGE (storeid,quantity,quantitytype_id,date,tostore,cat_id) values(@storeid,@quantity,@quantitytype_id,@date,@tostore,@cat_id)";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@storeid", (int)combostore.SelectedValue);
-                    cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboQtyTypeFrom.SelectedValue);
-                    cmd.Parameters.AddWithValue("@quantity", enter_quantity);
-                    cmd.Parameters.AddWithValue("@date", exchangedate.Value.Date.ToShortDateString());
-                    cmd.Parameters.AddWithValue("@tostore", (int)combotostore.SelectedValue);
-                    cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
-                    BindGrid();
-                    conn.Close();
-                    txtquantity.Text = "";
-                    MessageBox.Show("تمت عملية الصرف ");
-                    //--------------------------------------
-                    // ابديت الكمية الموجوده في المخزن المنقول البضاعه منه
-                    conn.Open();
-                    cmd.CommandText = @"select  quantitytype_id,quantity from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "' and cat_id ='" + (int)combocategory.SelectedValue + "'";// and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
-                    reader = cmd.ExecuteReader();
-                    reader.Read();
-                    var qtyTypeFrom = int.Parse(reader[0].ToString());
-                    var qtyFromDB = double.Parse(reader[1].ToString());
-                    if (!reader.HasRows)
+                    if (enter_quantity > quantityfrom_DB)
                     {
-                        enter_quantity = qtyFromDB - enter_quantity;
-                        cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = '" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
-                        cmd.Connection = conn;
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
+                        MessageBox.Show("لايمكنك نقل هذه الكمية حيث ان المخزن لا يوجد به هذه الكمية");
+
                     }
                     else
                     {
+                        conn.Open();
+                        cmd.CommandText = @"select  store_id from MAIN_STORE where store_id = '" + (int)combotostore.SelectedValue + "'";
+                        cmd.Connection = conn;
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            if (reader[0].ToString() == "")
+                                storeToID = (int)combotostore.SelectedValue;
+
+                            else
+                                storeToID = int.Parse(reader[0].ToString());
+                        }
                         conn.Close();
                         conn.Open();
-                        if (qtyTypeFrom == (int)comboQtyTypeFrom.SelectedValue)
+                        cmd.CommandText = @"insert into INTERNAL_EXCHANGE (storeid,quantity,quantitytype_id,date,tostore,cat_id) values(@storeid,@quantity,@quantitytype_id,@date,@tostore,@cat_id)";
+                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@storeid", (int)combostore.SelectedValue);
+                        cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboQtyTypeFrom.SelectedValue);
+                        cmd.Parameters.AddWithValue("@quantity", enter_quantity);
+                        cmd.Parameters.AddWithValue("@date", exchangedate.Value.Date.ToShortDateString());
+                        cmd.Parameters.AddWithValue("@tostore", (int)combotostore.SelectedValue);
+                        cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        BindGrid();
+                        conn.Close();
+                        txtquantity.Text = "";
+                        MessageBox.Show("تمت عملية الصرف ");
+                        //--------------------------------------
+                        // ابديت الكمية الموجوده في المخزن المنقول البضاعه منه
+                        conn.Open();
+                        cmd.CommandText = @"select  quantitytype_id,quantity from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "' and cat_id ='" + (int)combocategory.SelectedValue + "'";// and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
+                        reader = cmd.ExecuteReader();
+                        reader.Read();
+                        var qtyTypeFrom = int.Parse(reader[0].ToString());
+                        var qtyFromDB = double.Parse(reader[1].ToString());
+                        if (!reader.HasRows)
                         {
                             enter_quantity = qtyFromDB - enter_quantity;
                             cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = '" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
                         }
-                        else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to kilo
+                        else
                         {
-                            enter_quantity = qtyFromDB - (enter_quantity * 1000);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            conn.Close();
+                            conn.Open();
+                            if (qtyTypeFrom == (int)comboQtyTypeFrom.SelectedValue)
+                            {
+                                enter_quantity = qtyFromDB - enter_quantity;
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = '" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
+                            }
+                            else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to kilo
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 1000);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to kilo
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 150);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to kilo
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 155);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ton
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 1000);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ton
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 6.67);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to ton
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 6.452);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo ardab 150
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 150);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton ardab 150
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 6.67);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 ardab 150
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 1.0341);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ardab 155
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 155);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to ardab 155
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity * 6.452);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ardab 155
+                            {
+                                enter_quantity = qtyFromDB - (enter_quantity / 1.0341);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
                         }
-                        else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to kilo
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity * 150);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 1 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to kilo
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity * 155);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ton
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 1000);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ton
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 6.67);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 2 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to ton
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 6.452);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo ardab 150
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 150);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton ardab 150
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity * 6.67);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 3 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 ardab 150
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity * 1.0341);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ardab 155
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 155);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to ardab 155
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity * 6.452);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeFrom == 4 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ardab 155
-                        {
-                            enter_quantity = qtyFromDB - (enter_quantity / 1.0341);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        cmd.Connection = conn;
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
-                    }
-                    //-----------------------------------------
-                    //ابديت الكمية الموجوده في المخزن المراد نقل البضاعه اليه
-                    conn.Open();
-                    cmd.CommandText = @"select  store_id,quantitytype_id,quantity from MAIN_STORE where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'";// and quantitytype_id ='" + (int)comboQtyTypeTo.SelectedValue + "'";
-                    cmd.Connection = conn;
-                    reader = cmd.ExecuteReader();
-                    reader.Read();
-                    if (!reader.HasRows)
-                    {
-                        conn.Close();
-                        conn.Open();
-                        cmd.CommandText = @"insert into MAIN_STORE (store_id,quantity,quantitytype_id,cat_id) values(@store_id,@quantity,@quantitytype_id,@cat_id)";
-                        cmd.Parameters.AddWithValue("@store_id", (int)combotostore.SelectedValue);
-                        cmd.Parameters.AddWithValue("@quantity", toStoreQuantity);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboQtyTypeTo.SelectedValue);
-                        cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                    }
-                    else
-                    {
-                        conn.Close();
+                        //-----------------------------------------
+                        //ابديت الكمية الموجوده في المخزن المراد نقل البضاعه اليه
                         conn.Open();
                         cmd.CommandText = @"select  store_id,quantitytype_id,quantity from MAIN_STORE where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'";// and quantitytype_id ='" + (int)comboQtyTypeTo.SelectedValue + "'";
                         cmd.Connection = conn;
                         reader = cmd.ExecuteReader();
                         reader.Read();
-                        var qtyTypeTo = int.Parse(reader[1].ToString());
-                        qtyFromDB = double.Parse(reader[2].ToString());
-                        if (qtyTypeTo == (int)comboQtyTypeFrom.SelectedValue)
+                        if (!reader.HasRows)
                         {
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity + '" + toStoreQuantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
+                            conn.Close();
+                            conn.Open();
+                            cmd.CommandText = @"insert into MAIN_STORE (store_id,quantity,quantitytype_id,cat_id) values(@store_id,@quantity,@quantitytype_id,@cat_id)";
+                            cmd.Parameters.AddWithValue("@store_id", (int)combotostore.SelectedValue);
+                            cmd.Parameters.AddWithValue("@quantity", toStoreQuantity);
+                            cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboQtyTypeFrom.SelectedValue);
+                            cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
                         }
-                        else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to kilo
+                        else
                         {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 1000);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            conn.Close();
+                            conn.Open();
+                            cmd.CommandText = @"select  store_id,quantitytype_id,quantity from MAIN_STORE where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'";// and quantitytype_id ='" + (int)comboQtyTypeTo.SelectedValue + "'";
+                            cmd.Connection = conn;
+                            reader = cmd.ExecuteReader();
+                            reader.Read();
+                            var qtyTypeTo = int.Parse(reader[1].ToString());
+                            qtyFromDB = double.Parse(reader[2].ToString());
+                            if (qtyTypeTo == (int)comboQtyTypeFrom.SelectedValue)
+                            {
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity + '" + toStoreQuantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + (int)comboQtyTypeFrom.SelectedValue + "'";
+                            }
+                            else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to kilo
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 1000);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to kilo
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 150);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to kilo
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 155);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ton
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 1000);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ton
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 6.67);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to ton
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 6.452);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo ardab 150
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 150);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton ardab 150
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 6.67);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 ardab 150
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 1.0341);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ardab 155
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 155);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to ardab 155
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity * 6.452);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
+                            else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ardab 155
+                            {
+                                enter_quantity = qtyFromDB + (toStoreQuantity / 1.0341);
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
+                            }
                         }
-                        else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to kilo
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 150);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 1 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to kilo
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 155);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ton
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 1000);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ton
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 6.67);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 2 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 to ton
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 6.452);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo ardab 150
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 150);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton ardab 150
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 6.67);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 3 && (int)comboQtyTypeFrom.SelectedValue == 4)//from ardab 155 ardab 150
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 1.0341);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 1)//from kilo to ardab 155
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 155);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 2)//from ton to ardab 155
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity * 6.452);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
-                        else if (qtyTypeTo == 4 && (int)comboQtyTypeFrom.SelectedValue == 3)//from ardab 150 to ardab 155
-                        {
-                            enter_quantity = qtyFromDB + (toStoreQuantity / 1.0341);
-                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity ='" + enter_quantity + "' where store_id = '" + (int)combotostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id ='" + reader[0] + "'";
-                        }
+                        conn.Close();
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        conn.Close();
+                        combostore.SelectedIndex = 0;
+                        combotostore.SelectedIndex = 0;
+                        combocategory.SelectedIndex = 0;
+                        comboQtyTypeFrom.SelectedIndex = 0;
+                        comboQtyTypeTo.SelectedIndex = 0;
                     }
-                    conn.Close();
-                    conn.Open();
-                    cmd.Connection = conn;
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
-                    conn.Close();
-                    combostore.SelectedIndex = 0;
-                    combotostore.SelectedIndex = 0;
-                    combocategory.SelectedIndex = 0;
-                    comboQtyTypeFrom.SelectedIndex = 0;
-                    comboQtyTypeTo.SelectedIndex = 0;
                 }
             }
+            catch (Exception ex) { }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -516,12 +524,16 @@ namespace Elmagd
 
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select INTERNAL_EXCHANGE.id,STORE.name,tostore,INTERNAL_EXCHANGE.cat_id,INTERNAL_EXCHANGE.quantity,QUANTITY_TYPE.name,INTERNAL_EXCHANGE.date from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id where STORE.name LIKE N'%" + txtSarch.Text + "%'", conn);
-            DataTable dt = new DataTable();
-            dataadapter.Fill(dt);
-            exchangegrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter dataadapter = new SqlDataAdapter("select INTERNAL_EXCHANGE.id,STORE.name,tostore,INTERNAL_EXCHANGE.cat_id,INTERNAL_EXCHANGE.quantity,QUANTITY_TYPE.name,INTERNAL_EXCHANGE.date from INTERNAL_EXCHANGE inner join STORE on INTERNAL_EXCHANGE.storeid =STORE.id  inner join QUANTITY_TYPE on INTERNAL_EXCHANGE.quantitytype_id =QUANTITY_TYPE.id inner join CATEGORY on INTERNAL_EXCHANGE.cat_id =CATEGORY.id where STORE.name LIKE N'%" + txtSarch.Text + "%'", conn);
+                DataTable dt = new DataTable();
+                dataadapter.Fill(dt);
+                exchangegrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
 
         private void txtquantity_TextChanged(object sender, EventArgs e)

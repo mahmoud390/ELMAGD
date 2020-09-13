@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Elmagd.exe" version="1.0.0.3" publicKeyToken="5bcadac0800b270f" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Elmagd" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Elmagd.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Telerik.WinControls" version="2018.1.116.40" publicKeyToken="5BB2A467CBEC794E" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Telerik.WinControls.GridView" version="2018.1.116.40" publicKeyToken="5BB2A467CBEC794E" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Telerik.WinControls.UI" version="2018.1.116.40" publicKeyToken="5BB2A467CBEC794E" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="TelerikCommon" version="2018.1.116.40" publicKeyToken="5BB2A467CBEC794E" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elmagd.exe" size="1419776">
+      <assemblyIdentity name="Elmagd" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>06RxWLFgIhSpG+xEvCG0E5psitGKy6Boyufn8c+3vCQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Elmagd.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-UT5J18S\manso" issuerKeyHash="8f99957b5b7723c42b6617727f261e55dc32bd59" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>keFW3cZMuJq/JcXAE9JjNx90V5Ta3Q1E1rgFyMnq8QA=</DigestValue></Reference></SignedInfo><SignatureValue>cmsGMQ/2tQ1qhnwfea7RYd/9bCUqX9OgSHeaaKe2szUuKswBb1VSjM2U/NLEuzv/CFU4AlchrnYkn6W6cfgKKkvX07I62KAavtZ4QzYxNq87OiMmAymfTcpu2mCXkWpBQruV06Xcmojvvpht7zt44rtznC4BY+TI+DVbIdIUv64=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>twiDTPmwz8o4eID/M1dlrS+bR4scMbHzxVKrCWTRKFV+EQ9b5mIs9TSwBg+PLKNroZG9ZyITXUVBEbRZs/0fU7VHLPKsiO5BzZ+lLkiyhFdXXlVmwFVQ9Mp2vr7b97VQ+lPr1BdFnTea27jakBDnpub53ZHxPKAhWFsKu4SUV4k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="00f1eac9c805b8d6440dddda9457741f3763d213c0c525bf9ab84cc6dd56e191" Description="" Url=""><as:assemblyIdentity name="Elmagd.exe" version="1.0.0.3" publicKeyToken="5bcadac0800b270f" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-UT5J18S\manso</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>jFuzU1EedfMZmo6T18WWi9Dn1XaMxURepu+8KCC0uFE=</DigestValue></Reference></SignedInfo><SignatureValue>CNbom3QLI1oox4vGaTeu6O+xitAf4xaGi9j5qlsRyH5u+ZTd4DpKn2+6cHbvvLWsSOSrAnnVsIPiRHJ2rg+c5JKjp5qw5eOhsva/NwXkHFV1DuLEE6XtzUIfbYE9xXI0v1mN10eHLr7UN+/B6/kStU4slC1gJf6lfHzhGGBAtD4=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>twiDTPmwz8o4eID/M1dlrS+bR4scMbHzxVKrCWTRKFV+EQ9b5mIs9TSwBg+PLKNroZG9ZyITXUVBEbRZs/0fU7VHLPKsiO5BzZ+lLkiyhFdXXlVmwFVQ9Mp2vr7b97VQ+lPr1BdFnTea27jakBDnpub53ZHxPKAhWFsKu4SUV4k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQIgSZhsP8OqhGwldmc1PwmzANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFUAVAA1AEoAMQA4AFMAXABtAGEAbgBzAG8wHhcNMjAwOTA2MTEwOTQ1WhcNMjEwOTA2MTcwOTQ1WjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFUAVAA1AEoAMQA4AFMAXABtAGEAbgBzAG8wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALcIg0z5sM/KOHiA/zNXZa0vm0eLHDGx88VSqwlk0ShVfhEPW+ZiLPU0sAYPjyyja6GRvWciE11FQRG0WbP9H1O1RyzyrIjuQc2fpS5IsoRXV15VZsBVUPTKdr6+2/e1UPpT69QXRZ03mtu42pAQ56bm+d2R8TygIVhbCruElFeJAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAWqmdVO2yVpKA6Xn62v38j68RuwDQ0oXAW2qvTt6cfE5klKkuG5AcCvALcA3oQMrjgXVxpUOHnV81HO4w6GyheTJSaPjv/VLnQQsdGOBD0VICgd1zd9KZRP6Bl538vKSh8NPJ5wD1+QOdZoW75ih82IGYNta4ZOceUAReFnqJCF0=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

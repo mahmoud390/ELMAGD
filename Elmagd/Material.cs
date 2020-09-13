@@ -33,14 +33,18 @@ namespace Elmagd
         #region TEMP_BINDGRID
         private void TempBindGrid()
         {
-            conn.Open();
-            cmd.CommandText = @"select TEMP_MATERIAL.id,STORE.name as المخزن,CATEGORY.name as الصنف,TEMP_MATERIAL.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية,TEMP_MATERIAL.notes as الملاحظات from TEMP_MATERIAL inner join STORE on STORE.id =TEMP_MATERIAL.store_id inner join CATEGORY on CATEGORY.id = TEMP_MATERIAL.cat_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id = TEMP_MATERIAL.quantitytype_id ";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            Tempmaterialgrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select TEMP_MATERIAL.id as م,STORE.name as المخزن,CATEGORY.name as الصنف,TEMP_MATERIAL.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_MATERIAL.notes as الملاحظات from TEMP_MATERIAL inner join STORE on STORE.id =TEMP_MATERIAL.store_id inner join CATEGORY on CATEGORY.id = TEMP_MATERIAL.cat_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id = TEMP_MATERIAL.quantitytype_id ";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Tempmaterialgrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -49,7 +53,7 @@ namespace Elmagd
         {
             conn.Close();
             conn.Open();
-            cmd.CommandText = @"select MATERIAL.id,STORE.name as المخزن,CATEGORY.name as الصنف,MATERIAL.quantity as الكمية,QUANTITY_TYPE.name as نوع_الكمية ,MATERIAL.notes from MATERIAL inner join STORE on STORE.id =MATERIAL.store_id inner join CATEGORY on CATEGORY.id = MATERIAL.cat_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id = MATERIAL.quantitytype_id ";
+            cmd.CommandText = @"select MATERIAL.id as م,STORE.name as المخزن,CATEGORY.name as الصنف,MATERIAL.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية' ,MATERIAL.notes as  الملاحظات from MATERIAL inner join STORE on STORE.id =MATERIAL.store_id inner join CATEGORY on CATEGORY.id = MATERIAL.cat_id inner join QUANTITY_TYPE on QUANTITY_TYPE.id = MATERIAL.quantitytype_id ";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -106,134 +110,142 @@ namespace Elmagd
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            enter_quantity = double.Parse(txtquantity.Text);
-            if ((int)combostore.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار المخزن");
-            else if ((int)combocategory.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبارالصنف");
-            else if (txtquantity.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال الكمية");
-            else if ((int)comboquantitytype.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else
+            try
             {
-                conn.Open();
-                cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                    MessageBox.Show("المخزن خالي");
-                    conn.Close();
-                }
+                enter_quantity = double.Parse(txtquantity.Text);
+                if ((int)combostore.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار المخزن");
+                else if ((int)combocategory.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبارالصنف");
+                else if (txtquantity.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال الكمية");
+                else if ((int)comboquantitytype.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
                 else
                 {
-                    while (reader.Read())
+                    conn.Open();
+                    cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (!reader.HasRows)
                     {
-                        if (reader[0].ToString() == "")
-                        {
-                            quantity = 0;
-                        }
-                        quantity = double.Parse(reader[0].ToString());
-                    }
-
-                    conn.Close();
-                    //-------------------------------------
-                    if (enter_quantity > quantity)
-                    {
-                        MessageBox.Show("الكمية الموجودة في المخزن اقل من الكمية التي تم إدخالها ");
+                        MessageBox.Show("المخزن خالي");
+                        conn.Close();
                     }
                     else
                     {
-                        //add to temp material
-                        conn.Open();
-                        cmd.CommandText = @"insert into TEMP_MATERIAL (store_id,cat_id,quantity,quantitytype_id,date_start,notes) values(@store_id,@cat_id,@quantity,@quantitytype_id,@date_start,@notes)";
-                        cmd.Connection = conn;
-                        cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
-                        cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                        if ((int)comboquantitytype.SelectedValue == 2)
-                        {
-                            quantity = enter_quantity * 1000;
-                            cmd.Parameters.AddWithValue("@quantity", quantity);
-                        }
-                        else
-                            cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                        cmd.Parameters.AddWithValue("@quantitytype_id", 1);
-                        cmd.Parameters.AddWithValue("@date_start", dateStart.Value.Date.ToShortDateString());
-                        cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
-                        TempBindGrid();
-                        MessageBox.Show("تمت عمليه الاضافه");
-                        //----------------------------------------
-                        //select quntity ,store, quantity type,category
-                        conn.Open();
-                        cmd.CommandText = @" select quantity from TEMP_MATERIAL where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
-                        reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
+                            if (reader[0].ToString() == "")
+                            {
+                                quantity = 0;
+                            }
                             quantity = double.Parse(reader[0].ToString());
                         }
+
                         conn.Close();
-                        //---------------------------------
-                        //update mainstore
-                        conn.Open();
-                        cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
-                        cmd.Connection = conn;
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                        conn.Close();
-                        txtquantity.Text = "";
-                        combocategory.SelectedIndex = 0;
-                        comboquantitytype.SelectedIndex = 0;
-                        combostore.SelectedIndex = 0;
+                        //-------------------------------------
+                        if (enter_quantity > quantity)
+                        {
+                            MessageBox.Show("الكمية الموجودة في المخزن اقل من الكمية التي تم إدخالها ");
+                        }
+                        else
+                        {
+                            //add to temp material
+                            conn.Open();
+                            cmd.CommandText = @"insert into TEMP_MATERIAL (store_id,cat_id,quantity,quantitytype_id,date_start,notes) values(@store_id,@cat_id,@quantity,@quantitytype_id,@date_start,@notes)";
+                            cmd.Connection = conn;
+                            cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
+                            cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
+                            if ((int)comboquantitytype.SelectedValue == 2)
+                            {
+                                quantity = enter_quantity * 1000;
+                                cmd.Parameters.AddWithValue("@quantity", quantity);
+                            }
+                            else
+                                cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                            cmd.Parameters.AddWithValue("@quantitytype_id", 1);
+                            cmd.Parameters.AddWithValue("@date_start", dateStart.Value.Date.ToShortDateString());
+                            cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
+                            TempBindGrid();
+                            MessageBox.Show("تمت عمليه الاضافه");
+                            //----------------------------------------
+                            //select quntity ,store, quantity type,category
+                            conn.Open();
+                            cmd.CommandText = @" select quantity from TEMP_MATERIAL where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                            reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                quantity = double.Parse(reader[0].ToString());
+                            }
+                            conn.Close();
+                            //---------------------------------
+                            //update mainstore
+                            conn.Open();
+                            cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
+                            txtquantity.Text = "";
+                            combocategory.SelectedIndex = 0;
+                            comboquantitytype.SelectedIndex = 0;
+                            combostore.SelectedIndex = 0;
+                        }
                     }
                 }
             }
+            catch (Exception ex) { }
         }
 
         private void btndelet_Click(object sender, EventArgs e)
         {
-            if (id == 0)
-                MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
-            else
+            try
             {
-                conn.Open();
-                cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_MATERIAL where id='" + id + "' ";
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (id == 0)
+                    MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
+                else
                 {
-                    store = int.Parse(reader[0].ToString());
-                    cat = int.Parse(reader[1].ToString());
-                    quantity = double.Parse(reader[2].ToString());
-                    quantitytype = int.Parse(reader[3].ToString());
-
-                }
-                conn.Close();
-
-                //---------------------------------
-                //update mainstore
-                conn.Open();
-                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                conn.Close();
-                foreach (DataGridViewRow row in Tempmaterialgrid.SelectedRows)
-                {
-
-                    Tempmaterialgrid.Rows.RemoveAt(row.Index);
                     conn.Open();
-                    cmd.CommandText = @"delete from TEMP_MATERIAL where id = '" + id + "'";
+                    cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_MATERIAL where id='" + id + "' ";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        store = int.Parse(reader[0].ToString());
+                        cat = int.Parse(reader[1].ToString());
+                        quantity = double.Parse(reader[2].ToString());
+                        quantitytype = int.Parse(reader[3].ToString());
+
+                    }
+                    conn.Close();
+
+                    //---------------------------------
+                    //update mainstore
+                    conn.Open();
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
                     conn.Close();
-                    TempBindGrid();
-                    MessageBox.Show("تم الحذف");
-                    id = 0;
-                    btnadd.Enabled = true;
+                    foreach (DataGridViewRow row in Tempmaterialgrid.SelectedRows)
+                    {
+
+                        Tempmaterialgrid.Rows.RemoveAt(row.Index);
+                        conn.Open();
+                        cmd.CommandText = @"delete from TEMP_MATERIAL where id = '" + id + "'";
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        TempBindGrid();
+                        MessageBox.Show("تم الحذف");
+                        id = 0;
+                        btnadd.Enabled = true;
+                    }
                 }
             }
+            catch (Exception ex) { }
         }
 
         private void Tempmaterialgrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -254,34 +266,38 @@ namespace Elmagd
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            cmd.CommandText = @"select id from TEMP_MATERIAL  ";
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.HasRows)
+            try
             {
-                MessageBox.Show("لاتوجد اي بيانات للحفظ");
-                conn.Close();
-            }
-            else
-            {
-                //add MATIRAL
+                conn.Open();
+                cmd.CommandText = @"select id from TEMP_MATERIAL  ";
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    MessageBox.Show("لاتوجد اي بيانات للحفظ");
+                    conn.Close();
+                }
+                else
+                {
+                    //add MATIRAL
 
-                conn.Close();
-                conn.Open();
-                cmd.CommandText = @"insert into MATERIAL (store_id,cat_id,quantity,quantitytype_id,date_start,notes) select  store_id,cat_id,quantity,quantitytype_id,date_start,notes from TEMP_MATERIAL ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                MaterialBindGrid();
-                conn.Close();
-                //-----------
-                conn.Open();
-                cmd.CommandText = @"delete from TEMP_MATERIAL ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                TempBindGrid();
-                
+                    conn.Close();
+                    conn.Open();
+                    cmd.CommandText = @"insert into MATERIAL (store_id,cat_id,quantity,quantitytype_id,date_start,notes) select  store_id,cat_id,quantity,quantitytype_id,date_start,notes from TEMP_MATERIAL ";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    MaterialBindGrid();
+                    conn.Close();
+                    //-----------
+                    conn.Open();
+                    cmd.CommandText = @"delete from TEMP_MATERIAL ";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    TempBindGrid();
+
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void combostore_SelectedIndexChanged(object sender, EventArgs e)

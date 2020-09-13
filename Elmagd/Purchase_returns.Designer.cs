@@ -104,7 +104,7 @@
             this.txttotal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txttotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(122)))), ((int)(((byte)(13)))));
-            this.txttotal.Location = new System.Drawing.Point(11, 118);
+            this.txttotal.Location = new System.Drawing.Point(24, 118);
             this.txttotal.Name = "txttotal";
             this.txttotal.ReadOnly = true;
             this.txttotal.Size = new System.Drawing.Size(239, 32);
@@ -114,11 +114,11 @@
             // 
             this.btncalc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btncalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(247)))), ((int)(((byte)(10)))));
-            this.btncalc.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncalc.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncalc.ForeColor = System.Drawing.Color.Black;
-            this.btncalc.Location = new System.Drawing.Point(412, 114);
+            this.btncalc.Location = new System.Drawing.Point(412, 106);
             this.btncalc.Name = "btncalc";
-            this.btncalc.Size = new System.Drawing.Size(184, 38);
+            this.btncalc.Size = new System.Drawing.Size(184, 46);
             this.btncalc.TabIndex = 79;
             this.btncalc.Text = "حساب الإجمالي";
             this.btncalc.Click += new System.EventHandler(this.btncalc_Click);
@@ -267,7 +267,7 @@
             // 
             this.btndelet.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btndelet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(51)))), ((int)(((byte)(22)))));
-            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelet.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndelet.ForeColor = System.Drawing.Color.Black;
             this.btndelet.Location = new System.Drawing.Point(599, 223);
             this.btndelet.Name = "btndelet";
@@ -280,7 +280,7 @@
             // 
             this.btnadd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnadd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(199)))), ((int)(((byte)(14)))));
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Location = new System.Drawing.Point(910, 223);
             this.btnadd.Name = "btnadd";

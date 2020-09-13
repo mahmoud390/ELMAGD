@@ -27,26 +27,34 @@ namespace Elmagd
 
         private void btnShowDuringPeriod_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            cmd.CommandText = @"select SUPPLIERS.name as الإسم,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS.id = SUPPLIERS_INVOICE.suppliers_id where SUPPLIERS_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            bakeygrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select SUPPLIERS.name as الإسم,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS.id = SUPPLIERS_INVOICE.suppliers_id where SUPPLIERS_INVOICE.date between '" + dateFrom.Value.Date.ToShortDateString() + "'" + " and '" + dateTo.Value.Date.ToShortDateString() + "'";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                bakeygrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            cmd.CommandText = @"select SUPPLIERS.name as الإسم,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS.id = SUPPLIERS_INVOICE.suppliers_id ";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            bakeygrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select SUPPLIERS.name as الإسم,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS.id = SUPPLIERS_INVOICE.suppliers_id ";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                bakeygrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
     }
 }

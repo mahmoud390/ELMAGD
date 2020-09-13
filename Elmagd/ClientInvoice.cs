@@ -14,7 +14,7 @@ namespace Elmagd
     public partial class ClientInvoice : Form
     {
 
-        int id, store, cat, quantitytype, clientIndex, clientIndexAfterAdd, enter_quantity, tempqunqtitytype;
+        int id, store, cat, quantitytype = 0, clientIndex, clientIndexAfterAdd, enter_quantity, tempqunqtitytype;
         double total, quantity, price, bskoul, mashal, commession, rest, enterquantity, teenquantoty, tempquantity, quantity_db;
         string invoiceNo, invoiceDate, clientName;
 
@@ -40,14 +40,18 @@ namespace Elmagd
         #region BINDGRID
         private void BindGrid()
         {
-            conn.Open();
-            cmd.CommandText = @"select TEMP_CLIENT.id as م,TEMP_CLIENT.invoiceNo 'رقم الفاتورة',CLIENT.name as 'إسم العميل',CATEGORY.name as 'إسم الصنف' ,STORE.name as 'إسم المخزن',TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as 'الإجمالي بعد الإضافات',TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            tempclientgrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select TEMP_CLIENT.id as م,TEMP_CLIENT.invoiceNo 'رقم الفاتورة',CLIENT.name as 'إسم العميل',CATEGORY.name as 'إسم الصنف' ,STORE.name as 'إسم المخزن',TEMP_CLIENT.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',TEMP_CLIENT.price as السعر,TEMP_CLIENT.total as الإجمالي,TEMP_CLIENT.biskoul as بسكول,TEMP_CLIENT.mashal as مشال ,TEMP_CLIENT.commission as عمولات,TEMP_CLIENT.rest as 'الإجمالي بعد الإضافات',TEMP_CLIENT.paid as المدفوع,TEMP_CLIENT.baky as الباقي,TEMP_CLIENT.date as التاريخ from TEMP_CLIENT inner join CLIENT on TEMP_CLIENT.client_id =CLIENT.id inner join CATEGORY on TEMP_CLIENT.cat_id =CATEGORY.id inner join STORE on TEMP_CLIENT.store_id =STORE.id inner join QUANTITY_TYPE on TEMP_CLIENT.quantitytype_id =QUANTITY_TYPE.id";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tempclientgrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -113,206 +117,204 @@ namespace Elmagd
 
         private void btncalc_Click(object sender, EventArgs e)
         {
-            if (txtquantity.Text.Equals(""))
+            try
             {
-                MessageBox.Show("برجاء إدخال الكمية");
-            }
-            else if ((int)comboquantitytype.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else if (txtprice.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال السعر");
-            else
-            {
-                quantity = double.Parse(txtquantity.Text);
-                if ((int)comboquantitytype.SelectedIndex == 2)
-                    teenquantoty = quantity * 1000;
-                else
-                    quantity = double.Parse(txtquantity.Text);
-                price = double.Parse(txtprice.Text);
-                if ((int)comboquantitytype.SelectedIndex == 2)
+                if (txtquantity.Text.Equals(""))
                 {
-                    total = teenquantoty * price;
-                    txttotal.Text = total.ToString();
+                    MessageBox.Show("برجاء إدخال الكمية");
                 }
+                else if ((int)comboquantitytype.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
+                else if (txtprice.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال السعر");
                 else
                 {
+                    quantity = double.Parse(txtquantity.Text);
+                    price = double.Parse(txtprice.Text);
                     total = quantity * price;
                     txttotal.Text = total.ToString();
                 }
             }
+            catch (Exception ex) { }
         }
         //حساب الإجمالي بعد الإضافات
         private void btncalc2_Click(object sender, EventArgs e)
         {
-
-            if (txttotal.Text.Equals(""))
+            try
             {
-                MessageBox.Show("يجب الضغط علي حساب الاجمالي اولا");
+                if (txttotal.Text.Equals(""))
+                {
+                    MessageBox.Show("يجب الضغط علي حساب الاجمالي اولا");
+                }
+
+                else
+                {
+
+                    if (txtmashal.Text.Equals(""))
+                    {
+                        txtmashal.Text = "0";
+                    }
+                    if (txtcommestion.Text.Equals(""))
+                    {
+                        txtcommestion.Text = "0";
+                    }
+                    if (txtbskoul.Text.Equals(""))
+                    {
+                        txtbskoul.Text = "0";
+                    }
+
+                    bskoul = double.Parse(txtbskoul.Text);
+                    mashal = double.Parse(txtmashal.Text);
+                    commession = double.Parse(txtcommestion.Text);
+                    rest = total + (bskoul + mashal + commession);
+                    txtrest.Text = rest.ToString();
+
+                }
             }
-
-            else
-            {
-
-                if (txtmashal.Text.Equals(""))
-                {
-                    txtmashal.Text = "0";
-                }
-                if (txtcommestion.Text.Equals(""))
-                {
-                    txtcommestion.Text = "0";
-                }
-                if (txtbskoul.Text.Equals(""))
-                {
-                    txtbskoul.Text = "0";
-                }
-
-                bskoul = double.Parse(txtbskoul.Text);
-                mashal = double.Parse(txtmashal.Text);
-                commession = double.Parse(txtcommestion.Text);
-                rest = total + (bskoul + mashal + commession);
-                txtrest.Text = rest.ToString();
-
-            }
+            catch (Exception ex) { }
         }
 
         private void btnadd1_Click(object sender, EventArgs e)//add button
         {
-            clientIndex = (int)comboclient.SelectedIndex;
-            if ((int)comboclient.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبارعميل");
-            else if ((int)combocategory.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبارالصنف");
-            else if ((int)comboquantitytype.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار نوع الكمية");
-            else if ((int)combostore.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختبار المخزن");
-            else if (txttotal.Text.Equals(""))
-                MessageBox.Show("برجاء الضغط علي حساب الاجمالي اولا");
-            else if (txtrest.Text.Equals(""))
-                MessageBox.Show("برجاء الضغط علي حساب الباقي اولا");
-            else if (txtInvoiceNo.Text.Equals(""))
-                MessageBox.Show("يجب إدخال رقم الفاتورة أولا");
-            else
+            try
             {
-                enterquantity = double.Parse(txtquantity.Text);
-                conn.Open();
-                cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                    MessageBox.Show("المخزن خالي");
-                    conn.Close();
-                }
+                clientIndex = (int)comboclient.SelectedIndex;
+                if ((int)comboclient.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبارعميل");
+                else if ((int)combocategory.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبارالصنف");
+                else if ((int)comboquantitytype.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار نوع الكمية");
+                else if ((int)combostore.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختبار المخزن");
+                else if (txttotal.Text.Equals(""))
+                    MessageBox.Show("برجاء الضغط علي حساب الاجمالي اولا");
+                else if (txtrest.Text.Equals(""))
+                    MessageBox.Show("برجاء الضغط علي حساب الباقي اولا");
+                else if (txtInvoiceNo.Text.Equals(""))
+                    MessageBox.Show("يجب إدخال رقم الفاتورة أولا");
                 else
                 {
-                    while (reader.Read())
+                    int qtyTypeFromMainStore = 0, qtyTypeFromTempclient = 0;
+                    enterquantity = double.Parse(txtquantity.Text);
+                    conn.Open();
+                    cmd.CommandText = @" select quantity,quantitytype_id from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id= '" + (int)comboquantitytype.SelectedValue + "' ";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (!reader.HasRows)
                     {
-                        if (reader[0].ToString() == "")
-                        {
-                            quantity = 0;
-                        }
-                        quantity = double.Parse(reader[0].ToString());
-                    }
-
-                    conn.Close();
-                    //-------------------------------------
-                    if (enterquantity > quantity)
-                    {
-                        MessageBox.Show("الكمية الموجودة في المخزن غير كافية لبيع هذه الكمية");
+                        MessageBox.Show("المخزن خالي");
+                        conn.Close();
                     }
                     else
                     {
-                        //check invoice number is exist or not
-                        conn.Open();
-                        cmd.CommandText = @"select invoiceNo from CLIENT_INVOICE where invoiceNo ='" + txtInvoiceNo.Text + "'";
-                        reader = cmd.ExecuteReader();
-                        if (reader.HasRows || (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0))
+                        while (reader.Read())
                         {
-                            MessageBox.Show("رقم الفاتورة موجود بالفعل");
-                            conn.Close();
-                        }
-                        else if (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0)
-                            MessageBox.Show("يجب إختيار نفس العميل لنفس الفاتورة");
-                        else
-                        {
-                            conn.Close();
-                            conn.Open();
-                            cmd.CommandText = @"insert into TEMP_CLIENT (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) values(@client_id,@cat_id,@quantity,@quantitytype_id,@price,@total,@biskoul,@mashal,@commissions,@rest,@paid,@baky,@store_id,@date,@invoiceNo)";
-                            cmd.Connection = conn;
-                            cmd.Parameters.AddWithValue("@client_id", (int)comboclient.SelectedValue);
-                            cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                            cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                            cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
-                            cmd.Parameters.AddWithValue("@price", txtprice.Text);
-                            cmd.Parameters.AddWithValue("@total", txttotal.Text);
-                            cmd.Parameters.AddWithValue("@biskoul", txtbskoul.Text);
-                            cmd.Parameters.AddWithValue("@mashal", txtmashal.Text);
-                            cmd.Parameters.AddWithValue("@commissions", txtcommestion.Text);
-                            cmd.Parameters.AddWithValue("@rest", txtrest.Text);
-                            cmd.Parameters.AddWithValue("@paid", txtpaid.Text);
-                            cmd.Parameters.AddWithValue("@baky", txtbaky.Text);
-                            cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
-                            cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
-                            cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
-                            cmd.ExecuteNonQuery();
-                            cmd.Parameters.Clear();
-                            conn.Close();
-                            BindGrid();
-                            MessageBox.Show("تمت عمليه الاضافه");
-                            clientIndexAfterAdd = clientIndex;
-                            //----------------------------------------
-                            //select quntity ,store, quantity type,category
-                            conn.Open();
-                            cmd.CommandText = @" select quantity,quantitytype_id from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= '" + (int)comboquantitytype.SelectedValue + "' ";
-                            reader = cmd.ExecuteReader();
-                            while (reader.Read())
+                            if (reader[0].ToString() == "")
                             {
-                                tempquantity = double.Parse(reader[0].ToString());
-                                tempqunqtitytype = int.Parse(reader[1].ToString());
-                            }
-                            conn.Close();
-                            //---------------------------------
-                            //update mainstore
-                            conn.Open();
-                            if (tempqunqtitytype == 2)
-                            {
-                                quantity_db = tempquantity * 1000;
-                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
-                            }
-                            else if (tempqunqtitytype == 3)
-                            {
-                                quantity_db = tempquantity * 150;
-                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
-                            }
-                            else if (tempqunqtitytype == 4)
-                            {
-                                quantity_db = tempquantity * 155;
-                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity_db + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
+                                quantity = 0;
                             }
                             else
-                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + tempquantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id = 1  ";
-                            cmd.Connection = conn;
-                            cmd.ExecuteNonQuery();
-                            cmd.Parameters.Clear();
-                            conn.Close();
-                            txtbskoul.Text = "";
-                            txtcommestion.Text = "";
-                            txtmashal.Text = "";
-                            txtprice.Text = "";
-                            txtquantity.Text = "";
-                            txtrest.Text = "";
-                            txttotal.Text = "";
-                            txtpaid.Text = "";
-                            txtbaky.Text = "";
-                            comboclient.SelectedIndex = 0;
-                            combocategory.SelectedIndex = 0;
-                            comboquantitytype.SelectedIndex = 0;
-                            combostore.SelectedIndex = 0;
+                            {
+                                quantity = double.Parse(reader[0].ToString());
+                                qtyTypeFromMainStore = int.Parse(reader[1].ToString());
+                            }
+                        }
+
+                        conn.Close();
+                        //-------------------------------------
+                        if (enterquantity > quantity)
+                        {
+                            MessageBox.Show("الكمية الموجودة في المخزن غير كافية لبيع هذه الكمية");
+                        }
+                        else
+                        {
+                            //check invoice number is exist or not
+                            conn.Open();
+                            cmd.CommandText = @"select invoiceNo from CLIENT_INVOICE where invoiceNo ='" + txtInvoiceNo.Text + "'";
+                            reader = cmd.ExecuteReader();
+                            if (reader.HasRows || (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0))
+                            {
+                                MessageBox.Show("رقم الفاتورة موجود بالفعل");
+                                conn.Close();
+                            }
+                            else if (clientIndexAfterAdd != clientIndex && clientIndexAfterAdd != 0)
+                                MessageBox.Show("يجب إختيار نفس العميل لنفس الفاتورة");
+                            else
+                            {
+                                conn.Close();
+                                conn.Open();
+                                cmd.CommandText = @"insert into TEMP_CLIENT (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) values(@client_id,@cat_id,@quantity,@quantitytype_id,@price,@total,@biskoul,@mashal,@commissions,@rest,@paid,@baky,@store_id,@date,@invoiceNo)";
+                                cmd.Connection = conn;
+                                cmd.Parameters.AddWithValue("@client_id", (int)comboclient.SelectedValue);
+                                cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
+                                cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                                cmd.Parameters.AddWithValue("@quantitytype_id", (int)comboquantitytype.SelectedValue);
+                                cmd.Parameters.AddWithValue("@price", txtprice.Text);
+                                cmd.Parameters.AddWithValue("@total", txttotal.Text);
+                                cmd.Parameters.AddWithValue("@biskoul", txtbskoul.Text);
+                                cmd.Parameters.AddWithValue("@mashal", txtmashal.Text);
+                                cmd.Parameters.AddWithValue("@commissions", txtcommestion.Text);
+                                cmd.Parameters.AddWithValue("@rest", txtrest.Text);
+                                cmd.Parameters.AddWithValue("@paid", txtpaid.Text);
+                                cmd.Parameters.AddWithValue("@baky", txtbaky.Text);
+                                cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
+                                cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
+                                cmd.Parameters.AddWithValue("@invoiceNo", txtInvoiceNo.Text);
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                                conn.Close();
+                                BindGrid();
+                                MessageBox.Show("تمت عمليه الاضافه");
+                                clientIndexAfterAdd = clientIndex;
+                                //----------------------------------------
+                                //select quntity ,store, quantity type,category
+                                conn.Open();
+                                cmd.CommandText = @" select quantity,quantitytype_id from TEMP_CLIENT where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "' ";
+                                reader = cmd.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    tempquantity = double.Parse(reader[0].ToString());
+                                    qtyTypeFromTempclient = int.Parse(reader[1].ToString());
+                                }
+                                conn.Close();
+                                //---------------------------------
+                                //update mainstore
+                                if (qtyTypeFromTempclient == qtyTypeFromMainStore)
+                                    tempquantity = tempquantity;
+                                else if (qtyTypeFromMainStore == 1 && qtyTypeFromTempclient == 2)
+                                {
+                                    tempquantity = tempquantity * 1000;
+                                }
+                                else if (qtyTypeFromMainStore == 2 && qtyTypeFromTempclient == 1)
+                                {
+                                    tempquantity = tempquantity / 1000;
+                                }
+                                conn.Open();
+                                cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + tempquantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id = '" + (int)comboquantitytype.SelectedValue + "'  ";
+                                cmd.Connection = conn;
+                                cmd.ExecuteNonQuery();
+                                cmd.Parameters.Clear();
+                                conn.Close();
+                                txtbskoul.Text = "";
+                                txtcommestion.Text = "";
+                                txtmashal.Text = "";
+                                txtprice.Text = "";
+                                txtquantity.Text = "";
+                                txtrest.Text = "";
+                                txttotal.Text = "";
+                                txtpaid.Text = "";
+                                txtbaky.Text = "";
+                                comboclient.SelectedIndex = 0;
+                                combocategory.SelectedIndex = 0;
+                                comboquantitytype.SelectedIndex = 0;
+                                combostore.SelectedIndex = 0;
+                            }
                         }
                     }
-                }
 
+                }
             }
+            catch (Exception ex) { }
         }
 
         private void tempclientgrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -333,140 +335,158 @@ namespace Elmagd
         //delet temp
         private void btndelet_Click(object sender, EventArgs e)
         {
-
-            if (id == 0)
-                MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
-            else
+            try
             {
-                conn.Open();
-                cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_CLIENT where id='" + id + "' ";
-                SqlDataReader reader_temp = cmd.ExecuteReader();
-                while (reader_temp.Read())
-                {
-                    store = int.Parse(reader_temp[0].ToString());
-                    cat = int.Parse(reader_temp[1].ToString());
-                    quantity = double.Parse(reader_temp[2].ToString());
-                    quantitytype = int.Parse(reader_temp[3].ToString());
-
-                }
-                conn.Close();
-
-                //---------------------------------
-                //update mainstore
-                conn.Open();
-                if (quantitytype == 2)
-                {
-                    quantity_db = quantity * 1000;
-                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
-                }
-                else if (quantitytype == 3)
-                {
-                    quantity_db = quantity * 150;
-                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
-                }
-                else if (quantitytype == 4)
-                {
-                    quantity_db = quantity * 155;
-                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id = 1  ";
-                }
+                if (id == 0)
+                    MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
                 else
-                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id =1  ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                conn.Close();
-                foreach (DataGridViewRow row in tempclientgrid.SelectedRows)
                 {
-
-                    tempclientgrid.Rows.RemoveAt(row.Index);
                     conn.Open();
-                    cmd.CommandText = @"delete from TEMP_CLIENT where id = '" + id + "'";
+                    cmd.CommandText = @" select store_id,cat_id,quantity,quantitytype_id from TEMP_CLIENT where id='" + id + "' ";
+                    SqlDataReader reader_temp = cmd.ExecuteReader();
+                    while (reader_temp.Read())
+                    {
+                        store = int.Parse(reader_temp[0].ToString());
+                        cat = int.Parse(reader_temp[1].ToString());
+                        quantity = double.Parse(reader_temp[2].ToString());
+                        quantitytype = int.Parse(reader_temp[3].ToString());
+
+                    }
+                    conn.Close();
+
+                    //---------------------------------
+                    //update mainstore
+                    double quantityfrommain;
+                    int quantitytypefrommainstore = 0;
+                    conn.Open();
+                    cmd.CommandText = @"  select quantity,quantitytype_id from MAIN_STORE where store_id ='" + store + "'and cat_id='" + cat + "'";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        quantityfrommain = double.Parse(reader[0].ToString());
+                        quantitytypefrommainstore = int.Parse(reader[1].ToString());
+
+                    }
+                    conn.Close();
+                    if (quantitytype == quantitytypefrommainstore)
+                        quantity_db = quantity;
+                    else if (quantitytypefrommainstore == 1 && quantitytype == 2)
+                    {
+                        quantity_db = quantity * 1000;
+                    }
+                    else if (quantitytypefrommainstore == 2 && quantitytype == 1)
+                    {
+                        quantity_db = quantity / 1000;
+                    }
+                    conn.Open();
+                    cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + quantity_db + "' where store_id = '" + store + "'and cat_id ='" + cat + "' ";
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
                     conn.Close();
-                    BindGrid();
-                    MessageBox.Show("تم الحذف");
-                    id = 0;
-                    btnadd.Enabled = true;
+                    foreach (DataGridViewRow row in tempclientgrid.SelectedRows)
+                    {
+
+                        tempclientgrid.Rows.RemoveAt(row.Index);
+                        conn.Open();
+                        cmd.CommandText = @"delete from TEMP_CLIENT where id = '" + id + "'";
+                        cmd.Connection = conn;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        BindGrid();
+                        MessageBox.Show("تم الحذف");
+                        id = 0;
+                        btnadd.Enabled = true;
+                    }
                 }
             }
+            catch (Exception ex) { }
         }
 
         private void btnadd_Click(object sender, EventArgs e)//print button
         {
-            conn.Open();
-            cmd.CommandText = @"select id from TEMP_CLIENT  ";
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.HasRows)
-                MessageBox.Show("لاتوجد اي بيانات للطباعه");
-            else
+            try
             {
-                //add client invoice
-                clientIndexAfterAdd = 0;
-                conn.Close();
                 conn.Open();
-                cmd.CommandText = @"insert into CLIENT_INVOICE (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) select  client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo from TEMP_CLIENT ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                //-------------------------------------------------------------------------------
-                conn.Open();
-                cmd.CommandText = @"select id from CLIENT_INVOICE where CLIENT_INVOICE.date = '" + clientinvoicedate.Value.Date.ToShortDateString() + "'";
-                cmd.Connection = conn;
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
+                cmd.CommandText = @"select id from TEMP_CLIENT  ";
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                    MessageBox.Show("لاتوجد اي بيانات للطباعه");
+                else
                 {
-                    id = int.Parse(reader[0].ToString());
-                }
-                conn.Close();
-                conn.Open();
-                cmd.CommandText = @"insert into CASHIER (clientinvoice_id,date) values(@clientinvoice_id,@date)";
-                cmd.Connection = conn;
-                cmd.Parameters.AddWithValue("@clientinvoice_id", id);
-                cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                conn.Close();
-                //-------------------------------------------------------------------------------
-                //////addto sales
-                //conn.Open();
-                //cmd.CommandText = @"insert into SALES (client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date) select  client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date from TEMP_CLIENT ";
-                //cmd.Connection = conn;
-                //cmd.ExecuteNonQuery();
-                //conn.Close();
-                //-------------------------------------
+                    //add client invoice
+                    clientIndexAfterAdd = 0;
+                    conn.Close();
+                    conn.Open();
+                    cmd.CommandText = @"insert into CLIENT_INVOICE (client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo) select  client_id,cat_id,quantity,quantitytype_id,price,total,biskoul,mashal,commission,rest,paid,baky,store_id,date,invoiceNo from TEMP_CLIENT ";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    //-------------------------------------------------------------------------------
+                    conn.Open();
+                    cmd.CommandText = @"select id from CLIENT_INVOICE where CLIENT_INVOICE.date = '" + clientinvoicedate.Value.Date.ToShortDateString() + "'";
+                    cmd.Connection = conn;
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        id = int.Parse(reader[0].ToString());
+                    }
+                    conn.Close();
+                    conn.Open();
+                    cmd.CommandText = @"insert into CASHIER (clientinvoice_id,date) values(@clientinvoice_id,@date)";
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("@clientinvoice_id", id);
+                    cmd.Parameters.AddWithValue("@date", clientinvoicedate.Value.Date.ToShortDateString());
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                    //-------------------------------------------------------------------------------
+                    //////addto sales
+                    //conn.Open();
+                    //cmd.CommandText = @"insert into SALES (client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date) select  client_id,cat_id,quantity,quantitytype_id,store_id,rest,paid,baky,date from TEMP_CLIENT ";
+                    //cmd.Connection = conn;
+                    //cmd.ExecuteNonQuery();
+                    //conn.Close();
+                    //-------------------------------------
 
-                //print client invoice
-                ((Form)printPreviewDialog1).WindowState = FormWindowState.Maximized;
-                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    printDocument1.Print();
+                    //print client invoice
+                    ((Form)printPreviewDialog1).WindowState = FormWindowState.Maximized;
+                    if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        printDocument1.Print();
+                    }
+                    // delete temp client
+                    conn.Open();
+                    cmd.CommandText = @"delete from TEMP_CLIENT ";
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    BindGrid();
+                    txtInvoiceNo.Text = "";
                 }
-                // delete temp client
-                conn.Open();
-                cmd.CommandText = @"delete from TEMP_CLIENT ";
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                BindGrid();
-                txtInvoiceNo.Text = "";
             }
+            catch (Exception ex) { }
         }
 
         private void btnbaky_Click(object sender, EventArgs e)
         {
-            double paid, baky;
-            if (txtrest.Text.Equals(""))
+            try
             {
-                MessageBox.Show("برجاء الضغط علي زر حساب الإجمالي بعد الخصومات");
+                double paid, baky;
+                if (txtrest.Text.Equals(""))
+                {
+                    MessageBox.Show("برجاء الضغط علي زر حساب الإجمالي بعد الخصومات");
+                }
+                else if (txtpaid.Text.Equals(""))
+                {
+                    txtpaid.Text = " 0";
+                }
+                paid = double.Parse(txtpaid.Text);
+                baky = rest - paid;
+                txtbaky.Text = baky.ToString();
             }
-            else if (txtpaid.Text.Equals(""))
-            {
-                txtpaid.Text = " 0";
-            }
-            paid = double.Parse(txtpaid.Text);
-            baky = rest - paid;
-            txtbaky.Text = baky.ToString();
+            catch (Exception ex) { }
         }
 
         private void txtquantity_TextChanged(object sender, EventArgs e)

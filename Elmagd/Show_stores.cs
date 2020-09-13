@@ -13,7 +13,7 @@ namespace Elmagd
 {
     public partial class Show_stores : Form
     {
-        double quantity, storequantity;
+        double quantity = 0, storequantity, quantity_kilo, totalquantity;
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
 
@@ -35,14 +35,18 @@ namespace Elmagd
         #region BINDGRID
         private void BindGrid()
         {
-            conn.Open();
-            cmd.CommandText = @"select MAIN_STORE.id,STORE.name as المخزن, CATEGORY.name as الصنف,MAIN_STORE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية' from MAIN_STORE inner join STORE on MAIN_STORE.store_id =STORE.id inner join CATEGORY on MAIN_STORE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on MAIN_STORE.quantitytype_id =QUANTITY_TYPE.id";
-            cmd.Connection = conn;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            showstoregrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                cmd.CommandText = @"select MAIN_STORE.id as م,STORE.name as المخزن, CATEGORY.name as الصنف,MAIN_STORE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية' from MAIN_STORE inner join STORE on MAIN_STORE.store_id =STORE.id inner join CATEGORY on MAIN_STORE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on MAIN_STORE.quantitytype_id =QUANTITY_TYPE.id";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                showstoregrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
         #endregion
 
@@ -94,54 +98,61 @@ namespace Elmagd
         #region GARD_MAINSTORE
         private void btngard_Click(object sender, EventArgs e)
         {
-            if ((int)combostore.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختيار مخزن");
-            else if ((int)combocategory.SelectedIndex == 0)
-                MessageBox.Show("برجاء اختيار صنف");
-
-            else
+            try
             {
+                if ((int)combostore.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختيار مخزن");
+                else if ((int)combocategory.SelectedIndex == 0)
+                    MessageBox.Show("برجاء اختيار صنف");
 
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select sum (quantity) from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id =1 ", conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    if (reader[0].ToString() == "")
-                        quantity = 0.0;
-                    else
-                        quantity = double.Parse(reader[0].ToString());
-                }
-                conn.Close();
-                if (quantity == 0.0)
-                {
-                    MessageBox.Show("المخزن خالي من هذا الصنف تبعا لنوع الكمية");
-                    txtquantity.Text = "0";
-                }
                 else
                 {
-                    if ((int)comboquantitytype.SelectedValue == 2)
+                    quantity = 0;
+                    var qtyType = 0;
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("select sum(quantity),quantitytype_id from MAIN_STORE where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "' group by quantity,quantitytype_id", conn);//and quantitytype_id = '" + (int)comboquantitytype.SelectedValue + "' "
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        storequantity = quantity / 1000;
-                        txtquantity.Text = storequantity.ToString();
-
+                        if (reader[0].ToString() == "")
+                            quantity = 0.0;
+                        else
+                            quantity += double.Parse(reader[0].ToString());
+                        qtyType = int.Parse(reader[1].ToString());
                     }
-                    else if ((int)comboquantitytype.SelectedValue == 3)
+                    conn.Close();
+                    if (quantity == 0.0)
                     {
-                        storequantity = quantity / 150;
-                        txtquantity.Text = storequantity.ToString();
-
-                    }
-                    else if ((int)comboquantitytype.SelectedValue == 4)
-                    {
-                        storequantity = quantity / 155;
-                        txtquantity.Text = storequantity.ToString();
-
+                        MessageBox.Show("المخزن خالي من هذا الصنف تبعا لنوع الكمية");
+                        txtquantity.Text = "0";
                     }
                     else
-                        txtquantity.Text = quantity.ToString();
+                    {
+                        if ((int)comboquantitytype.SelectedValue == 1)
+                        {
+                            if (qtyType == 1)
+                                txtquantity.Text = quantity.ToString();
+                            else if (qtyType == 2)
+                            {
+                                storequantity = quantity * 1000;
+                                txtquantity.Text = storequantity.ToString();
+                            }
+                        }
+                        else if ((int)comboquantitytype.SelectedValue == 2)
+                        {
+                            if (qtyType == 2)
+                                txtquantity.Text = quantity.ToString();
+                            else if (qtyType == 1)
+                            {
+                                storequantity = quantity / 1000;
+                                txtquantity.Text = storequantity.ToString();
+                            }
+
+                        }
+                    }
                 }
             }
+            catch (Exception ex) { }
         }
         #endregion
     }

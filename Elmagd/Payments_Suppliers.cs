@@ -34,7 +34,7 @@ namespace Elmagd
         private void BindGrid()
         {
             conn.Open();
-            cmd.CommandText = @"select PAYMENTS_SUPPLIERS.id, PAYMENTS_SUPPLIERS.date as التاريخ,SUPPLIERS.name as الإسم ,PAYMENTS_SUPPLIERS.value as المبلغ,PAYMENTS_SUPPLIERS.notes as الملاحظات from PAYMENTS_SUPPLIERS inner join SUPPLIERS on PAYMENTS_SUPPLIERS.suppliers_id =SUPPLIERS.id";
+            cmd.CommandText = @"select PAYMENTS_SUPPLIERS.id as م, PAYMENTS_SUPPLIERS.date as التاريخ,SUPPLIERS.name as الإسم ,PAYMENTS_SUPPLIERS.value as المبلغ,PAYMENTS_SUPPLIERS.notes as الملاحظات from PAYMENTS_SUPPLIERS inner join SUPPLIERS on PAYMENTS_SUPPLIERS.suppliers_id =SUPPLIERS.id";
             cmd.Connection = conn;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

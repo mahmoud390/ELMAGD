@@ -63,27 +63,31 @@ namespace Elmagd
 
         private void btnedite_Click(object sender, EventArgs e)
         {
-            if (id == 0)
-                MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
-            else
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("update ADMIN set name=@name,phone=@phone,username=@username,password =@password where id = '" + id + "'", conn);
-                cmd.Parameters.AddWithValue("@name", txtname.Text.ToString());
-                cmd.Parameters.AddWithValue("@phone", txtphone.Text.ToString());
-                cmd.Parameters.AddWithValue("@username", txtusername.Text.ToString());
-                cmd.Parameters.AddWithValue("@password", txtpassword.Text.ToString());
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                BindGrid();
-                txtname.Text = "";
-                txtphone.Text = "";
-                txtusername.Text = "";
-                txtpassword.Text = "";
-                MessageBox.Show("تم التعديل");
-                id = 0;
-                btnadd.Enabled = true;
+                if (id == 0)
+                    MessageBox.Show("يجب الضغط عل صف يحتوي علي بيانات");
+                else
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("update ADMIN set name=@name,phone=@phone,username=@username,password =@password where id = '" + id + "'", conn);
+                    cmd.Parameters.AddWithValue("@name", txtname.Text.ToString());
+                    cmd.Parameters.AddWithValue("@phone", txtphone.Text.ToString());
+                    cmd.Parameters.AddWithValue("@username", txtusername.Text.ToString());
+                    cmd.Parameters.AddWithValue("@password", txtpassword.Text.ToString());
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    BindGrid();
+                    txtname.Text = "";
+                    txtphone.Text = "";
+                    txtusername.Text = "";
+                    txtpassword.Text = "";
+                    MessageBox.Show("تم التعديل");
+                    id = 0;
+                    btnadd.Enabled = true;
+                }
             }
+            catch (Exception ex) { }
         }
 
         #region DELET_ADMIN
@@ -117,12 +121,16 @@ namespace Elmagd
 
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select id,name as الإسم, phone as الهاتف ,username as إسم_المستخدم ,password as كلمة_المرور from ADMIN where name LIKE N'%" + txtSarch.Text + "%'", conn);
-            DataTable dt = new DataTable();
-            dataadapter.Fill(dt);
-            admingrid.DataSource = dt;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                SqlDataAdapter dataadapter = new SqlDataAdapter("select id,name as الإسم, phone as الهاتف ,username as إسم_المستخدم ,password as كلمة_المرور from ADMIN where name LIKE N'%" + txtSarch.Text + "%'", conn);
+                DataTable dt = new DataTable();
+                dataadapter.Fill(dt);
+                admingrid.DataSource = dt;
+                conn.Close();
+            }
+            catch (Exception ex) { }
         }
 
         private void txtphone_TextChanged(object sender, EventArgs e)
@@ -145,52 +153,55 @@ namespace Elmagd
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            if (txtname.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال الاسم ");
-            else if (txtphone.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال الهاتف");
-            else if (txtusername.Text.Equals(" "))
-                MessageBox.Show("برجاء إدخال اسم المستخدم");
-            else if (txtpassword.Text.Equals(""))
-                MessageBox.Show("برجاء إدخال الباسورد");
-            else
+            try
             {
-
-                //التشيك علي اسم المستخدم اذا كان موجود\ بالفعل
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select username from ADMIN where username ='" + txtusername + "' ", conn);
-                SqlDataReader dataReader = cmd.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    MessageBox.Show("هذا البريد الالكتروني موجود بالفعل");
-                    txtusername.Text = "";
-                    txtusername.Focus();
-                    conn.Close();
-                }
+                if (txtname.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال الاسم ");
+                else if (txtphone.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال الهاتف");
+                else if (txtusername.Text.Equals(" "))
+                    MessageBox.Show("برجاء إدخال اسم المستخدم");
+                else if (txtpassword.Text.Equals(""))
+                    MessageBox.Show("برجاء إدخال الباسورد");
                 else
                 {
 
-                    // إضافة بيانات الادمن
-                    conn.Close();
+                    //التشيك علي اسم المستخدم اذا كان موجود\ بالفعل
                     conn.Open();
-                    cmd.CommandText = @"insert into ADMIN ( name,phone,username,Password) values (@name,@phone,@username,@Password)";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@name", txtname.Text);
-                    cmd.Parameters.AddWithValue("@phone", txtphone.Text);
-                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtpassword.Text);
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
-                    conn.Close();
-                    BindGrid();
-                    txtname.Text = "";
-                    txtphone.Text = "";
-                    txtpassword.Text = "";
-                    txtusername.Text = "";
-                    MessageBox.Show("تمت عملية الاضافة بنجاح");
+                    SqlCommand cmd = new SqlCommand("select username from ADMIN where username ='" + txtusername + "' ", conn);
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        MessageBox.Show("هذا البريد الالكتروني موجود بالفعل");
+                        txtusername.Text = "";
+                        txtusername.Focus();
+                        conn.Close();
+                    }
+                    else
+                    {
+
+                        // إضافة بيانات الادمن
+                        conn.Close();
+                        conn.Open();
+                        cmd.CommandText = @"insert into ADMIN ( name,phone,username,Password) values (@name,@phone,@username,@Password)";
+                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@name", txtname.Text);
+                        cmd.Parameters.AddWithValue("@phone", txtphone.Text);
+                        cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                        cmd.Parameters.AddWithValue("@Password", txtpassword.Text);
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                        conn.Close();
+                        BindGrid();
+                        txtname.Text = "";
+                        txtphone.Text = "";
+                        txtpassword.Text = "";
+                        txtusername.Text = "";
+                        MessageBox.Show("تمت عملية الاضافة بنجاح");
+                    }
                 }
             }
+            catch (Exception ex) { }
         }
-
     }
 }
