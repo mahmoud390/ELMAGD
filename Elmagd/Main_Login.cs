@@ -13,7 +13,8 @@ namespace Elmagd
 {
     public partial class Main_Login : Form
     {
-        string password, userName;
+        string password, userName, activationCode;
+        DateTime currentDate;
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
         public Main_Login()
@@ -69,7 +70,6 @@ namespace Elmagd
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
             if (txtName.Text.Equals(""))
             {
                 MessageBox.Show("يجب إدخال البريد إسم المستخدم اولا");
@@ -82,23 +82,62 @@ namespace Elmagd
             }
             else
             {
-                if (DateTime.Now.ToShortDateString() == "2020-10-09")
+                conn.Open();
+                SqlCommand cmd2 = new SqlCommand("select [key],id from ACTIVATION", conn);
+                SqlDataReader dataReader2 = cmd2.ExecuteReader();
+                dataReader2.Read();
+                if (txtAcivateCode.Text != "")
                 {
+                    while (dataReader2.Read())
+                    {
+                        if (txtAcivateCode.Text == dataReader2[0].ToString())
+                        {
+                            int id = int.Parse(dataReader2[1].ToString());
+                            currentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                            currentDate = AddMonthToEndOfMonth(currentDate, 3);
+                            conn.Close();
+                            conn.Open();
+                            cmd.CommandText = @"UPDATE ADMIN SET activationCode = '" + txtAcivateCode.Text + "' , expireDate = '" + currentDate.ToShortDateString() + "'";
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            conn.Close();
+                            conn.Open();
+                            cmd.CommandText = @"DELETE from ACTIVATION where id = '" + id + "'";
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            break;
+                        }
+                    }
+                }
+                conn.Close();
+                conn.Open();
+                SqlCommand cmd1 = new SqlCommand("select expireDate,activationCode from ADMIN", conn);
+                SqlDataReader dataReader1 = cmd1.ExecuteReader();
+                dataReader1.Read();
+                if (DateTime.Parse(DateTime.Now.ToShortDateString()) >= DateTime.Parse(dataReader1[0].ToString()))
+                {
+                    if (txtAcivateCode.Text != "")
+                        MessageBox.Show("كود التفعيل غير صحيح!!! للتفعيل اتصل بالرقم الأتى 01006209613");
+                    else
+                        MessageBox.Show("يجب تفعيل البرنامج!!! للتفعيل اتصل بالرقم الأتى 01006209613");
+                    conn.Close();
                     Application.Exit();
                 }
                 else
                 {
+                    conn.Close();
                     password = txtpass.Text;
                     userName = txtName.Text;
                     conn.Open();
-                    SqlCommand cmd1 = new SqlCommand("select username,Password from ADMIN where username='" + userName + "' and password='" + password + "' ", conn);
-                    SqlDataReader dataReader = cmd1.ExecuteReader();
+                    SqlCommand cmd = new SqlCommand("select username,Password from ADMIN where username='" + userName + "' and password='" + password + "' ", conn);
+                    SqlDataReader dataReader = cmd.ExecuteReader();
                     if (dataReader.HasRows)
                     {
                         Homeform homeform = new Homeform();
                         homeform.Show();
                         this.Hide();
-
                     }
                     else
                     {
@@ -116,10 +155,21 @@ namespace Elmagd
             }
         }
 
+        public static DateTime AddMonthToEndOfMonth(DateTime date, int numberOfMonths)
+        {
+            DateTime nextMonth = date.AddMonths(numberOfMonths);
 
-
-
-
-
+            if (date.Day != DateTime.DaysInMonth(date.Year, date.Month)) //is last day in month
+            {
+                //any other day then last day
+                return nextMonth;
+            }
+            else
+            {
+                //if date was end of month, add remaining days
+                int addDays = DateTime.DaysInMonth(nextMonth.Year, nextMonth.Month) - nextMonth.Day;
+                return nextMonth.AddDays(addDays);
+            }
+        }
     }
 }
