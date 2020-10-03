@@ -380,22 +380,24 @@ namespace Elmagd
                     MessageBox.Show("برجاء حساب سحب المالك خلال الفتره");
                 else
                 {
-                    double externalsourse, recepitesclient, generalrecepites, paidclientinvoice, totaledaa;
-                    double paymentsupp, generalpayment, paidsuppinvoice, sahbelmalk, totlsahb;
+                    double externalsourse, recepitesclient, generalrecepites, paidclientinvoice, totaledaa,edaainvestor;
+                    double paymentsupp, generalpayment, paidsuppinvoice, sahbelmalk, totlsahb,sahbinvistor;
                     double total_cahier;
                     externalsourse = double.Parse(txtexternalsourses.Text);
                     recepitesclient = double.Parse(txtreceiptsclient.Text);
                     generalrecepites = double.Parse(txtgeneralreceipts.Text);
                     paidclientinvoice = double.Parse(txtclientinvoice.Text);
+                    edaainvestor = double.Parse(txtinvestor.Text);
                     //
-                    totaledaa = externalsourse + recepitesclient + generalrecepites + paidclientinvoice;
+                    totaledaa = externalsourse + recepitesclient + generalrecepites + paidclientinvoice + edaainvestor;
                     //
                     paymentsupp = double.Parse(txtpaymentsuppliers.Text);
                     generalpayment = double.Parse(txtgeneralpaymentes.Text);
                     paidsuppinvoice = double.Parse(txtsuppliersinvoice.Text);
                     sahbelmalk = double.Parse(txtadminsahb.Text);
+                    sahbinvistor = double.Parse(txtsahbinvestor.Text);
                     //
-                    totlsahb = paymentsupp + generalpayment + paidsuppinvoice + sahbelmalk;
+                    totlsahb = paymentsupp + generalpayment + paidsuppinvoice + sahbelmalk + sahbinvistor;
                     //
                     total_cahier = totaledaa - totlsahb;
                     txttotal.Text = total_cahier.ToString();
@@ -549,7 +551,7 @@ namespace Elmagd
             suppliers_detail.Show();
         }
 
-        private void btnTotalSales_Click(object sender, EventArgs e)
+       /* private void btnTotalSales_Click(object sender, EventArgs e)
         {
             try
             {
@@ -699,9 +701,9 @@ namespace Elmagd
             }
             catch (Exception ex) { }
 
-        }
+        }*/
 
-        private void btnTotalPaid_Click(object sender, EventArgs e)
+      /*  private void btnTotalPaid_Click(object sender, EventArgs e)
         {
             try
             {
@@ -762,6 +764,46 @@ namespace Elmagd
             }
             catch (Exception ex) { }
 
+        }*/
+
+        private void btninvestor_Click(object sender, EventArgs e)
+        {
+           
+            double investor_value = 0;
+            conn.Open();
+            cmd.CommandText = @"select sum(edaa) from INVESTOR_ACCOUNT where INVESTOR_ACCOUNT.date between '" + datefromedaa.Value.Date.ToShortDateString() + "'" + " and '" + datetoedaa.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtinvestor.Text = "0";
+                else
+                    investor_value= double.Parse(reader[0].ToString());
+            }
+            conn.Close();
+            txtinvestor.Text = investor_value.ToString();
+        }
+
+        private void datefromedaa_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnsahbinvestor_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            cmd.CommandText = @"select sum(sahb) from INVESTOR_ACCOUNT where INVESTOR_ACCOUNT.date between '" + datefromsahb.Value.Date.ToShortDateString() + "'" + " and '" + datetosahb.Value.Date.ToShortDateString() + "'";
+            cmd.Connection = conn;
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader[0].ToString() == "")
+                    txtsahbinvestor.Text = "0";
+                else
+                    txtsahbinvestor.Text = reader[0].ToString();
+            }
+            conn.Close();
         }
     }
 }

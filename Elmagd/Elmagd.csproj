@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -101,6 +101,12 @@
     </Compile>
     <Compile Include="Category.Designer.cs">
       <DependentUpon>Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category_Quantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category_Quantity.Designer.cs">
+      <DependentUpon>Category_Quantity.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientInvoice.cs">
       <SubType>Form</SubType>
@@ -191,6 +197,12 @@
     </Compile>
     <Compile Include="Internal_Exchange.Designer.cs">
       <DependentUpon>Internal_Exchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Investors _Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Investors _Account.Designer.cs">
+      <DependentUpon>Investors _Account.cs</DependentUpon>
     </Compile>
     <Compile Include="Investors.cs">
       <SubType>Form</SubType>
@@ -344,6 +356,9 @@
     <EmbeddedResource Include="Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Category_Quantity.resx">
+      <DependentUpon>Category_Quantity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientInvoice.resx">
       <DependentUpon>ClientInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Internal_Exchange.resx">
       <DependentUpon>Internal_Exchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Investors _Account.resx">
+      <DependentUpon>Investors _Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Investors.resx">
       <DependentUpon>Investors.cs</DependentUpon>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.salesgrid = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.txtSarch = new Telerik.WinControls.UI.RadTextBox();
@@ -69,6 +69,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.clientinvoicedate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.btndelet = new Telerik.WinControls.UI.RadButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dateto = new Telerik.WinControls.UI.RadDateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.datefrom = new Telerik.WinControls.UI.RadDateTimePicker();
+            this.btnsarch = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.salesgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSarch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInvoiceNo)).BeginInit();
@@ -89,22 +94,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientinvoicedate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btndelet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datefrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnsarch)).BeginInit();
             this.SuspendLayout();
             // 
             // salesgrid
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salesgrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesgrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.salesgrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.salesgrid.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.salesgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.salesgrid.Location = new System.Drawing.Point(12, 419);
             this.salesgrid.Name = "salesgrid";
@@ -121,20 +129,21 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1368, 390);
+            this.label9.Location = new System.Drawing.Point(581, 389);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 24);
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(124, 24);
             this.label9.TabIndex = 35;
-            this.label9.Text = "بحث";
+            this.label9.Text = "بحث بإسم العميل:";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txtSarch
             // 
             this.txtSarch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSarch.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtSarch.Location = new System.Drawing.Point(553, 384);
+            this.txtSarch.Location = new System.Drawing.Point(207, 383);
             this.txtSarch.Name = "txtSarch";
-            this.txtSarch.Size = new System.Drawing.Size(790, 32);
+            this.txtSarch.Size = new System.Drawing.Size(349, 32);
             this.txtSarch.TabIndex = 34;
             this.txtSarch.TextChanged += new System.EventHandler(this.txtSarch_TextChanged);
             // 
@@ -551,12 +560,81 @@
             this.btndelet.Text = "حذف";
             this.btndelet.Click += new System.EventHandler(this.btndelet_Click);
             // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(1333, 384);
+            this.label18.Name = "label18";
+            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label18.Size = new System.Drawing.Size(88, 24);
+            this.label18.TabIndex = 117;
+            this.label18.Text = "التاريخ الي:";
+            // 
+            // dateto
+            // 
+            this.dateto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dateto.CustomFormat = "dd-MM-yyyy";
+            this.dateto.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dateto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateto.Location = new System.Drawing.Point(1027, 383);
+            this.dateto.Name = "dateto";
+            this.dateto.Size = new System.Drawing.Size(286, 28);
+            this.dateto.TabIndex = 116;
+            this.dateto.TabStop = false;
+            this.dateto.Text = "23-06-2020";
+            this.dateto.Value = new System.DateTime(2020, 6, 23, 15, 39, 18, 479);
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(1761, 387);
+            this.label17.Name = "label17";
+            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label17.Size = new System.Drawing.Size(86, 24);
+            this.label17.TabIndex = 115;
+            this.label17.Text = "التاريخ من:";
+            // 
+            // datefrom
+            // 
+            this.datefrom.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.datefrom.CustomFormat = "dd-MM-yyyy";
+            this.datefrom.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.datefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datefrom.Location = new System.Drawing.Point(1436, 383);
+            this.datefrom.Name = "datefrom";
+            this.datefrom.Size = new System.Drawing.Size(286, 28);
+            this.datefrom.TabIndex = 114;
+            this.datefrom.TabStop = false;
+            this.datefrom.Text = "23-06-2020";
+            this.datefrom.Value = new System.DateTime(2020, 6, 23, 15, 39, 18, 479);
+            // 
+            // btnsarch
+            // 
+            this.btnsarch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(247)))), ((int)(((byte)(10)))));
+            this.btnsarch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsarch.ForeColor = System.Drawing.Color.Black;
+            this.btnsarch.Location = new System.Drawing.Point(817, 378);
+            this.btnsarch.Name = "btnsarch";
+            this.btnsarch.Size = new System.Drawing.Size(184, 36);
+            this.btnsarch.TabIndex = 118;
+            this.btnsarch.Text = "بحث في الفاتورة";
+            this.btnsarch.Click += new System.EventHandler(this.btnsarch_Click);
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1822, 764);
+            this.Controls.Add(this.btnsarch);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.dateto);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.datefrom);
             this.Controls.Add(this.btnupdat);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboquantitytype);
@@ -606,6 +684,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtquantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientinvoicedate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btndelet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datefrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnsarch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -652,5 +733,10 @@
         private System.Windows.Forms.Label label16;
         private Telerik.WinControls.UI.RadDateTimePicker clientinvoicedate;
         private Telerik.WinControls.UI.RadButton btndelet;
+        private System.Windows.Forms.Label label18;
+        private Telerik.WinControls.UI.RadDateTimePicker dateto;
+        private System.Windows.Forms.Label label17;
+        private Telerik.WinControls.UI.RadDateTimePicker datefrom;
+        private Telerik.WinControls.UI.RadButton btnsarch;
     }
 }

@@ -13,7 +13,7 @@ namespace Elmagd
 {
     public partial class Full_Production : Form
     {
-        int id, store, cat, quantitytype, id_store,catid_DB;
+        int id, store, cat, quantitytype, id_store, catid_DB;
         double enter_quantity, quantity;
         SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=ELMAGD;Integrated Security=true;");
         SqlCommand cmd = new SqlCommand();
@@ -132,14 +132,8 @@ namespace Elmagd
                     cmd.Connection = conn;
                     cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
                     cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                    if ((int)comboquantitytype.SelectedValue == 2)
-                    {
-                        quantity = enter_quantity * 1000;
-                        cmd.Parameters.AddWithValue("@quantity", quantity);
-                    }
-                    else
-                        cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                    cmd.Parameters.AddWithValue("@quantitytype_id", 1);
+                    cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                    cmd.Parameters.AddWithValue("@quantitytype_id", comboquantitytype.SelectedValue);
                     cmd.Parameters.AddWithValue("@date_end", dateEnd.Value.Date.ToShortDateString());
                     cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
                     cmd.ExecuteNonQuery();
@@ -160,6 +154,7 @@ namespace Elmagd
         {
             try
             {
+                int quantyp_mainstore=0;
                 conn.Open();
                 cmd.CommandText = @"select id from TEMP_FULLPRODUCTION  ";
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -189,7 +184,7 @@ namespace Elmagd
                     //----------------------------------------------
                     //إضافة مخزن ومنتج داخلmainstore في حالة عدم وجود هذا المخزن
                     conn.Open();
-                    cmd.CommandText = @"select id  from MAIN_STORE where cat_id ='" + catid_DB + "'and quantitytype_id= '" + quantitytype + "'  ";
+                    cmd.CommandText = @"select id,quantitytype_id  from MAIN_STORE where cat_id ='" + catid_DB + "'";//and quantitytype_id= '" + quantitytype + "'  ";
                     SqlDataReader reader_id = cmd.ExecuteReader();
                     while (reader_id.Read())
                     {
@@ -197,6 +192,7 @@ namespace Elmagd
                             id_store = 0;
                         else
                             id_store = int.Parse(reader_id[0].ToString());
+                        quantyp_mainstore =int.Parse(reader_id[1].ToString());
                     }
                     conn.Close();
                     if (id_store == 0)
@@ -225,6 +221,16 @@ namespace Elmagd
                         conn.Close();
                         //-------------------------------------
                         // ابديت الكمية في المين استور في حالة إضافة توريد جديد
+                         if (quantitytype == quantyp_mainstore)
+                            enter_quantity = enter_quantity;
+                        else if (quantyp_mainstore == 1 && quantitytype == 2)
+                        {
+                            enter_quantity = enter_quantity * 1000;
+                        }
+                        else if (quantyp_mainstore == 2 && quantitytype == 1)
+                        {
+                            enter_quantity = enter_quantity / 1000;
+                        }
                         conn.Open();
                         cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity+'" + enter_quantity + "' where store_id = '" + store + "'and cat_id ='" + cat + "'and quantitytype_id ='" + quantitytype + "'   ";
                         cmd.Connection = conn;

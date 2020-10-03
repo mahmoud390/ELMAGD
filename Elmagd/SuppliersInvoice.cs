@@ -34,11 +34,11 @@ namespace Elmagd
         {
 
             suppliersinvoicedate.Value = DateTime.Now;
-            /* BindGrid();
+             BindGrid();
              Loadquantity_type();
              Loadsuppliers();
              Loadstore();
-             Loadcategory();*/
+             Loadcategory();
         }
         #endregion
 
@@ -337,8 +337,8 @@ namespace Elmagd
         //إضافة في supplier invoice
         private void btnadd_Click(object sender, EventArgs e)//print btn
         {
-            try
-            {
+            //try
+            //{
                 conn.Close();
                 conn.Open();
                 cmd.CommandText = @"select id from TEMP_SUPPLIERSINVOICE";
@@ -460,8 +460,8 @@ namespace Elmagd
                     conn.Close();
                     BindGrid();
                 }
-            }
-            catch (Exception ex) { }
+            //}
+            //catch (Exception ex) { }
         }
         #endregion
 

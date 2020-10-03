@@ -54,7 +54,7 @@ namespace Elmagd
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select SALES.id, CLIENT.name,CATEGORY.name,SALES.quantity,QUANTITY_TYPE.name,STORE.name,SALES.rest,SALES.date from SALES inner join CLIENT on SALES.cat_id =CLIENT.id inner join CATEGORY on SALES.cat_id =CATEGORY.id inner join QUANTITY_TYPE on SALES.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SALES.store_id =STORE.id where CLIENT.name  LIKE N'%" + txtSarch.Text + "%'", conn);
+            SqlDataAdapter dataadapter = new SqlDataAdapter("select CLIENT_INVOICE.id as م,invoiceNo as 'رقم الفاتورة',CLIENT.name as 'إسم العميل',CATEGORY.name as 'الصنف',CLIENT_INVOICE.quantity as الكمية, STORE.name as المخزن,QUANTITY_TYPE.name as 'نوع الكمية',CLIENT_INVOICE.price as السعر,CLIENT_INVOICE.total as الإجمالي,CLIENT_INVOICE.biskoul as بسكول,CLIENT_INVOICE.mashal as مشال,CLIENT_INVOICE.commission as عمولات,CLIENT_INVOICE.rest as 'الإجمالي بعد الإضافات',CLIENT_INVOICE.paid as المدفوع,CLIENT_INVOICE.baky as الباقي,CLIENT_INVOICE.date as التاريخ from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join CATEGORY on CLIENT_INVOICE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on CLIENT_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on CLIENT_INVOICE.store_id =STORE.id where CLIENT.name  LIKE N'%" + txtSarch.Text + "% '", conn);
             DataTable dt = new DataTable();
             dataadapter.Fill(dt);
             salesgrid.DataSource = dt;
@@ -331,5 +331,22 @@ namespace Elmagd
             comboclient.DataSource = dt;
         }
         #endregion
+
+        private void btnsarch_Click(object sender, EventArgs e)
+        {
+            if ((int)comboclient.SelectedIndex == 0)
+                MessageBox.Show("برجاء اختيار عميل");
+            else
+            {
+                conn.Open();
+                cmd.CommandText = @"select CLIENT_INVOICE.id as م,invoiceNo as 'رقم الفاتورة',CLIENT.name as 'إسم العميل',CATEGORY.name as 'الصنف',CLIENT_INVOICE.quantity as الكمية, STORE.name as المخزن,QUANTITY_TYPE.name as 'نوع الكمية',CLIENT_INVOICE.price as السعر,CLIENT_INVOICE.total as الإجمالي,CLIENT_INVOICE.biskoul as بسكول,CLIENT_INVOICE.mashal as مشال,CLIENT_INVOICE.commission as عمولات,CLIENT_INVOICE.rest as 'الإجمالي بعد الإضافات',CLIENT_INVOICE.paid as المدفوع,CLIENT_INVOICE.baky as الباقي,CLIENT_INVOICE.date as التاريخ from CLIENT_INVOICE inner join CLIENT on CLIENT_INVOICE.client_id=CLIENT.id inner join CATEGORY on CLIENT_INVOICE.cat_id =CATEGORY.id inner join QUANTITY_TYPE on CLIENT_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on CLIENT_INVOICE.store_id =STORE.id where CLIENT_INVOICE.client_id ='" + (int)comboclient.SelectedValue + "' CLIENT_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "' ";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                salesgrid.DataSource = dt;
+                conn.Close();
+            }
+        }
     }
 }

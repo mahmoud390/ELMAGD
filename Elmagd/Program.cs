@@ -16,7 +16,7 @@ namespace Elmagd
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Splach_screen());
+            Application.Run(new Homeform());
 			//add test111
             //add comment from abdallah
         }

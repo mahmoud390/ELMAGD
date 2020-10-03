@@ -56,7 +56,8 @@ namespace Elmagd
         private void txtSarch_TextChanged(object sender, EventArgs e)
         {
             conn.Open();
-            SqlDataAdapter dataadapter = new SqlDataAdapter("select SUPPLIERS_INVOICE.id,SUPPLIERS.name,CATEGORY.name,SUPPLIERS_INVOICE.quantity,QUANTITY_TYPE.name,SUPPLIERS_INVOICE.price,SUPPLIERS_INVOICE.total,SUPPLIERS_INVOICE.biskoul,SUPPLIERS_INVOICE.mashal,SUPPLIERS_INVOICE.commissions,SUPPLIERS_INVOICE.rest,SUPPLIERS_INVOICE.paid,SUPPLIERS_INVOICE.baky from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id =SUPPLIERS.id inner join CATEGORY on SUPPLIERS_INVOICE.catid =CATEGORY.id inner join QUANTITY_TYPE on SUPPLIERS_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SUPPLIERS_INVOICE.store_id =STORE.id where SUPPLIERS.name  LIKE N'%" + txtSarch.Text + "%'", conn);
+           SqlDataAdapter dataadapter = new SqlDataAdapter("select SUPPLIERS_INVOICE.id,SUPPLIERS.name,CATEGORY.name,SUPPLIERS_INVOICE.quantity,QUANTITY_TYPE.name,SUPPLIERS_INVOICE.price,SUPPLIERS_INVOICE.total,SUPPLIERS_INVOICE.biskoul,SUPPLIERS_INVOICE.mashal,SUPPLIERS_INVOICE.commissions,SUPPLIERS_INVOICE.rest,SUPPLIERS_INVOICE.paid,SUPPLIERS_INVOICE.baky from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id =SUPPLIERS.id inner join CATEGORY on SUPPLIERS_INVOICE.catid =CATEGORY.id inner join QUANTITY_TYPE on SUPPLIERS_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SUPPLIERS_INVOICE.store_id =STORE.id where SUPPLIERS.name  LIKE N'%" + txtSarch.Text + "% '", conn);
+           // SqlDataAdapter dataadapter = new SqlDataAdapter("select SUPPLIERS_INVOICE.id,SUPPLIERS.name,CATEGORY.name,SUPPLIERS_INVOICE.quantity,QUANTITY_TYPE.name,SUPPLIERS_INVOICE.price,SUPPLIERS_INVOICE.total,SUPPLIERS_INVOICE.biskoul,SUPPLIERS_INVOICE.mashal,SUPPLIERS_INVOICE.commissions,SUPPLIERS_INVOICE.rest,SUPPLIERS_INVOICE.paid,SUPPLIERS_INVOICE.baky from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id =SUPPLIERS.id inner join CATEGORY on SUPPLIERS_INVOICE.catid =CATEGORY.id inner join QUANTITY_TYPE on SUPPLIERS_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SUPPLIERS_INVOICE.store_id =STORE.id where SUPPLIERS.name  ='" + txtSarch.Text + "' and SUPPLIERS_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "' ", conn);
             DataTable dt = new DataTable();
             dataadapter.Fill(dt);
             incomesgrid.DataSource = dt;
@@ -427,6 +428,30 @@ namespace Elmagd
             combosuppliers.DataSource = dt;
         }
         #endregion
+
+        private void radGroupBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnsarch_Click(object sender, EventArgs e)
+        {
+            if ((int)combosuppliers.SelectedIndex == 0)
+                MessageBox.Show("برجاء اختبارالمورد");
+            else
+            {
+               
+               // SqlDataAdapter dataadapter = new SqlDataAdapter(" select SUPPLIERS_INVOICE.id as م , SUPPLIERS_INVOICE.invoiceNo as 'رقم الفاتورة',SUPPLIERS.name as 'المورد',CATEGORY.name as الصنف,STORE.name as المخزن,SUPPLIERS_INVOICE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',SUPPLIERS_INVOICE.price as السعر,SUPPLIERS_INVOICE.total as الإجمالي,SUPPLIERS_INVOICE.biskoul as بسكول,SUPPLIERS_INVOICE.mashal as مشال,SUPPLIERS_INVOICE.commissions as عمولات,SUPPLIERS_INVOICE.rest as 'الإجمالي بعد الخصومات',SUPPLIERS_INVOICE.paid as المدفوع,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id =SUPPLIERS.id inner join CATEGORY on SUPPLIERS_INVOICE.catid =CATEGORY.id inner join QUANTITY_TYPE on SUPPLIERS_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SUPPLIERS_INVOICE.store_id =STORE.id where SUPPLIERS.name ='" + (int)combosuppliers.SelectedValue + "' and SUPPLIERS_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "'  ", conn);
+                conn.Open();
+                cmd.CommandText = @"select SUPPLIERS_INVOICE.id as م , SUPPLIERS_INVOICE.invoiceNo as 'رقم الفاتورة',SUPPLIERS.name as 'المورد',CATEGORY.name as الصنف,STORE.name as المخزن,SUPPLIERS_INVOICE.quantity as الكمية,QUANTITY_TYPE.name as 'نوع الكمية',SUPPLIERS_INVOICE.price as السعر,SUPPLIERS_INVOICE.total as الإجمالي,SUPPLIERS_INVOICE.biskoul as بسكول,SUPPLIERS_INVOICE.mashal as مشال,SUPPLIERS_INVOICE.commissions as عمولات,SUPPLIERS_INVOICE.rest as 'الإجمالي بعد الخصومات',SUPPLIERS_INVOICE.paid as المدفوع,SUPPLIERS_INVOICE.baky as الباقي,SUPPLIERS_INVOICE.date as التاريخ from SUPPLIERS_INVOICE inner join SUPPLIERS on SUPPLIERS_INVOICE.suppliers_id =SUPPLIERS.id inner join CATEGORY on SUPPLIERS_INVOICE.catid =CATEGORY.id inner join QUANTITY_TYPE on SUPPLIERS_INVOICE.quantitytype_id =QUANTITY_TYPE.id inner join STORE on SUPPLIERS_INVOICE.store_id =STORE.id where SUPPLIERS_INVOICE.suppliers_id ='" + (int)combosuppliers.SelectedValue + "' and SUPPLIERS_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "' ";
+                cmd.Connection = conn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                incomesgrid.DataSource = dt;
+                conn.Close();
+            }
+        }
 
     }
 }

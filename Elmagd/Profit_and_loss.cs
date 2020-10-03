@@ -31,7 +31,7 @@ namespace Elmagd
         private void btnTotalsales_Click(object sender, EventArgs e)
         {
             conn.Open();
-            cmd.CommandText = @"select sum(paid) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "'";
+            cmd.CommandText = @"select sum(total) from CLIENT_INVOICE where CLIENT_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "'";
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -78,7 +78,7 @@ namespace Elmagd
         private void btnpurchase_Click(object sender, EventArgs e)
         {
             conn.Open();
-            cmd.CommandText = @"select sum(paid) from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "'";
+            cmd.CommandText = @"select sum(total) from SUPPLIERS_INVOICE where SUPPLIERS_INVOICE.date between '" + datefrom.Value.Date.ToShortDateString() + "'" + " and '" + dateto.Value.Date.ToShortDateString() + "'";
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

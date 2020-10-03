@@ -218,6 +218,18 @@ namespace Elmagd
             show_profit_and_loss.Show();
         }
 
+        private void radRibbonBarGroup26_Click(object sender, EventArgs e)
+        {
+            Investors__Account invistor_account = new Investors__Account();
+            invistor_account.Show();
+        }
+
+        private void radRibbonBarGroup27_Click(object sender, EventArgs e)
+        {
+            Category_Quantity category_quantity = new Category_Quantity();
+            category_quantity.Show();
+        }
+
        
     }
 }

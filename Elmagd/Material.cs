@@ -112,6 +112,7 @@ namespace Elmagd
         {
             try
             {
+                int quntytypetemp =0,quntytypestore=0;
                 enter_quantity = double.Parse(txtquantity.Text);
                 if ((int)combostore.SelectedIndex == 0)
                     MessageBox.Show("برجاء اختبار المخزن");
@@ -124,7 +125,7 @@ namespace Elmagd
                 else
                 {
                     conn.Open();
-                    cmd.CommandText = @" select quantity from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
+                    cmd.CommandText = @" select quantity,quantitytype_id from MAIN_STORE where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id= 1 ";
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (!reader.HasRows)
                     {
@@ -140,6 +141,7 @@ namespace Elmagd
                                 quantity = 0;
                             }
                             quantity = double.Parse(reader[0].ToString());
+                            quntytypestore = int.Parse(reader[1].ToString());
                         }
 
                         conn.Close();
@@ -156,14 +158,8 @@ namespace Elmagd
                             cmd.Connection = conn;
                             cmd.Parameters.AddWithValue("@store_id", (int)combostore.SelectedValue);
                             cmd.Parameters.AddWithValue("@cat_id", (int)combocategory.SelectedValue);
-                            if ((int)comboquantitytype.SelectedValue == 2)
-                            {
-                                quantity = enter_quantity * 1000;
-                                cmd.Parameters.AddWithValue("@quantity", quantity);
-                            }
-                            else
-                                cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                            cmd.Parameters.AddWithValue("@quantitytype_id", 1);
+                            cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+                            cmd.Parameters.AddWithValue("@quantitytype_id", comboquantitytype.SelectedValue);
                             cmd.Parameters.AddWithValue("@date_start", dateStart.Value.Date.ToShortDateString());
                             cmd.Parameters.AddWithValue("@notes", txtnotes.Text);
                             cmd.ExecuteNonQuery();
@@ -174,15 +170,26 @@ namespace Elmagd
                             //----------------------------------------
                             //select quntity ,store, quantity type,category
                             conn.Open();
-                            cmd.CommandText = @" select quantity from TEMP_MATERIAL where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
+                            cmd.CommandText = @" select quantity, quantitytype_id from TEMP_MATERIAL where store_id ='" + (int)combostore.SelectedValue + "'and cat_id='" + (int)combocategory.SelectedValue + "'";//and quantitytype_id='" + (int)comboquantitytype.SelectedValue + "' ";
                             reader = cmd.ExecuteReader();
                             while (reader.Read())
                             {
                                 quantity = double.Parse(reader[0].ToString());
+                                quntytypetemp =int.Parse(reader[1].ToString());
                             }
                             conn.Close();
                             //---------------------------------
                             //update mainstore
+                              if (quntytypetemp == quntytypestore)
+                                    quantity = quantity;
+                                else if (quntytypestore == 1 && quntytypetemp == 2)
+                                {
+                                    quantity = quantity * 1000;
+                                }
+                                else if (quntytypestore == 2 && quntytypetemp == 1)
+                                {
+                                    quantity = quantity / 1000;
+                                }
                             conn.Open();
                             cmd.CommandText = @"UPDATE MAIN_STORE  SET quantity = quantity-'" + quantity + "' where store_id = '" + (int)combostore.SelectedValue + "'and cat_id ='" + (int)combocategory.SelectedValue + "'and quantitytype_id ='" + (int)comboquantitytype.SelectedValue + "'   ";
                             cmd.Connection = conn;

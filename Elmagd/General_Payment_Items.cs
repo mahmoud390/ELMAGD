@@ -23,7 +23,7 @@ namespace Elmagd
 
         private void General_Payment_Items_Load(object sender, EventArgs e)
         {
-
+            BindGrid();
         }
         #region BINDGRID
         private void BindGrid()

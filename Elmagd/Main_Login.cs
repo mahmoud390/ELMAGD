@@ -144,13 +144,13 @@ namespace Elmagd
                         MessageBox.Show("برجاء التاكد من كتابة إسم المستخدم وكلمة المرور بشكل صحيح");
                     }
                     conn.Close();
-                    // back up from data base
-                    string fileName = "E:\\imp\\publish\\Application Files\\Elmagd_1_0_0_0\\BUCKUP" + "\\ELMAGD" + DateTime.Now.ToShortDateString().Replace('/', '-') + " - " + DateTime.Now.ToLongTimeString().Replace(':', '-');
-                    string stquary = "Backup Database ELMAGD to Disk='" + fileName + ".bak'";
-                    cmd = new SqlCommand(stquary, conn);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                    //// back up from data base
+                    //string fileName = "E:\\imp\\publish\\Application Files\\Elmagd_1_0_0_0\\BUCKUP" + "\\ELMAGD" + DateTime.Now.ToShortDateString().Replace('/', '-') + " - " + DateTime.Now.ToLongTimeString().Replace(':', '-');
+                    //string stquary = "Backup Database ELMAGD to Disk='" + fileName + ".bak'";
+                    //cmd = new SqlCommand(stquary, conn);
+                    //conn.Open();
+                    //cmd.ExecuteNonQuery();
+                    //conn.Close();
                 }
             }
         }
