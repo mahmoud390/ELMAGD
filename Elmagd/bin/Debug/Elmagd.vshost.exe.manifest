@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elmagd.exe" size="1482240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elmagd.exe" size="1482752">
       <assemblyIdentity name="Elmagd" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EpwSm5UO5W+7X3e+V2vwUQOAcI5rs6w21PocN3E+ZO4=</dsig:DigestValue>
+        <dsig:DigestValue>BfX4BRrEypmItjszgI8gk4Z7qz7BIPaaw8VM5bE/Rg4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

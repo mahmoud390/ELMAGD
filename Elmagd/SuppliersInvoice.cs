@@ -377,20 +377,22 @@ namespace Elmagd
 
                     //-------------------------------------------------------------------
                     // add to main store
+                 int store_temp=0;
                     conn.Open();
-                    cmd.CommandText = @"select cat_id,quantitytype_id,quantity  from TEMP_SUPPLIERSINVOICE ";
+                    cmd.CommandText = @"select store_id,cat_id,quantitytype_id,quantity  from TEMP_SUPPLIERSINVOICE ";
                     SqlDataReader reader_cateid = cmd.ExecuteReader();
                     while (reader_cateid.Read())
                     {
-                        catid_DB = int.Parse(reader_cateid[0].ToString());
-                        quantitytype = int.Parse(reader_cateid[1].ToString());
+                        store_temp = int.Parse(reader_cateid[0].ToString());
+                        catid_DB = int.Parse(reader_cateid[1].ToString());
+                        quantitytype = int.Parse(reader_cateid[2].ToString());
                     }
                     conn.Close();
                     //----------------------------------------------
                     //إضافة مخزن ومنتج داخلmainstore في حالة عدم وجود هذا المخزن
                     int qtyTypeFromMainStore = 0, qtyTypeFromTempSupp = 0;
                     conn.Open();
-                    cmd.CommandText = @"select id,quantitytype_id  from MAIN_STORE where cat_id ='" + catid_DB + "'";//and quantitytype_id= '" + quantitytype + "'  ";
+                    cmd.CommandText = @"select store_id,quantitytype_id  from MAIN_STORE where cat_id ='" + catid_DB + "'";//and quantitytype_id= '" + quantitytype + "'  ";
                     SqlDataReader reader_id = cmd.ExecuteReader();
                     while (reader_id.Read())
                     {
@@ -401,7 +403,7 @@ namespace Elmagd
                         qtyTypeFromMainStore = int.Parse(reader_id[1].ToString());
                     }
                     conn.Close();
-                    if (id_store == 0)
+                    if (id_store == 0 || id_store != store_temp)
                     {
                         conn.Open();
                         cmd.CommandText = @"insert into MAIN_STORE (store_id,cat_id,quantity,quantitytype_id) select store_id,cat_id,quantity,quantitytype_id from TEMP_SUPPLIERSINVOICE ";
